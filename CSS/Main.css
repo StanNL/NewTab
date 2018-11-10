@@ -1,4 +1,5 @@
-@import url(https://fonts.googleapis.com/css?family=Product+Sans|Material+Icons);
+@import url(https://fonts.googleapis.com/css?family=Roboto|Material+Icons);
+
 body, html {
 	margin: 0;
 	padding: 0;
@@ -24,7 +25,7 @@ body {
 	margin: 0;
 	margin-bottom: 36px;
 	font-family: Roboto, Arial, Helvetica, sans-serif;
-	color: #000000aa;
+	color: #fff;
 }
 
 #wLocI {
@@ -45,7 +46,7 @@ body {
 	font-size: 16px;
 	position: absolute;
 	top: 0px;
-	color: #322f4bc4;
+	color: #fafafae5;
 	left: calc(50% - 187.71px/2 - 104px);
 	top: 166px;
 	cursor: text;
@@ -75,10 +76,19 @@ body {
 	background: rgba(0, 0, 0, .2);
 }
 
+@media only screen and (max-width: 600px) {
+	#topSites {
+		column-count: 3!important;
+	}
+	.site:nth-child(n+7) {
+		display: none!important;
+	}
+}
+
 #sendButton {
 	display: inline-block;
 	left: 8px;
-	box-shadow: rgba(44, 41, 86, 0.65) 2px 3px 14px;
+	box-shadow: rgba(44, 41, 86, 0.65) 0px 0px 0px;
 	top: 3px;
 	padding: 8px;
 	background: rgba(0, 0, 0, .3);
@@ -90,7 +100,7 @@ body {
 }
 
 #sendButton:hover {
-	box-shadow: rgba(44, 41, 86, 0.85) 2px 3px 14px;
+	box-shadow: rgba(0, 0, 0, 0.35) 2px 3px 4px;
 }
 
 #sendButton, #sendButton * {
@@ -138,10 +148,25 @@ body {
 	color: #fff;
 }
 
-#topSites * {
+.site {
 	text-decoration: none;
 	font-size: 18px;
 	padding-bottom: 16px;
+	display: block;
+	transition-duration: 400ms;
+	cursor: pointer;
+	padding: 24px 8px;
+	margin: 0 4px 16px 4px;
+	background: rgba(0, 0, 0, .2);
+	box-shadow: rgba(0,0,0,.2) 0px 0px 0px;
+	border-radius: 4px;
+	display: inline-block;
+	width: 80%;
+}
+
+.site:hover{
+	background: rgba(0, 0, 0, .4);
+	box-shadow: rgba(0,0,0,0.3) 4px 5px 22px;
 }
 
 #searchBox, #topSites {
@@ -187,17 +212,8 @@ body {
 	padding: 0 16px;
 }
 
-#weather, #weather > *{
+#weather, #weather>* {
 	cursor: pointer;
-}
-#topSites>div {
-	cursor: pointer;
-	padding: 24px 8px;
-	margin: 0 4px 16px 4px;
-	background: rgba(0, 0, 0, .2);
-	border-radius: 4px;
-	display: inline-block;
-	width: 80%;
 }
 
 #search {
@@ -224,7 +240,7 @@ body {
 	margin-top: 70px;
 	margin-bottom: 46px;
 	font-weight: normal;
-	font-family: "Product Sans";
+	font-family: "Roboto";
 	opacity: 0;
 	transition-duration: 300ms;
 }

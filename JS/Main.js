@@ -1,7 +1,6 @@
 wURL = 'http://api.openweathermap.org/data/2.5/weather?APPID=e98a229cdc17ffdc226168c33aefa0c1&q=';
 
 var loading = {
-	weather: false,
 	sites: false,
 	wLOC: false
 }
@@ -111,8 +110,11 @@ $(document).ready(function () {
 
 	document.addEventListener('contextmenu', function (e) {
 		if (wLocShown) return true;
+		
 		if ((e.target.id || $(e.target).parent()[0].id) == 'weather') {
 			showWLoc();
+		}else if($(e.target).hasClass("site")){
+			return true;
 		} else {
 			redirectToProjects();
 		}
@@ -126,6 +128,7 @@ $(document).ready(function () {
 			loc = a.wLOC;
 			checkWeatherUpdates();
 			loading.wLOC = true;
+			checkFinished();
 		}
 	});
 
@@ -169,6 +172,8 @@ function sendWLoc() {
 				loc = v;
 				set('wLOC', loc);
 				loading.wLOC = true;
+				checkFinished();
+				wLocShown = false;
 				$("#weatherDiv").css("left", "100%");
 				$("#main").css("left", '0%');
 				$("#weather").css('left', 'calc(50% - 57.1px)');
@@ -294,11 +299,8 @@ function updateWeather() {
 		set("wUT", +new Date());
 		set("wTemp", temp);
 		set("lastWCity", loc);
-		loading.weather = true;
-		checkFinished();
 	}).fail(function (a, b, c) {
 		console.log("Het weer werkt niet!", a, b, c);
-		loading.weather = true;
 		checkFinished();
 	});
 }
@@ -306,8 +308,6 @@ function updateWeather() {
 function loadWeatherFromMemory() {
 	get("wTemp", function (a) {
 		$("#weather").html(formatWeather(a.wTemp));
-		loading.weather = true;
-		checkFinished();
 	})
 }
 

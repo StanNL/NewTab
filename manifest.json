@@ -5,8 +5,10 @@
    "options_page": "Main.html?w!",
    "description": "Stans poging tot een nieuw-tabblad pagina.",
    "icons": {
-      "128": "icon.png",
-      "16": "icon.png"
+      "128": "Icons/logo.png",
+      "64": "Icons/logo.png",
+      "32": "Icons/logo.png",
+      "16": "Icons/logo.png"
    },
    "manifest_version": 2,
    "name": "Stans Nieuw Tabblad",
@@ -14,5 +16,5 @@
    "permissions": ["topSites", "management", "chrome://favicon/", "*://*.openweathermap.org/*", "storage", "unlimitedStorage"],
    "content_security_policy": "script-src 'self' https://www.openweathermap.org; object-src 'self'",
    "short_name": "Stans Nieuw Tabblad",
-   "version": "0.3.1"
+   "version": "0.4.0"
 }
