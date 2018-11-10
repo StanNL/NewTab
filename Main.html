@@ -1,0 +1,32 @@
+<head>
+	<title>Nieuw Tabblad</title>
+	<script src='jquery.js'></script>
+	<script src='Main.js'></script>
+	<script src='Weather.js'></script>
+	<link rel='stylesheet' href='weather-icons.css'>
+	<link rel='stylesheet' href='weather-icons-wind.css'>
+	<link rel='stylesheet' href='Main.css'>
+</head>
+
+<body>
+	<div id='main'>
+		<h1 id="logo">Stan</h1>
+		<center>
+			<div id="searchBox">
+				<i class='material-icons' id='balance'>search</i>
+				<input type="text" id="search" autocomplete="off">
+				<i class='material-icons' id='searchIcon'>search</i>
+			</div>
+			<div id="topSites"></div>
+		</center>
+		<a id="weather"></a>
+	</div>
+	<div id="weatherDiv">
+		<p id="wLocH">Weather Settings</p>
+		<input type='text' id='wLocI'></input>
+		<div id='sendButton'><span>SEND</span>
+			<div id='ripple'></div>
+		</div>
+		<div id='wLocL'>Locatie voor weer-updates</div>
+	</div>
+</body>

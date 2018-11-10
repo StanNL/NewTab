@@ -1,0 +1,230 @@
+@import url(https://fonts.googleapis.com/css?family=Product+Sans|Material+Icons);
+body, html {
+	margin: 0;
+	padding: 0;
+	color: black;
+	text-align: center;
+}
+
+body {
+	background: #79ccf9;
+	overflow: hidden;
+}
+
+#main {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	transition-duration: 400ms;
+}
+
+#wLocH {
+	font-size: 48px;
+	margin: 0;
+	margin-bottom: 36px;
+	font-family: Roboto, Arial, Helvetica, sans-serif;
+	color: #000000aa;
+}
+
+#wLocI {
+	display: inline-block;
+	background: rgba(0, 0, 0, .08);
+	border: none;
+	cursor: text;
+	width: 320px;
+	height: 40px;
+	border-radius: 2px;
+	padding-left: 12px;
+	padding-right: 8px;
+	transition-duration: 400ms;
+	color: rgba(255, 255, 255, .7);
+}
+
+#wLocL {
+	font-size: 16px;
+	position: absolute;
+	top: 0px;
+	color: #322f4bc4;
+	left: calc(50% - 187.71px/2 - 104px);
+	top: 166px;
+	cursor: text;
+	transition-duration: 400ms;
+}
+
+#wLocL.f {
+	color: rgba(0, 0, 0, 0.8);
+	top: 128px;
+	cursor: default;
+}
+
+#wLocL.fl {
+	left: calc(50% - 187.71px/2 - 41px);
+}
+
+#wLocL.ff {
+	color: rgba(255, 255, 255, 1)!important;
+}
+
+#wLocI:focus {
+	outline: none;
+}
+
+#wLocI.f {
+	color: rgba(255, 255, 255, .9);
+	background: rgba(0, 0, 0, .2);
+}
+
+#sendButton {
+	display: inline-block;
+	left: 8px;
+	box-shadow: rgba(44, 41, 86, 0.65) 2px 3px 14px;
+	top: 3px;
+	padding: 8px;
+	background: rgba(0, 0, 0, .3);
+	font-size: 18px;
+	width: 80px;
+	position: relative;
+	transition-duration: 350ms;
+	border-radius: 2px;
+}
+
+#sendButton:hover {
+	box-shadow: rgba(44, 41, 86, 0.85) 2px 3px 14px;
+}
+
+#sendButton, #sendButton * {
+	cursor: pointer;
+}
+
+#weatherDiv {
+	padding: 64px;
+	position: absolute;
+	left: 100%;
+	text-align: center;
+	width: calc(100% - 128px);
+	transition-duration: 400ms;
+	top: 0px;
+}
+
+* {
+	color: white;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	cursor: default;
+}
+
+#weather i.wi {
+	color: #fff;
+	padding-right: 12px;
+}
+
+#weather {
+	opacity: 0;
+	transition-duration: 300ms;
+	font-size: 1.4rem;
+	position: fixed;
+	left: calc(50% - 57.1px);
+	bottom: 0px;
+	padding: 12px 24px;
+	border-top-right-radius: 8px;
+	border-top-left-radius: 8px;
+	text-decoration: none;
+	cursor: pointer;
+	color: #fff;
+}
+
+#topSites * {
+	text-decoration: none;
+	font-size: 18px;
+	padding-bottom: 16px;
+}
+
+#searchBox, #topSites {
+	width: 77.5%;
+	max-width: 710px;
+}
+
+#searchBox {
+	opacity: 0;
+	transition-duration: 300ms;
+	background: rgba(255, 255, 255, 0.29);
+	cursor: text;
+	height: 48px;
+	border-radius: 28px;
+	text-align: left;
+	transition-duration: 600ms;
+	text-align: center;
+}
+
+#balance {
+	color: rgba(0, 0, 0, 0)!important;
+	cursor: text;
+}
+
+#searchIcon, #balance {
+	display: inline-block;
+	color: white;
+	font-size: 36px;
+	top: 5px;
+	position: relative;
+}
+
+#searchIcon, #search {
+	transition-duration: 600ms;
+}
+
+#topSites {
+	opacity: 0;
+	transition-duration: 600ms;
+	top: 38px;
+	position: relative;
+	column-count: 4;
+	padding: 0 16px;
+}
+
+#weather, #weather > *{
+	cursor: pointer;
+}
+#topSites>div {
+	cursor: pointer;
+	padding: 24px 8px;
+	margin: 0 4px 16px 4px;
+	background: rgba(0, 0, 0, .2);
+	border-radius: 4px;
+	display: inline-block;
+	width: 80%;
+}
+
+#search {
+	cursor: text;
+	color: white;
+	top: -6px;
+	position: relative;
+	font-size: 18px;
+	height: 100%;
+	width: calc(100% - 116px);
+	display: inline-block;
+	background: rgba(0, 0, 0, 0);
+	text-align: center;
+	padding-left: 12px;
+	border: none;
+}
+
+#search:focus {
+	outline: none;
+}
+
+#logo {
+	font-size: 1100%;
+	margin-top: 70px;
+	margin-bottom: 46px;
+	font-weight: normal;
+	font-family: "Product Sans";
+	opacity: 0;
+	transition-duration: 300ms;
+}
