@@ -222,6 +222,7 @@ function get(k, f) {
 
 function redirectToProjects() {
 	chrome.management.launchApp('ofhbbkphhbklhfoeikjpcbhemlocgigb');
+	console.log("?")
 	location.href = 'redirect.html?q=projects';
 }
 
