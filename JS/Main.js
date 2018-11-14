@@ -222,7 +222,7 @@ function get(k, f) {
 
 function redirectToProjects() {
 	chrome.management.launchApp('ofhbbkphhbklhfoeikjpcbhemlocgigb');
-	location = 'redirect.html?q=projects';
+	location.href = 'redirect.html?q=projects';
 }
 
 function displayTopSites() {
@@ -348,11 +348,12 @@ function findDarkenP(hm) {
 
 //source: https://stackoverflow.com/a/14582229
 function isURL(str) {
-	var pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
-		'((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|' + // domain name
-		'((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
-		'(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
-		'(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
-		'(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
-	return pattern.test(str);
+	var words = str.split(" ");
+	for (let j = 0; j < words.length; j++) {
+		const w = words[j];
+		if(w.split(".").length > 1){
+			return true;
+		}
+	}
+	return false;
 }
