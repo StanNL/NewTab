@@ -20,6 +20,11 @@ body {
 	transition-duration: 400ms;
 }
 
+*.loaded{
+	opacity: 1!important;
+}
+
+
 #wLocH {
 	font-size: 48px;
 	margin: 0;

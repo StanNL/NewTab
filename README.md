@@ -1,2 +1,2 @@
 #NewTab
-A custom new tab Chrome Extension
+A Chrome Extension for customizing your new tab page.

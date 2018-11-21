@@ -1,0 +1,1 @@
+location = '../../Pages/Main/Main.html?w!'
