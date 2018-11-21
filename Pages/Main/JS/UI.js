@@ -33,7 +33,7 @@ function showWLoc() {
 
 function redirectToProjects() {
 	chrome.management.launchApp('ofhbbkphhbklhfoeikjpcbhemlocgigb');
-	location.href = '../Redirect/redirect.html?q=projects';
+	location.href = '../Redirect/Redirect.html?q=projects';
 }
 
 

@@ -32,7 +32,7 @@ $(document).ready(function () {
 	});
 
 	$("#weather, #weather > *").on("click", function (e) {
-		location.href = '../Redirect/redirect.html?q=weather';
+		location.href = '../Redirect/Redirect.html?q=weather';
 		e.preventDefault();
 	})
 	$("#balance, #searchBox").on("click", function () {
