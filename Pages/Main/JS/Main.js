@@ -17,6 +17,9 @@ var freq = 125;
 
 onload = function () {
 	document.body.style.background = darkenColour(121, 204, 249, findDarkenP());
+	if(!location.protocol.startsWith('chrome')){
+		if (location.protocol !== "https:") location.protocol = "https:";
+	}
 }
 
 $(document).ready(function () {
@@ -51,10 +54,10 @@ $(document).ready(function () {
 
 	document.addEventListener('contextmenu', function (e) {
 		if (wLocShown) return true;
-		
+
 		if ((e.target.id || $(e.target).parent()[0].id) == 'weather') {
 			showWLoc();
-		}else if($(e.target).hasClass("site")){
+		} else if ($(e.target).hasClass("site") || location.protocol.startsWith("http")) {
 			return true;
 		} else {
 			redirectToProjects();
@@ -101,8 +104,8 @@ $(document).ready(function () {
 		showWLoc();
 	};
 
-	setTimeout(function(){
-		setInterval(function(){
+	setTimeout(function () {
+		setInterval(function () {
 			$("*:not(.loaded)").addClass('loaded');
 		}, 500);
 	}, 1500);

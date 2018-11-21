@@ -5,7 +5,7 @@ function set(k, v, f) {
 		chrome.storage.sync.set(kv, f);
 	} else {
 		setCookie(k, v);
-		f();
+		if(f) f();
 	}
 }
 
@@ -14,9 +14,9 @@ function get(k, f) {
 		chrome.storage.sync.get([k], f);
 	} else {
 		cVal = readCookie(k);
-		res = {}
+		res = {};
 		res[k] = cVal;
-		f(res);
+		if(f) f(res);
 	}
 }
 
