@@ -1,8 +1,8 @@
-wURL = 'http://api.openweathermap.org/data/2.5/weather?APPID=e98a229cdc17ffdc226168c33aefa0c1&q=';
+wURL = 'https://api.openweathermap.org/data/2.5/weather?APPID=e98a229cdc17ffdc226168c33aefa0c1&q=';
 
 var loc;
 var wLocShown = false;
-var wUPFreq = 15;
+var wUPFreq = .5;
 
 
 function checkWeatherUpdates() {
