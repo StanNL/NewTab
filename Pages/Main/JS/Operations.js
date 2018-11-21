@@ -20,7 +20,7 @@ function get(k, f) {
 	}
 }
 
-function getCookie(a) {
+function readCookie(a) {
 	var b = document.cookie.match('(^|;)\\s*' + a + '\\s*=\\s*([^;]+)');
 	return b ? b.pop() : '';
 }
