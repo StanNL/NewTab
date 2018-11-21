@@ -1,0 +1,38 @@
+@media only screen and (max-width: 600px) {
+	#topSites {
+		column-count: 3!important;
+	}
+	.site:nth-child(n+7) {
+		display: none!important;
+	}
+}
+
+.site {
+	text-decoration: none;
+	font-size: 18px;
+	padding-bottom: 16px;
+	display: block;
+	transition-duration: 400ms;
+	cursor: pointer;
+	padding: 24px 8px;
+	margin: 0 4px 16px 4px;
+	background: rgba(0, 0, 0, .2);
+	box-shadow: rgba(0,0,0,.2) 0px 0px 0px;
+	border-radius: 4px;
+	display: inline-block;
+	width: 80%;
+}
+
+.site:hover{
+	background: rgba(0, 0, 0, .4);
+	box-shadow: rgba(0,0,0,0.3) 4px 5px 22px;
+}
+
+#topSites {
+	opacity: 0;
+	transition-duration: 600ms;
+	top: 38px;
+	position: relative;
+	column-count: 4;
+	padding: 0 16px;
+}

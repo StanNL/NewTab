@@ -1,0 +1,52 @@
+#searchBox, #topSites {
+	width: 77.5%;
+	max-width: 710px;
+}
+
+#searchBox {
+	opacity: 0;
+	transition-duration: 300ms;
+	background: rgba(255, 255, 255, 0.29);
+	cursor: text;
+	height: 48px;
+	border-radius: 28px;
+	text-align: left;
+	transition-duration: 600ms;
+	text-align: center;
+}
+
+#balance {
+	color: rgba(0, 0, 0, 0)!important;
+	cursor: text;
+}
+
+#searchIcon, #balance {
+	display: inline-block;
+	color: white;
+	font-size: 36px;
+	top: 5px;
+	position: relative;
+}
+
+#searchIcon, #search {
+	transition-duration: 600ms;
+}
+
+#search {
+	cursor: text;
+	color: white;
+	top: -6px;
+	position: relative;
+	font-size: 18px;
+	height: 100%;
+	width: calc(100% - 116px);
+	display: inline-block;
+	background: rgba(0, 0, 0, 0);
+	text-align: center;
+	padding-left: 12px;
+	border: none;
+}
+
+#search:focus {
+	outline: none;
+}

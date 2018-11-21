@@ -1,0 +1,112 @@
+#wLocH {
+	font-size: 48px;
+	margin: 0;
+	margin-bottom: 36px;
+	font-family: Roboto, Arial, Helvetica, sans-serif;
+	color: #fff;
+}
+
+#wLocI {
+	display: inline-block;
+	background: rgba(0, 0, 0, .08);
+	border: none;
+	cursor: text;
+	width: 320px;
+	height: 40px;
+	border-radius: 2px;
+	padding-left: 12px;
+	padding-right: 8px;
+	transition-duration: 400ms;
+	color: rgba(255, 255, 255, .7);
+}
+
+#wLocL {
+	font-size: 16px;
+	position: absolute;
+	top: 0px;
+	color: #fafafae5;
+	left: calc(50% - 187.71px/2 - 104px);
+	top: 166px;
+	cursor: text;
+	transition-duration: 400ms;
+}
+
+#wLocL.f {
+	color: rgba(0, 0, 0, 0.8);
+	top: 128px;
+	cursor: default;
+}
+
+#wLocL.fl {
+	left: calc(50% - 187.71px/2 - 41px);
+}
+
+#wLocL.ff {
+	color: rgba(255, 255, 255, 1)!important;
+}
+
+#wLocI:focus {
+	outline: none;
+}
+
+#wLocI.f {
+	color: rgba(255, 255, 255, .9);
+	background: rgba(0, 0, 0, .2);
+}
+
+
+#weather i.wi {
+	color: #fff;
+	padding-right: 12px;
+}
+
+#weather {
+	opacity: 0;
+	transition-duration: 300ms;
+	font-size: 1.4rem;
+	position: fixed;
+	left: calc(50% - 57.1px);
+	bottom: 0px;
+	padding: 12px 24px;
+	border-top-right-radius: 8px;
+	border-top-left-radius: 8px;
+	text-decoration: none;
+	cursor: pointer;
+	color: #fff;
+}
+
+#weather, #weather>* {
+	cursor: pointer;
+}
+
+#weatherDiv {
+	padding: 64px;
+	position: absolute;
+	left: 100%;
+	text-align: center;
+	width: calc(100% - 128px);
+	transition-duration: 400ms;
+	top: 0px;
+}
+
+#sendButton {
+	display: inline-block;
+	left: 8px;
+	box-shadow: rgba(44, 41, 86, 0.65) 0px 0px 0px;
+	top: 3px;
+	padding: 8px;
+	background: rgba(0, 0, 0, .3);
+	font-size: 18px;
+	width: 80px;
+	position: relative;
+	transition-duration: 350ms;
+	border-radius: 2px;
+}
+
+#sendButton:hover {
+	box-shadow: rgba(0, 0, 0, 0.35) 2px 3px 4px;
+}
+
+#sendButton, #sendButton * {
+	cursor: pointer;
+}
