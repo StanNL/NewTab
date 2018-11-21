@@ -13,7 +13,7 @@
    "manifest_version": 2,
    "name": "Stans Nieuw Tabblad",
    "offline_enabled": true,
-   "permissions": ["topSites", "management", "chrome://favicon/", "*://*.openweathermap.org/*", "storage", "unlimitedStorage"],
+   "permissions": ["management", "*://*.openweathermap.org/*", "storage", "unlimitedStorage"],
    "content_security_policy": "script-src 'self' https://www.openweathermap.org; object-src 'self'",
    "short_name": "Stans Nieuw Tabblad",
    "version": "0.6.0"
