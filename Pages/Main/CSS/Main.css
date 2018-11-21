@@ -21,6 +21,7 @@ body {
 	-ms-user-select: none;
 	user-select: none;
 	cursor: default;
+	font-family: Roboto, Arial, Helvetica, sans-serif;
 }
 
 *.loaded{
@@ -40,7 +41,6 @@ body {
 	margin-top: 70px;
 	margin-bottom: 46px;
 	font-weight: normal;
-	font-family: "Roboto";
 	opacity: 0;
 	transition-duration: 300ms;
 }
