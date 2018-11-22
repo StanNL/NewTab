@@ -32,6 +32,10 @@
 	transition-duration: 600ms;
 }
 
+#searchIcon {
+	cursor: pointer;
+}
+
 #search {
 	cursor: text;
 	color: white;
