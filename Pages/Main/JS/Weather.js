@@ -2,7 +2,7 @@ wURL = 'https://api.openweathermap.org/data/2.5/weather?APPID=e98a229cdc17ffdc22
 
 var loc;
 var wLocShown = false;
-var wUPFreq = .5;
+var wUPFreq = 15;
 
 
 function checkWeatherUpdates() {
