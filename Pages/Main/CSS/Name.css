@@ -1,0 +1,64 @@
+#nLocH {
+	font-size: 48px;
+	margin: 0;
+	margin-bottom: 36px;
+	color: #fff;
+}
+
+#nLocI {
+	display: inline-block;
+	background: rgba(0, 0, 0, .08);
+	border: none;
+	cursor: text;
+	width: 320px;
+	height: 40px;
+	border-radius: 2px;
+	padding-left: 12px;
+	padding-right: 8px;
+	transition-duration: 400ms;
+	color: rgba(255, 255, 255, .7);
+}
+
+#nLocL {
+	font-size: 16px;
+	position: absolute;
+	top: 0px;
+	color: #fafafae5;
+	left: calc(50% - 187.71px/2 - 104px);
+	top: 166px;
+	cursor: text;
+	transition-duration: 400ms;
+}
+
+#nLocL.f {
+	color: rgba(0, 0, 0, 0.8);
+	top: 128px;
+	cursor: default;
+}
+
+#nLocL.fl {
+	left: calc(50% - 187.71px/2 - 41px);
+}
+
+#wLocL.ff {
+	color: rgba(255, 255, 255, 1)!important;
+}
+
+#nLocI:focus {
+	outline: none;
+}
+
+#nLocI.f {
+	color: rgba(255, 255, 255, .9);
+	background: rgba(0, 0, 0, .2);
+}
+
+#nameDiv {
+	padding: 64px;
+	position: absolute;
+	left: 100%;
+	text-align: center;
+	width: calc(100% - 128px);
+	transition-duration: 400ms;
+	top: 0px;
+}
