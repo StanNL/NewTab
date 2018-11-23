@@ -75,10 +75,16 @@ function get(k, f) {
 
 function readCookie(a) {
 	var b = document.cookie.match('(^|;)\\s*' + a + '\\s*=\\s*([^;]+)');
-	return b ? b.pop() : '';
+	b = b ? b.pop() : '';
+
+	if(b.startsWith("{")) b = JSON.parse(b);
+	return b;
 }
 
 function setCookie(name, value) {
+	if(typeof value == 'object'){
+		value = JSON.stringify(value);
+	}
 	var date = new Date();
 	date.setTime(date.getTime() + (365 * 24 * 60 * 60 * 1000));
 	var expires = "; expires=" + date.toUTCString();
