@@ -1,20 +1,23 @@
+<!DOCTYPE html>
+<html lang='nl'>
 <head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Nieuw Tabblad</title>
+	
 	<script src='../../res/JS/jQuery.js'></script>
-	<link rel='stylesheet' href='../../res/Icons/weather-icons.css'>
-
+	<script src='../../res/JS/Common.js'></script>
 	<script src='JS/Main.js'></script>
 	<script src='JS/UI.js'></script>
 	<script src='JS/Sites.js'></script>
 	<script src='JS/Weather.js'></script>
 	<script src='JS/Search.js'></script>
-	<script src='JS/Operations.js'></script>
-
+	
 	<link rel='icon' href='../../res/Icons/Logo.png'>
-
+	<link rel='stylesheet' href='../../res/Icons/weather-icons.css'>
 	<link rel='stylesheet' href='CSS/Main.css'>
 	<link rel='stylesheet' href='CSS/Weather.css'>
-	<link rel='stylesheet' href='CSS/Name.css'>
 	<link rel='stylesheet' href='CSS/Sites.css'>
 	<link rel='stylesheet' href='CSS/Search.css'>
 </head>
@@ -32,20 +35,8 @@
 		</center>
 		<a id="weather"></a>
 	</div>
-	<div id="weatherDiv">
-		<p id="wLocH">Weather Settings</p>
-		<input type='text' id='wLocI'></input>
-		<div id='sendButton'><span>SEND</span>
-			<div id='ripple'></div>
-		</div>
-		<div id='wLocL'>Locatie voor weer-updates</div>
-	</div>
-	<div id="nameDiv">
-		<p id="nLocH">Name settings</p>
-		<input type='text' id='nLocI'></input>
-		<div id='sendButton'><span>SEND</span>
-			<div id='ripple'></div>
-		</div>
-		<div id='nLocL'>Name to display</div>
+	<div id='options'>
+		<i class='material-icons'>settings</i>
 	</div>
 </body>
+</html>

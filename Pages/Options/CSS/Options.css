@@ -1,0 +1,213 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto|Material+Icons);
+body {
+	margin: 0;
+	padding-bottom: 84px;
+}
+
+.sendButton {
+	display: inline-block;
+	left: 8px;
+	box-shadow: rgba(44, 41, 86, 0.65) 0px 0px 0px;
+	top: 3px;
+	padding: 8px;
+	background: rgba(0, 0, 0, .3);
+	font-size: 18px;
+	width: 120px;
+	position: relative;
+	transition-duration: 350ms;
+	border-radius: 2px;
+	text-transform: uppercase;
+	text-align: center;
+	color: white;
+}
+
+.sendButton:hover {
+	box-shadow: rgba(0, 0, 0, 0.35) 2px 3px 4px;
+}
+
+.sendButton, .sendButton * {
+	cursor: pointer;
+}
+
+* {
+	font-family: Roboto, Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: white;
+	font-weight: normal;
+}
+
+ul {
+	text-align: left;
+	margin: 0px;
+	list-style-type: none;
+	font-size: 18px;
+	line-height: 50px;
+	color: white;
+}
+
+input {
+	outline: none!important;
+	background: rgba(0, 0, 0, .15);
+	color: white;
+	border: none;
+	width: 280px;
+	color: rgba(255, 255, 255, .83);
+	padding: 8px 12px;
+	transition-duration: 400ms;
+}
+
+input.focus {
+	background: rgba(0, 0, 0, .26);
+}
+
+.label, .iField {
+	display: table-cell;
+}
+
+.labelContainer, .label {
+	cursor: text;
+}
+
+.labelContainer {
+	padding-left: 8px;
+	padding-right: 6px;
+	text-align: left;
+	font-size: 16px;
+	top: -26px;
+	position: relative;
+	transition-duration: 400ms;
+}
+
+.labelContainer.focus {
+	top: -56px;
+}
+
+.label {
+	left: 0px;
+	position: relative;
+	color: rgba(255, 255, 255, .7);
+	transition-duration: 400ms;
+}
+
+.label.focus {
+	color: rgba(255, 255, 255, .95);
+}
+
+span {
+	color: white;
+}
+
+h1 {
+	font-size: 52px;
+	margin: 0 0 24px 0;
+	padding-top: 18px;
+	padding-bottom: 18px;
+	background: rgba(0, 0, 0, .2);
+}
+
+h2 {
+	margin-top: 18px;
+	font-size: 40px;
+	margin-bottom: 32px;
+}
+
+#websites {
+	margin-top: 32px;
+	margin-bottom: 24px;
+}
+
+.sendButton {
+    margin: 16px 0 16px 0;
+}
+
+.editIcon {
+	position: absolute;
+	right: 24px;
+	font-size: 22px;
+	cursor: pointer;
+	padding-top: 6px;
+}
+
+* {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+#send{
+	width: 100%;
+	position: fixed;
+	bottom: 0px;
+	background: #44728b;
+}
+
+p.websiteItem{
+	width: 500px!important;
+	max-width: 80%;
+    text-overflow: ellipsis;
+    display: inline-block;
+    overflow: hidden;
+    margin: 0;
+	white-space: nowrap;
+	line-height: 1.2em;
+    top: 4px;
+    position: relative;
+}
+
+
+#overlay{
+	position: fixed;
+	width: 100%;
+	height: 100vh;
+	left: 0px;
+	top: 0px;
+}
+
+#pagePopup *{
+	color: black;
+}
+
+#pagePopup{
+	background: #eee;
+	width: 80%;
+	max-width: 400px;
+	height: 300px;
+	position: fixed;
+	top: calc(50% - 150px);
+	left: auto;
+	z-index: 10;
+    left: calc(50% - 200px);
+}
+
+#pagePopup, #overlay{
+	display: none;
+}
+
+#overlay{
+	background: rgba(0,0,0,.4);
+}
+
+
+#saveP{
+	background: rgba(0, 150, 133, .8);
+	color: white!important;
+}
+
+.labelContainer.focus, .labelContainer.focus>.label{
+	cursor: default!important;
+}
+
+.label.error{
+	color: #B00020!important;
+}
+
+#main{
+	position: relative;
+	left: 0px;
+	transition-duration: 800ms;
+}

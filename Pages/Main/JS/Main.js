@@ -3,20 +3,12 @@ var loading = {
 	wLOC: false
 }
 
-var lefts = [];
-
 var st = 0;
-var maxD = -.3;
-var minH = 16.5;
-var endTrans1 = 19.5;
-var maxH = 8;
-var startTrans2 = 6.5;
 var els = ['#logo', '#searchBox', '#topSites', '#weather'];
 var freq = 125;
 
 
 onload = function () {
-	document.body.style.background = darkenColour(121, 204, 249, findDarkenP());
 	if(!location.protocol.startsWith('chrome')){
 		if (location.protocol !== "https:") location.protocol = "https:";
 	}
@@ -32,7 +24,7 @@ $(document).ready(function () {
 	});
 
 	$("#weather, #weather > *").on("click", function (e) {
-		location.href = '../Redirect/Redirect.html?q=weather';
+		location.href = 'https://www.google.nl/search?q=weather+' + wLoc;
 		e.preventDefault();
 	})
 	$("#balance, #searchBox").on("click", function () {
@@ -45,6 +37,9 @@ $(document).ready(function () {
 		}
 	});
 
+	$("#options, #options *").on("click", function(){
+		location = '../Options/Options.html';
+	});
 
 	$("#searchIcon").on("click", function () {
 		search();
@@ -53,56 +48,28 @@ $(document).ready(function () {
 	displayTopSites();
 
 	document.addEventListener('contextmenu', function (e) {
-		if (wLocShown) return true;
-
 		if ((e.target.id || $(e.target).parent()[0].id) == 'weather') {
 			showWLoc();
-		} else if ($(e.target).hasClass("site") || location.protocol.startsWith("http")) {
-			return true;
-		} else {
-			redirectToProjects();
+			e.preventDefault();
 		}
-		e.preventDefault();
 	}, false);
 
 	get('wLOC', function (a) {
+		get("name", function(b){
+			if(b.name){
+				$("#logo").html(b.name);
+			}
+			loading.wLOC = true;
+			checkFinished();
+		});
+
 		if (!a.wLOC) {
 			showWLoc();
 		} else {
 			loc = a.wLOC;
 			checkWeatherUpdates();
-			loading.wLOC = true;
-			checkFinished();
-		}
+		};
 	});
-
-	$("#wLocL:not(.f), #wLocI").on('click', function () {
-		$("#wLocI").focus().addClass("f");
-		$("#wLocL").addClass("f ff");
-		setTimeout(function () {
-			$("#wLocL").addClass("fl");
-		}, 200);
-	});
-
-	$("#wLocI").on("focusout", function () {
-		$(this).removeClass("f");
-		$("#wLocL").removeClass("ff");
-	});
-
-	$("#wLocI").on("keyup", function (e) {
-		if (e.keyCode == 13) {
-			sendWLoc();
-		}
-	});
-
-
-	$("#sendButton").on('click', function () {
-		sendWLoc();
-	});
-
-	if (location.href.endsWith('?w!')) {
-		showWLoc();
-	};
 
 	setTimeout(function () {
 		setInterval(function () {

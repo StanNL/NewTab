@@ -44,3 +44,12 @@ body {
 	opacity: 0;
 	transition-duration: 300ms;
 }
+
+#options i{
+	position: fixed;
+    top: 16px;
+	right: 16px;
+	font-size: 32px;
+	cursor: pointer;
+	transition-duration: 400ms;
+}
