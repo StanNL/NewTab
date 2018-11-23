@@ -16,5 +16,5 @@
    "permissions": ["management", "*://*.openweathermap.org/*", "storage", "unlimitedStorage"],
    "content_security_policy": "script-src 'self' https://www.openweathermap.org; object-src 'self'",
    "short_name": "Stans Nieuw Tabblad",
-   "version": "0.6.0"
+   "version": "0.8.0"
 }
