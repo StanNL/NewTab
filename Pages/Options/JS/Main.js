@@ -41,7 +41,7 @@ $(document).ready(function () {
 			set('sites', defaultSites);
 			sites = defaultSites;
 		} else {
-			sites = a.sites;
+			sites = (typeof sites == 'string' ? JSON.parse(sites) : a.sites);
 		}
 
 		editIcon = '<i class="editIcon material-icons">edit</i>';
@@ -73,7 +73,7 @@ $(document).ready(function () {
 			verifyP();
 		}
 	});
-	$("*").on("keyup", function(e){
+	$("*").on("keyup", function (e) {
 		if (e.keyCode == 27) {
 			$("#overlay, #pagePopup").fadeOut();
 		}
@@ -85,7 +85,7 @@ $(document).ready(function () {
 	});
 
 	$("#nLocI").on("input", function () {
-		if($("#nLocI").val().length < 9) {
+		if ($("#nLocI").val().length < 9) {
 			$("#nLocL").removeClass("error");
 		} else {
 			$("#nLocL").addClass("error");
@@ -93,7 +93,7 @@ $(document).ready(function () {
 	});
 
 	$("#nLocI").on("focusout", function () {
-		if(!$("#nLocI").val().length) return;
+		if (!$("#nLocI").val().length) return;
 		if ($("#nLocI").val().length && $("#nLocI").val().length < 9) {
 			$("#nLocL").removeClass("error");
 			set('name', $("#nLocI").val());
@@ -104,7 +104,7 @@ $(document).ready(function () {
 
 	$("#wLocI").on("focusout", function () {
 		v = $("#wLocI").val();
-		if(!v.length) return;
+		if (!v.length) return;
 		$.get(wURL + v, function () {
 			verifiedLoc = true;
 			$("#wLocL").removeClass("error");

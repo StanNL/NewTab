@@ -4,21 +4,21 @@ var defaultSites = [{ title: "Google", url: "https://www.google.com" }, { title:
 
 
 function displayTopSites() {
-	get('sites', function(a){
-		if(!a.sites){
+	get('sites', function (a) {
+		if (!a.sites) {
 			console.log("!!");
 			sites = defaultSites;
-		}else sites = a.sites;
+		} else sites = (typeof a.sites == 'string' ? JSON.parse(a.sites) : a.sites);
 
 		for (let i = 0; i < sites.length; i++) {
 			const el = sites[i];
-	
+
 			var nam = el.title;
 			$("<div>").addClass("site").attr("href", el.url).html(nam).appendTo("#topSites");
 		}
-	
+
 		$("#topSites").css("column-count", Math.ceil(sites.length / 2));
-	
+
 		$("div.site").on("click", function () {
 			if ($(this).attr('href').split("127.0.0.1").length > 1) {
 				redirectToProjects();
