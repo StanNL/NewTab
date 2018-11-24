@@ -1,0 +1,96 @@
+{
+	"patterns": [
+		{
+			"name": "YouTube",
+			"shortcuts": [
+				"yt",
+				"youtube",
+				"videos"
+			],
+			"dynamic": false,
+			"url": "https: //www.youtube.com/results?search_query=",
+			"bg": "rgba(255, 0, 0, .8)",
+			"color": "white"
+		},
+		{
+			"name": "Reddit",
+			"shortcuts": [
+				"rd",
+				"reddit"
+			],
+			"dynamic": false,
+			"url": "https: //www.reddit.com/search?q=",
+			"bg": "rgba(255, 69, 0, .8)",
+			"color": "white"
+		},
+		{
+			"name": "Twitter",
+			"shortcuts": [
+				"tw",
+				"twitter"
+			],
+			"dynamic": false,
+			"url": "https://www.twitter.com/search?q=",
+			"bg": "rgba(29, 161, 242, .8)",
+			"color": "white"
+		},
+		{
+			"name": "Wolfram Alpha",
+			"shortcuts": [
+				"wr",
+				"wra",
+				"wolfram",
+				"wolframalpha",
+				"wolfram alpha"
+			],
+			"dynamic": false,
+			"url": "https://www.wolframalpha.com/input/?i=",
+			"bg": "rgba(255, 69, 39, .8)",
+			"color": "white"
+		},
+		{
+			"name": "Translate",
+			"shortcuts": [
+				"tr",
+				"trans",
+				"translate"
+			],
+			"dynamic": true,
+			"bg": "rgba(65, 131, 240, .8)",
+			"color": "white"
+		},
+		{
+			"name": "Wikipedia",
+			"shortcuts": [
+				"wp",
+				"wiki",
+				"wikip",
+				"wikipedia"
+			],
+			"dynamic": true,
+			"bg": "#f8f8f8",
+			"color": "#222"
+		},
+		{
+			"name": "DuckDuckGo",
+			"shortcuts": [
+				"ddg",
+				"duckduckgo"
+			],
+			"dynamic": false,
+			"url": "https://duckduckgo.com/?q=",
+			"bg": "rgba(222, 88, 51, .8)",
+			"color": "white"
+		},
+		{
+			"name": "Bing",
+			"shortcuts": [
+				"bing"
+			],
+			"dynamic": false,
+			"url": "https://www.bing.com/search?q=",
+			"bg": "rgba(222, 55, 0, .8)",
+			"color": "white"
+		}
+	]
+}

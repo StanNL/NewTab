@@ -7,10 +7,17 @@ $(document).ready(function () {
 		}, 500);
 	}, 1500);
 	
+	$("#help").on("click", function(){
+		$("#options *").css("right", '100%');
+		$("#main, #weather").css("left", '-100%');
+		setTimeout(function(){
+			location = '../Help/Help.html'
+		}, 500);
+	});
 });
 
 function showWLoc() {
-	$("#options *").css("right", '100%');
+	$("#options *, #help *").css("right", '100%');
 	$("#main, #weather").css("left", '-100%');
 	setTimeout(function () {
 		location = '../Options/Options.html';
@@ -19,7 +26,7 @@ function showWLoc() {
 
 function redirectToProjects() {
 	chrome.management.launchApp('ofhbbkphhbklhfoeikjpcbhemlocgigb');
-	location.href = 'http://127.0.0.1:1234';
+	location = 'http://127.0.0.1:1234';
 }
 
 

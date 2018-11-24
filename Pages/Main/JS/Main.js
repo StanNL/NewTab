@@ -18,9 +18,10 @@ onload = function () {
 
 $(document).ready(function () {
 	$("#weather, #weather > *").on("click", function (e) {
-		location.href = 'https://www.google.nl/search?q=weather+' + wLoc;
+		location = 'https://www.google.nl/search?q=weather+' + wLoc;
 		e.preventDefault();
-	})
+	});
+
 	$("#balance, #searchBox").on("click", function () {
 		$("#search").focus();
 	});
@@ -32,8 +33,8 @@ $(document).ready(function () {
 	});
 
 	$("#options, #options *").on("click", function(){
-		$("#main, #options, #weather").css("left", '-100%');
-		setTimeout(function(){
+		$("#help *").css("right", '100%');
+		$("#main, #weather").css("left", '-100%');		setTimeout(function(){
 			location = '../Options/Options.html';
 		}, 600);
 	});
@@ -50,6 +51,12 @@ $(document).ready(function () {
 			e.preventDefault();
 		}
 	}, false);
+
+	get("hideHelp", function(a){
+		if(a.hideHelp == 'true'){
+			$("#help").addClass("hidden");
+		}
+	})
 
 	get('wLOC', function (a) {
 		get("name", function(b){

@@ -1,134 +1,61 @@
 var newV;
 var selectedPattern;
 
-patterns = [
-	{
-		name: "YouTube",
-		shortcuts: [
-			'yt', 'ytsearch', 'youtube', 'youtubesearch'
-		],
-		icon: undefined,
-		dynamic: false,
-		url: 'https://www.youtube.com/results?search_query=',
-		bg: "rgba(255, 0, 0, .8)",
-		color: "white"
-	},
-	{
-		name: "Reddit",
-		shortcuts: [
-			'rd', 'reddit', 'rdsearch', 'redditsearch'
-		],
-		icon: undefined,
-		dynamic: false,
-		url: 'https://www.reddit.com/search?q=',
-		bg: "rgba(255, 69, 0, .8)",
-		color: "white"
-	},
-	{
-		name: "Twitter",
-		shortcuts: [
-			'tw', 'twitter'
-		],
-		icon: undefined,
-		dynamic: false,
-		url: "https://www.twitter.com/search?q=",
-		bg: "rgba(29, 161, 242, .8)",
-		color: "white"
-	},
-	{
-		name: "Bing",
-		shortcuts: [
-			'bing'
-		],
-		icon: undefined,
-		dynamic: false,
-		url: "https://www.bing.com/search?q=",
-		bg: "rgba(222, 55, 0, .8)",
-		color: "white"
-	},
-	{
-		name: "DuckDuckGo",
-		shortcuts: [
-			'duckduckgo',  'ddg'
-		],
-		icon: undefined,
-		dynamic: false,
-		url: "https://duckduckgo.com/?q=",
-		bg: "rgba(222, 88, 51, .8)",
-		color: "white"
-	},
-	{
-		name: "Wolfram Alpha",
-		shortcuts: [
-			'wra',  'wr', 'wolfram', 'wolfram alpha', 'wolframalpha'
-		],
-		icon: undefined,
-		dynamic: false,
-		url: "https://www.wolframalpha.com/input/?i=",
-		bg: "rgba(255, 69, 39, .8)",
-		color: "white"
-	},
-	{
-		name: "Translate",
-		shortcuts: [
-			'tr',  'trans', 'translate'
-		],
-		icon: undefined,
-		dynamic: true,
-		bg: "rgba(65, 131, 240, .8)",
-		color: "white"
-	}
-];
+patterns = [];
 
 $(document).ready(function () {
-	$("#search").on('focus', function () {
-		$("#searchBox").css("background", 'rgba(255, 255, 255, 0.80)');
-		$("#searchIcon, #search").css("color", 'black');
-	}).on("focusout", function () {
-		if($("#search").val()) return true;
-		$("#searchBox").css("background", 'rgba(255, 255, 255, 0.29)');
-		$("#searchIcon, #search").css("color", 'white');
-	});
-	
-	$("#search").on("keyup", function (e) {	
-		if ($("#search").val().split(":").length > 1) {
-			if (!selectedPattern) {
-				for (let i = 0; i < patterns.length; i++) {
-					const p = patterns[i];
-					for (let j = 0; j < p.shortcuts.length; j++) {
-						const sc = p.shortcuts[j];
-						if($("#search").val().split(":")[0].toLowerCase() == sc){
-							selectedPattern = p;
-							break;
+	$.getJSON("../../res/Data/Search-Plugins.json", function(data){
+		patterns = data.patterns;
+
+		$("#search").on('focus', function () {
+			$("#searchBox").css("background", 'rgba(255, 255, 255, 0.80)');
+			$("#searchIcon, #search").css("color", 'black');
+		}).on("focusout", function () {
+			if($("#search").val()) return true;
+			$("#searchBox").css("background", 'rgba(255, 255, 255, 0.29)');
+			$("#searchIcon, #search").css("color", 'white');
+		});
+		
+		$("#search").on("keyup", function (e) {
+			if ($("#search").val().split(":").length > 1) {
+				if (!selectedPattern) {
+					for (let i = 0; i < patterns.length; i++) {
+						const p = patterns[i];
+						for (let j = 0; j < p.shortcuts.length; j++) {
+							const sc = p.shortcuts[j];
+							if($("#search").val().split(":")[0].toLowerCase() == sc.toLowerCase()){
+								selectedPattern = p;
+								break;
+							}
 						}
 					}
-				}
-				
-				if(selectedPattern){
-					newV = $("#search").val().split(":")[1];
-					$("#sc").html(selectedPattern.name);
-					$("#sc").css("color", selectedPattern.color);
-					$("#scLogo").css("background", selectedPattern.bg);
-					$("#scLogo").css("transition-duration", "600ms");
-					setTimeout(function(){
-						$("#scLogo").css("opacity", 1);
-					}, 40)
 					
-					$("#search").css("opacity", 0);
-					setTimeout(function () {
-						$("#search").val(newV);
-						$("#search").css("opacity", 1);
-						$("#search").focus();
-					}, 600);
+					if(selectedPattern){
+						newV = $("#search").val().split(":")[1];
+						$("#sc").html(selectedPattern.name);
+						$("#sc").css("color", selectedPattern.color);
+						$("#scLogo").css("background", selectedPattern.bg);
+						$("#scLogo").css("transition-duration", "600ms");
+						setTimeout(function(){
+							$("#scLogo").css("opacity", 1);
+						}, 40)
+						
+						$("#search").css("opacity", 0);
+						setTimeout(function () {
+							$("#search").val(newV);
+							$("#search").css("opacity", 1);
+							$("#search").focus();
+						}, 600);
+					}
+				}else if(e.key.length == 1 && e.key != ':'){
+					newV += e.shiftKey?e.key.toUpperCase():e.key;
 				}
-			}else if(e.key.length == 1 && e.key != ':'){
-				newV += e.shiftKey?e.key.toUpperCase():e.key;
 			}
-		}
-	})
-	if(!selectedPattern){
-		console.log("Check nog even of hier een rekensom inzit, die kan je wel oplossen");
-	}
+			if(!selectedPattern){
+				console.log("Check nog even of hier een rekensom inzit, die kan je wel oplossen");
+			}
+		});
+	});
 });
 
 
@@ -153,6 +80,18 @@ function search() {
 				}
 				if(!searched){
 					location = 'https://translate.google.com/#auto/auto/' + sV;
+				}
+			}
+			if(selectedPattern.name == 'Wikipedia'){
+				if(sV.split(" ")[0].split(":").length > 1){
+					rest = sV.split(" ")[0].split(":");
+					rest2 = sV.split(" ");
+					rest.splice(0,1);
+					rest2.splice(0,1)
+					sQ = rest + rest2;
+					location = 'https://' + sV.split(" ")[0].split(":")[0] + '.wikipedia.org/w/index.php?search=' + sQ;
+				}else{
+					location = 'https://nl.wikipedia.org/w/index.php?search=' + sV;
 				}
 			}
 		}else{

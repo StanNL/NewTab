@@ -53,3 +53,16 @@ body {
 	cursor: pointer;
 	transition-duration: 400ms;
 }
+
+#help i{
+	position: fixed;
+    bottom: 16px;
+	right: 16px;
+	font-size: 32px;
+	cursor: pointer;
+	transition-duration: 400ms;
+}
+
+#help.hidden{
+	opacity: 0!important;
+}
