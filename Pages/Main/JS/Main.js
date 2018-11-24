@@ -3,6 +3,8 @@ var loading = {
 	wLOC: false
 }
 
+var fullyShown = false;
+
 var st = 0;
 var els = ['#logo', '#searchBox', '#topSites', '#weather'];
 var freq = 125;
@@ -15,14 +17,6 @@ onload = function () {
 }
 
 $(document).ready(function () {
-	$("#search").on('focus', function () {
-		$("#searchBox").css("background", 'rgba(255, 255, 255, 0.80)');
-		$("#searchIcon, #search").css("color", 'black');
-	}).on("focusout", function () {
-		$("#searchBox").css("background", 'rgba(255, 255, 255, 0.29)');
-		$("#searchIcon, #search").css("color", 'white');
-	});
-
 	$("#weather, #weather > *").on("click", function (e) {
 		location.href = 'https://www.google.nl/search?q=weather+' + wLoc;
 		e.preventDefault();
@@ -38,7 +32,10 @@ $(document).ready(function () {
 	});
 
 	$("#options, #options *").on("click", function(){
-		location = '../Options/Options.html';
+		$("#main, #options, #weather").css("left", '-100%');
+		setTimeout(function(){
+			location = '../Options/Options.html';
+		}, 600);
 	});
 
 	$("#searchIcon").on("click", function () {
@@ -70,10 +67,4 @@ $(document).ready(function () {
 			checkWeatherUpdates();
 		};
 	});
-
-	setTimeout(function () {
-		setInterval(function () {
-			$("*:not(.loaded)").addClass('loaded');
-		}, 500);
-	}, 1500);
 });

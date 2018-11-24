@@ -211,3 +211,8 @@ p.websiteItem{
 	left: 0px;
 	transition-duration: 800ms;
 }
+
+
+body{
+	overflow-x: hidden;
+}

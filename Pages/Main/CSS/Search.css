@@ -54,3 +54,20 @@
 #search:focus {
 	outline: none;
 }
+
+#scLogo {
+	position: relative;
+	top: -48px;
+	border-radius: 18px;
+	left: 9px;
+	padding: 6px 10px;
+	opacity: 0;
+	transition-duration: 0ms;
+	background: rgba(255, 255, 255, 0.8);
+	width: fit-content;
+}
+
+#sc {
+	color: white;
+	font-size: 18px;
+}
