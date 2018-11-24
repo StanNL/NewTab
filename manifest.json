@@ -10,11 +10,21 @@
       "32": "res/Icons/logo.png",
       "16": "res/Icons/logo.png"
    },
+   "browser_action": {
+      "default_icon": "res/Icons/logo.png",
+      "default_title": "NewTab",
+      "default_popup": "Pages/Popup/Popup.html"
+   },
    "manifest_version": 2,
    "name": "Stans Nieuw Tabblad",
    "offline_enabled": true,
-   "permissions": ["management", "*://*.openweathermap.org/*", "storage", "unlimitedStorage"],
-   "content_security_policy": "script-src 'self' https://www.openweathermap.org; object-src 'self'",
+   "permissions": [
+      "management",
+      "*://*.openweathermap.org/*",
+      "storage",
+      "unlimitedStorage"
+   ],
+   "content_security_policy": "script-src 'self' 'unsafe-eval' https://www.openweathermap.org; object-src 'self'",
    "short_name": "Stans Nieuw Tabblad",
-   "version": "0.9.0"
+   "version": "0.10.0"
 }
