@@ -1,0 +1,69 @@
+{
+	"operations": [
+		{
+			"sc": "pow",
+			"full": "Math.pow",
+			"desc": "pow(x,n) verheft x tot te macht n (x<sup>n</sup>)"
+		},
+		{
+			"sc": "sqrt",
+			"full": "Math.sqrt",
+			"desc": "pow(x,n) resulteert in de wortel van x"
+		},
+		{
+			"sc": "wortel",
+			"full": "Math.sqrt",
+			"desc": "wortel(x) resulteert in de wortel van x"
+		},
+		{
+			"sc": "sin",
+			"full": "Math.sin",
+			"desc": "sin(x)"
+		},
+		{
+			"sc": "cos",
+			"full": "Math.cos",
+			"desc": "cos(x)"
+		},
+		{
+			"sc": "tan",
+			"full": "Math.tan",
+			"desc": "tan(x)"
+		},
+		{
+			"sc": "arctan",
+			"full": "Math.atan",
+			"desc": "arctan(x)"
+		},
+		{
+			"sc": "atan",
+			"full": "Math.atan",
+			"desc": "arctan(x)"
+		},
+		{
+			"sc": "acos",
+			"full": "Math.acos",
+			"desc": "arccos(x)"
+		},
+		{
+			"sc": "arccos",
+			"full": "Math.acos",
+			"desc": "arccos(x)"
+		},
+		{
+			"sc": "asin",
+			"full": "Math.asin",
+			"desc": "arcsin(x)"
+		},
+		{
+			"sc": "arcsin",
+			"full": "Math.asin",
+			"desc": "arcsin(x)"
+		},
+		{
+			"sc": "log",
+			"full": "Math.log",
+			"desc": "log(x) = log(x,10); De logaritmische basis is niet in te stellen."
+		}
+	]
+}

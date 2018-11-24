@@ -8,7 +8,8 @@
 				"videos"
 			],
 			"dynamic": false,
-			"url": "https: //www.youtube.com/results?search_query=",
+			"url": "https://www.youtube.com/results?search_query=",
+			"base_url": "https://www.youtube.com",
 			"bg": "rgba(255, 0, 0, .8)",
 			"color": "white"
 		},
@@ -19,9 +20,39 @@
 				"reddit"
 			],
 			"dynamic": false,
-			"url": "https: //www.reddit.com/search?q=",
+			"url": "https://www.reddit.com/search?q=",
+			"base_url": "https://www.reddit.com",
 			"bg": "rgba(255, 69, 0, .8)",
 			"color": "white"
+		},
+		{
+			"name": "Wikipedia",
+			"shortcuts": [
+				"wp",
+				"wiki",
+				"wikip",
+				"wikipedia"
+			],
+			"dynamic": true,
+			"base_url": "https://www.wikipedia.org",
+			"bg": "#f8f8f8",
+			"color": "#222",
+			"note": "Begin je zoekopdracht met een taalcode om een Wikipediapagina in een bepaalde taal te bekijken. Als je geen taal kiest, zoek je in het Nederlands.",
+			"voorbeeld": "wiki:nl:Nederlandse Spoorwegen"
+		},
+		{
+			"name": "Translate",
+			"shortcuts": [
+				"tr",
+				"trans",
+				"translate"
+			],
+			"dynamic": true,
+			"bg": "rgba(65, 131, 240, .8)",
+			"color": "white",
+			"base_url": "https://translate.google.com",
+			"note": "Begin je zoekopdracht met twee taalcodes (brontaal-doeltaal) om aan te geven waarvandaan en waarnaartoe je wilt vertalen. Als je enkel een woord of zin intypt, bepaalt Google Translate zelf de geschikte talen.",
+			"voorbeeld": "tr: nl-en: Goedemiddag"
 		},
 		{
 			"name": "Twitter",
@@ -31,6 +62,7 @@
 			],
 			"dynamic": false,
 			"url": "https://www.twitter.com/search?q=",
+			"base_url": "https://www.twitter.com",
 			"bg": "rgba(29, 161, 242, .8)",
 			"color": "white"
 		},
@@ -45,31 +77,9 @@
 			],
 			"dynamic": false,
 			"url": "https://www.wolframalpha.com/input/?i=",
+			"base_url": "https://www.wolframalpha.com",
 			"bg": "rgba(255, 69, 39, .8)",
 			"color": "white"
-		},
-		{
-			"name": "Translate",
-			"shortcuts": [
-				"tr",
-				"trans",
-				"translate"
-			],
-			"dynamic": true,
-			"bg": "rgba(65, 131, 240, .8)",
-			"color": "white"
-		},
-		{
-			"name": "Wikipedia",
-			"shortcuts": [
-				"wp",
-				"wiki",
-				"wikip",
-				"wikipedia"
-			],
-			"dynamic": true,
-			"bg": "#f8f8f8",
-			"color": "#222"
 		},
 		{
 			"name": "DuckDuckGo",
@@ -79,6 +89,7 @@
 			],
 			"dynamic": false,
 			"url": "https://duckduckgo.com/?q=",
+			"base_url": "https://www.duckduckgo.com",
 			"bg": "rgba(222, 88, 51, .8)",
 			"color": "white"
 		},
@@ -89,6 +100,7 @@
 			],
 			"dynamic": false,
 			"url": "https://www.bing.com/search?q=",
+			"base_url": "https://www.bing.com",
 			"bg": "rgba(222, 55, 0, .8)",
 			"color": "white"
 		}

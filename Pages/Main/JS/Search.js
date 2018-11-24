@@ -1,73 +1,106 @@
 var newV;
 var selectedPattern;
 var location;
+var operations;
 
 patterns = [];
 
 $(document).ready(function () {
 	$.getJSON("../../res/Data/Search-Plugins.json", function (data) {
 		patterns = data.patterns;
+		$.getJSON("../../res/Data/CalcOperations.json", function (data) {
+			operations = data.operations;
 
-		$("#search").on('focus', function () {
-			$("#searchBox").css("background", 'rgba(255, 255, 255, 0.80)');
-			$("#searchIcon, #search").css("color", 'black');
-		}).on("focusout", function () {
-			if ($("#search").val()) return true;
-			$("#searchBox").css("background", 'rgba(255, 255, 255, 0.29)');
-			$("#searchIcon, #search").css("color", 'white');
-		});
+			$("#search").on('focus', function () {
+				$("#searchBox").css("background", 'rgba(255, 255, 255, 0.80)');
+				$("#searchIcon, #search").css("color", 'black');
+			}).on("focusout", function () {
+				if ($("#search").val()) return true;
+				$("#searchBox").css("background", 'rgba(255, 255, 255, 0.29)');
+				$("#searchIcon, #search").css("color", 'white');
+			});
 
-		$("#search").on("keyup", function (e) {
-			if ($("#search").val().split(":").length > 1) {
-				if (!selectedPattern) {
-					for (let i = 0; i < patterns.length; i++) {
-						const p = patterns[i];
-						for (let j = 0; j < p.shortcuts.length; j++) {
-							const sc = p.shortcuts[j];
-							if ($("#search").val().split(":")[0].toLowerCase() == sc.toLowerCase()) {
-								selectedPattern = p;
-								break;
+			$("#search").on("keyup", function (e) {
+				if ($("#search").val().split(":").length > 1) {
+					if (!selectedPattern) {
+						for (let i = 0; i < patterns.length; i++) {
+							const p = patterns[i];
+							for (let j = 0; j < p.shortcuts.length; j++) {
+								const sc = p.shortcuts[j];
+								if ($("#search").val().split(":")[0].toLowerCase() == sc.toLowerCase()) {
+									selectedPattern = p;
+									break;
+								}
 							}
 						}
-					}
 
-					if (selectedPattern) {
-						newV = $("#search").val().split(":")[1];
-						$("#sc").html(selectedPattern.name);
-						$("#sc").css("color", selectedPattern.color);
-						$("#scLogo").css("background", selectedPattern.bg);
-						$("#scLogo").css("transition-duration", "600ms");
-						setTimeout(function () {
-							$("#scLogo").css("opacity", 1);
-						}, 40)
+						if (selectedPattern) {
+							newV = $("#search").val().split(":")[1];
+							$("#sc").html(selectedPattern.name);
+							$("#sc").css("color", selectedPattern.color);
+							$("#scLogo").css("background", selectedPattern.bg);
+							$("#scLogo").css("transition-duration", "600ms");
+							setTimeout(function () {
+								$("#scLogo").css("opacity", 1);
+							}, 40)
 
-						$("#search").css("opacity", 0);
-						setTimeout(function () {
-							$("#search").val(newV);
-							$("#search").css("opacity", 1);
-							$("#search").focus();
-						}, 600);
+							$("#search").css("opacity", 0);
+							setTimeout(function () {
+								$("#search").val(newV);
+								$("#search").css("opacity", 1);
+								$("#search").focus();
+							}, 600);
+						}
+					} else if (e.key.length == 1 && e.key != ':') {
+						newV += e.shiftKey ? e.key.toUpperCase() : e.key;
 					}
-				} else if (e.key.length == 1 && e.key != ':') {
-					newV += e.shiftKey ? e.key.toUpperCase() : e.key;
 				}
-			}
 
-			if (!selectedPattern) {
-				try {
-					var res = eval($("#search").val());
-					if (typeof res == 'number') {
-						txt = "=" + (Math.round(res*1000)/1000) + "";
-						$("#calcRes").html(txt).css("opacity", 1);
-						$("#calcRes").css("left", (14 + getTextWidth($("#search").val())/2 + (getTextWidth(res)/2)) + "px");
-					} else {
+				if (!selectedPattern) {
+					try {
+						sV = $("#search").val();
+						x = sV;
+
+						for (let i = 0; i < operations.length; i++) {
+							const o = operations[i];
+							if (sV.split(o.full).length > 1) {
+								x = sV.replace(o.full, o.full.split("").join("////"));
+							}
+						}
+						
+
+						for (let i = 0; i < operations.length; i++) {
+							const o = operations[i];
+							x = x.replace(new RegExp(o.sc, 'g'), o.full);
+						}
+
+						for (let i = 0; i < operations.length; i++) {
+							const o = operations[i];
+							if (sV.split(o.full).length > 1) {
+								x = sV.replace(o.full.split("").join("////"), o.full);
+							}
+						}
+
+
+						sV = x;
+
+						var res = eval(sV);
+						console.log(res, sV);
+
+						if (typeof res == 'number') {
+							txt = "=" + (Math.round(res * 1000) / 1000) + "";
+							$("#calcRes").html(txt).css("opacity", 1);
+							$("#calcRes").css("left", (14 + getTextWidth($("#search").val()) / 2 + (getTextWidth(res) / 2)) + "px");
+						} else {
+							$("#calcRes").css("opacity", 0);
+						}
+					} catch{
+						console.log("erreur");
+						//pas du problème
 						$("#calcRes").css("opacity", 0);
 					}
-				} catch{
-					//pas du problème
-					$("#calcRes").css("opacity", 0);
 				}
-			}
+			});
 		});
 	});
 });
