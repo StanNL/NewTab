@@ -73,10 +73,12 @@
 }
 
 #calcRes{
+	padding-left: 12px;
 	position: relative;
 	width: 100%;
 	text-align: center;
 	left: 0px;
+	cursor: text;
 	top: -72px;
 	color: #585858;
 	font-size: 18px;

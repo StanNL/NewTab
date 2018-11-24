@@ -57,9 +57,9 @@ $(document).ready(function () {
 				try {
 					var res = eval($("#search").val());
 					if (typeof res == 'number') {
-						txt = "(=" + (Math.round(res*1000)/1000) + ")";
+						txt = "=" + (Math.round(res*1000)/1000) + "";
 						$("#calcRes").html(txt).css("opacity", 1);
-						$("#calcRes").css("left", (8 + getTextWidth($("#search").val(), '18px Arial')) + "px");
+						$("#calcRes").css("left", (14 + getTextWidth($("#search").val())/2 + (getTextWidth(res)/2)) + "px");
 					} else {
 						$("#calcRes").css("opacity", 0);
 					}
@@ -128,18 +128,13 @@ function search() {
 
 
 /**
- * Uses canvas.measureText to compute and return the width of the given text of given font in pixels.
+ * Calculate the width of a string of text. It is calculated in Roboto, 18px
  * 
  * @param {String} text The text to be rendered.
- * @param {String} font The css font descriptor that text is to be rendered with (e.g. "bold 14px verdana").
  * 
  * @see https://stackoverflow.com/questions/118241/calculate-text-width-with-javascript/21015393#21015393
  */
-function getTextWidth(text, font) {
-	// re-use canvas object for better performance
-	var canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
-	var context = canvas.getContext("2d");
-	context.font = font;
-	var metrics = context.measureText(text);
-	return metrics.width;
+function getTextWidth(text) {
+	$("#testTW").html(text)
+	return $("#testTW").width();
 }
