@@ -12,9 +12,18 @@ var maxH = 8; //Hoe laat 's ochtends hij weer normaal moet zijn
 var startTrans2 = 6.5; //Hoe laat 's ochtends hij weer moet beginnen met de overgang
 
 $(document).ready(function(){
-	document.body.style.background = darkenColour(121, 204, 249, findDarkenP());
+	loadBackgroundColour();
 });
 
+function loadBackgroundColour(){
+	get("disableNightMode", function(a){
+		if(a.disableNightMode != 'true'){
+			document.body.style.background = darkenColour(121, 204, 249, findDarkenP());
+		}else{
+			document.body.style.background = 'rgb(121, 204, 249)';
+		}
+	});
+}
 
 function darkenColour(r, g, b, p) {
 	return 'rgb(' + Math.round(cap(r * (1 + p), 255)) + ',' + Math.round(cap(g * (1 + p), 255)) + "," + Math.round(cap(b * (1 + p), 255)) + ")";

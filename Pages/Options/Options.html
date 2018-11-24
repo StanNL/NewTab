@@ -8,7 +8,7 @@
 
 	<script src='../../res/JS/jQuery.js'></script>
 	<script src='../../res/JS/Common.js'></script>
-	<script src='JS/Main.js'></script>
+	<script src='JS/Options.js'></script>
 </head>
 
 <body>
@@ -30,40 +30,26 @@
 					<span class='label' id='nLocL'>Je naam/titel</span>
 				</div>
 			</div>
-			<br>
-			<h2 id='websites'>Website Snelkoppelingen</h2>
-			<ul id='websiteList'>
-			</ul>
-			<div id='send'>
-				<div class='sendButton'>Verzenden</div>
-			</div>
-			<br>
-			<br>
-			<h2 id='help'><a style='color: white;' href='../Help/Help.html'>Toon hulppagina</a></h2>
 
-			<div id='pagePopup'>
-				<h2 id='pageTitle'>
-					Pagina 0
-				</h2>
-				<div class='iField'>
-
-					<input type='text' id='pNI'>
-					<div class='labelContainer'>
-						<span class='label' id='pNL'>Pagina naam</span>
-					</div>
+			<h2>Overig</h2>
+			<div id='miscellaneousContainer'>
+				<p>Automatische nachtmodus: </p>
+				<div class='checkBox enabled' id='nightC'>
+					<i class='material-icons'>check</i>
 				</div>
 				<br>
-				<br>
-				<div class='iField'>
-					<input type='text' id='pLI'>
-					<div class='labelContainer'>
-						<span class='label' id='pLL'>Pagina link</span>
-					</div>
+				<p>Help-knop weergeven: </p>
+				<div class='checkBox enabled' id='helpC'>
+					<i class='material-icons'>check</i>
 				</div>
-				<div class='sendButton' id='saveP'>Opslaan</div>
 			</div>
-			<div id='overlay'></div>
+
+			<h3><a style='color: white;' href='Shortcuts.html'>Pas website-snelkoppelingen aan</a></h3>
+			<h3><a style='color: white;' href='../Help/Help.html'>Toon hulppagina</a></h3>
 		</center>
+	</div>
+	<div id='back'>
+		<i class='material-icons'>arrow_back</i>
 	</div>
 </body>
 

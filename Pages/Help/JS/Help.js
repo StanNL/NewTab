@@ -20,7 +20,7 @@ $(document).ready(function(){
 		setTimeout(function(){
 			location = '../Main/Main.html';
 		}, 700);
-	})
+	});
 
 	setTimeout(function(){
 		$("#back i").css("color", $("body").css("background"));
