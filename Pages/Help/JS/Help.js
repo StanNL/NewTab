@@ -7,6 +7,10 @@ $(document).ready(function () {
 			const p = patterns[i];
 
 			$("<h2>").html(p.name).appendTo("#container");
+			if(p.note){
+				$("<p class='examp'>").html(p.note + (p.examp?"<br><br><b>Voorbeeld:&nbsp;</b><i>" + p.examp + '</i>':"")).appendTo("#container");
+			}
+
 			$("<ul>").appendTo("#container");
 			for (let i = 0; i < p.shortcuts.length; i++) {
 				const sc = p.shortcuts[i];
@@ -14,9 +18,11 @@ $(document).ready(function () {
 			}
 		}
 	});
+
+
 	$.getJSON("../../res/Data/CalcOperations.json", function (data) {
 		dp = data.operations;
-		$("<ul>").appendTo($("#calcHelp"));
+		$("<ul>").appendTo("#calcHelp");
 		for (let i = 0; i < dp.length; i++) {
 			const p = dp[i];
 			$("<li>").html(p.sc + "&nbsp;&nbsp;&mdash;&nbsp;&nbsp;<i>" + p.desc + "</i>").appendTo($("ul")[$("ul").length - 1]);

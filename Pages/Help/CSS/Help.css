@@ -93,3 +93,13 @@ li{
 	font-size: 16px;
 	text-align: center;
 }
+
+
+.examp{
+	font-style: italics;
+	font-size: 16px;
+}
+
+i b{
+	font-style: normal;
+}
