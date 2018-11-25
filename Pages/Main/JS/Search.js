@@ -20,12 +20,14 @@ $(document).ready(function () {
 				$("#searchIcon, #search").css("color", 'white');
 			});
 
-			$("#search").on("keyup", function (e) {
+			$("#search").on("keydown", function(e){
 				if(!$("#search").val().length && e.keyCode == 8 && selectedPattern){
 					selectedPattern = false;
 					$("#scLogo").css("opacity", 0);
 				};
+			})
 
+			$("#search").on("keyup", function (e) {
 				if ($("#search").val().split(":").length > 1) {
 					if (!selectedPattern) {
 						for (let i = 0; i < patterns.length; i++) {
