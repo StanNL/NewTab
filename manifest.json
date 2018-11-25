@@ -26,5 +26,5 @@
    ],
    "content_security_policy": "script-src 'self' 'unsafe-eval' https://www.openweathermap.org; object-src 'self'",
    "short_name": "Stans Nieuw Tabblad",
-   "version": "1.1.0"
+   "version": "1.1.1"
 }
