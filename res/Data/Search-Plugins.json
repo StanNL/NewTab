@@ -38,7 +38,7 @@
 			"bg": "#f8f8f8",
 			"color": "#222",
 			"note": "Begin je zoekopdracht met een taalcode om een Wikipediapagina in een bepaalde taal te bekijken. Als je geen taal kiest, zoek je in het Nederlands.",
-			"voorbeeld": "wiki:nl:Nederlandse Spoorwegen"
+			"examp": "wiki:en:Queen Elisabeth <b>of</b> wiki:Nederlandse Spoorwegen"
 		},
 		{
 			"name": "Translate",
@@ -52,7 +52,21 @@
 			"color": "white",
 			"base_url": "https://translate.google.com",
 			"note": "Begin je zoekopdracht met twee taalcodes (brontaal-doeltaal) om aan te geven waarvandaan en waarnaartoe je wilt vertalen. Als je enkel een woord of zin intypt, bepaalt Google Translate zelf de geschikte talen.",
-			"voorbeeld": "tr: nl-en: Goedemiddag"
+			"examp": "tr: nl-en: Goedemiddag"
+		},
+		{
+			"name": "Google Maps",
+			"shortcuts": [
+				"maps",
+				"gmaps",
+				"googlemaps",
+				"google maps"
+			],
+			"dynamic": false,
+			"bg": "rgba(27, 162, 97, .8)",
+			"color": "white",
+			"url": "https://www.google.com/maps/search/",
+			"base_url": "https://maps.google.com"
 		},
 		{
 			"name": "Twitter",
