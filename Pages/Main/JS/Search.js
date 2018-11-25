@@ -21,6 +21,11 @@ $(document).ready(function () {
 			});
 
 			$("#search").on("keyup", function (e) {
+				if(!$("#search").val().length && e.keyCode == 8 && selectedPattern){
+					selectedPattern = false;
+					$("#scLogo").css("opacity", 0);
+				};
+
 				if ($("#search").val().split(":").length > 1) {
 					if (!selectedPattern) {
 						for (let i = 0; i < patterns.length; i++) {
@@ -38,18 +43,21 @@ $(document).ready(function () {
 							newV = $("#search").val().split(":")[1];
 							$("#sc").html(selectedPattern.name);
 							$("#sc").css("color", selectedPattern.color);
-							$("#scLogo").css("background", selectedPattern.bg);
-							$("#scLogo").css("transition-duration", "600ms");
-							setTimeout(function () {
-								$("#scLogo").css("opacity", 1);
-							}, 40)
-
-							$("#search").css("opacity", 0);
-							setTimeout(function () {
-								$("#search").val(newV);
-								$("#search").css("opacity", 1);
-								$("#search").focus();
-							}, 600);
+							$("#scLogo").css("transition-duration", '0ms');
+							setTimeout(function(){
+								$("#scLogo").css("background", selectedPattern.bg);
+								$("#scLogo").css("transition-duration", "600ms");
+								setTimeout(function () {
+									$("#scLogo").css("opacity", 1);
+								}, 40)
+	
+								$("#search").css("opacity", 0);
+								setTimeout(function () {
+									$("#search").val(newV);
+									$("#search").css("opacity", 1);
+									$("#search").focus();
+								}, 600);
+							}, 40);
 						}
 					} else if (e.key.length == 1 && e.key != ':') {
 						newV += e.shiftKey ? e.key.toUpperCase() : e.key;
@@ -80,13 +88,9 @@ $(document).ready(function () {
 								x = sV.replace(o.full.split("").join("////"), o.full);
 							}
 						}
-
-
 						sV = x;
 
 						var res = eval(sV);
-						console.log(res, sV);
-
 						if (typeof res == 'number') {
 							txt = "=" + (Math.round(res * 1000) / 1000) + "";
 							$("#calcRes").html(txt).css("opacity", 1);
@@ -95,7 +99,6 @@ $(document).ready(function () {
 							$("#calcRes").css("opacity", 0);
 						}
 					} catch{
-						console.log("erreur");
 						//pas du problème
 						$("#calcRes").css("opacity", 0);
 					}
