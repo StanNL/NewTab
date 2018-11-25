@@ -27,6 +27,18 @@ $(document).ready(function () {
 		}
 	});
 
+	get('forceNightMode', function(a){
+		if(a.forceNightMode == 'true'){
+			$("#forceN").removeClass("disabled").addClass("enabled");
+			$("#nightC").addClass("unSelectable");
+		}else if(a.forceNightMode == 'false'){
+			$("#forceN").removeClass("enabled").addClass("disabled");
+		}else if(!a.forceNightMode){
+			set('forceNightMode', 'false');
+			$("#forceN").removeClass("enabled").addClass("disabled");
+		}
+	});
+
 	get('hideHelp', function(a){
 		if(a.hideHelp == 'true'){
 			$("#helpC").removeClass("enabled").addClass("disabled");
@@ -100,6 +112,17 @@ $(document).ready(function () {
 				set("disableNightMode", "false");
 			}else{
 				set("disableNightMode", 'true');
+			}
+			loadBackgroundColour();
+		}
+
+		if(this.id == 'forceN'){
+			if($(this).hasClass("enabled")){
+				set("forceNightMode", "true");
+				$("#nightC").addClass("unSelectable")
+			}else{
+				set("forceNightMode", 'false');
+				$("#nightC").removeClass("unSelectable")
 			}
 			loadBackgroundColour();
 		}

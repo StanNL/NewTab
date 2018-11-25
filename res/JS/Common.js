@@ -11,16 +11,22 @@ var maxH = 8; //Hoe laat 's ochtends hij weer normaal moet zijn
 
 var startTrans2 = 6.5; //Hoe laat 's ochtends hij weer moet beginnen met de overgang
 
-$(document).ready(function(){
+$(document).ready(function () {
 	loadBackgroundColour();
 });
 
-function loadBackgroundColour(){
-	get("disableNightMode", function(a){
-		if(a.disableNightMode != 'true'){
-			document.body.style.background = darkenColour(121, 204, 249, findDarkenP());
-		}else{
-			document.body.style.background = 'rgb(121, 204, 249)';
+function loadBackgroundColour() {
+	get("forceNightMode", function (a) {
+		if (a.forceNightMode == 'true') {
+			document.body.style.background = darkenColour(121, 204, 249, maxD);
+		} else {
+			get("disableNightMode", function (a) {
+				if (a.disableNightMode != 'true') {
+					document.body.style.background = darkenColour(121, 204, 249, findDarkenP());
+				} else {
+					document.body.style.background = 'rgb(121, 204, 249)';
+				}
+			});
 		}
 	});
 }
@@ -67,7 +73,7 @@ function set(k, v, f) {
 		chrome.storage.sync.set(kv, f);
 	} else {
 		setCookie(k, v);
-		if(f) f();
+		if (f) f();
 	}
 }
 
@@ -78,7 +84,7 @@ function get(k, f) {
 		cVal = readCookie(k);
 		res = {};
 		res[k] = cVal;
-		if(f) f(res);
+		if (f) f(res);
 	}
 }
 
@@ -86,12 +92,12 @@ function readCookie(a) {
 	var b = document.cookie.match('(^|;)\\s*' + a + '\\s*=\\s*([^;]+)');
 	b = b ? b.pop() : '';
 
-	if(b.startsWith("{")) b = JSON.parse(b);
+	if (b.startsWith("{")) b = JSON.parse(b);
 	return b;
 }
 
 function setCookie(name, value) {
-	if(typeof value == 'object'){
+	if (typeof value == 'object') {
 		value = JSON.stringify(value);
 	}
 	var date = new Date();

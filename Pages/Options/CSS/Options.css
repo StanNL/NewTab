@@ -248,7 +248,7 @@ body {
 }
 
 .checkBox.enabled i {
-	opacity: 1
+	opacity: 1;
 }
 
 .checkBox i {
@@ -260,4 +260,13 @@ body {
 	position: relative;
 	opacity: 0;
 	color: white;
+}
+
+.checkBox.unSelectable{
+	border-color: #888!important;
+    cursor: default!important;
+}
+
+.checkBox.unSelectable i{
+	color: #888!important
 }
