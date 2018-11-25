@@ -37,7 +37,7 @@
 			"base_url": "https://www.wikipedia.org",
 			"bg": "#f8f8f8",
 			"color": "#222",
-			"note": "Begin je zoekopdracht met een taalcode om een Wikipediapagina in een bepaalde taal te bekijken. Als je geen taal kiest, zoek je in het Nederlands.",
+			"note": "Begin je zoekopdracht met een taalcode om een Wikipediapagina in een bepaalde taal te bekijken. Als je geen taal opgeeft, zoek je in het Nederlands.",
 			"examp": "wiki:en:Queen Elisabeth <b>of</b> wiki:Nederlandse Spoorwegen"
 		},
 		{

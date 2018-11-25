@@ -3,17 +3,17 @@
 		{
 			"sc": "pow",
 			"full": "Math.pow",
-			"desc": "pow(x,n) verheft x tot te macht n (x<sup>n</sup>)"
+			"desc": "pow(x,n) verheft x tot de macht n (x<sup>n</sup>)"
 		},
 		{
 			"sc": "sqrt",
 			"full": "Math.sqrt",
-			"desc": "pow(x,n) resulteert in de wortel van x"
+			"desc": "sqrt(x) geeft de tweedemachtswortel van x"
 		},
 		{
 			"sc": "wortel",
 			"full": "Math.sqrt",
-			"desc": "wortel(x) resulteert in de wortel van x"
+			"desc": "wortel(x) geeft de tweedemachtswortel van x"
 		},
 		{
 			"sc": "sin",
