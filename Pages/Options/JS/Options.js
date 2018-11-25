@@ -1,4 +1,3 @@
-var verifiedLoc = false;
 var wURL = 'https://api.openweathermap.org/data/2.5/weather?APPID=e98a229cdc17ffdc226168c33aefa0c1&q=';
 
 $(document).ready(function () {
@@ -75,18 +74,8 @@ $(document).ready(function () {
 		}
 	});
 
-	$("#wLocI").on("focusout", function () {
-		v = $("#wLocI").val();
-		if (!v.length) return;
-		$.get(wURL + v, function () {
-			verifiedLoc = true;
-			$("#wLocL").removeClass("error");
-		}).fail(function () {
-			verifiedLoc = false;
-			$("#wLocL").addClass("error");
-			console.log("City not found");
-		});
-	});
+	$("#wLocI").on("keyup", checkL);
+	$("#wLocI").on("focusout", checkL);
 	
 	$("#back").on("click", function(){
 		$("#main").css("left", '100%');
@@ -151,4 +140,16 @@ function verifyP() {
 
 		set("sites", sites);
 	}
+}
+
+function checkL() {
+	v = $("#wLocI").val();
+	if (!v.length) return;
+	$.get(wURL + v, function () {
+		set('wLOC', $("#wLocI").val());
+		$("#wLocL").removeClass("error");
+	}).fail(function () {
+		$("#wLocL").addClass("error");
+		console.log("City not found");
+	});
 }

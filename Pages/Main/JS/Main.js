@@ -18,7 +18,7 @@ onload = function () {
 
 $(document).ready(function () {
 	$("#weather, #weather > *").on("click", function (e) {
-		location = 'https://www.google.nl/search?q=weather+' + wLoc;
+		window.open('https://www.google.nl/search?q=weather+' + loc);
 		e.preventDefault();
 	});
 
