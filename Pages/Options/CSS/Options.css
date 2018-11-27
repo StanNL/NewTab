@@ -44,6 +44,8 @@ ul {
 	margin: 0px;
 	list-style-type: none;
 	font-size: 18px;
+	width: 80%;
+	max-width: 600px;
 	line-height: 50px;
 	color: white;
 }
@@ -120,7 +122,6 @@ h2 {
 }
 
 .editIcon {
-	position: absolute;
 	right: 24px;
 	font-size: 22px;
 	cursor: pointer;
