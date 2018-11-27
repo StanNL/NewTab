@@ -68,7 +68,7 @@
 }
 
 #sc {
-	height: 34px;
+	height: 22px;
 	color: white;
 	font-size: 18px;
 }
@@ -79,7 +79,7 @@
     text-align: center;
     left: 0px;
     cursor: text;
-    top: -76px;
+    top: -56px;
     color: #585858;
     font-size: 18px;
     opacity: 0;
