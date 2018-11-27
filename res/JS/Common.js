@@ -11,6 +11,10 @@ var maxH = 8; //Hoe laat 's ochtends hij weer normaal moet zijn
 
 var startTrans2 = 6.5; //Hoe laat 's ochtends hij weer moet beginnen met de overgang
 
+var defR = 121;
+var defG = 204;
+var defB = 249;
+
 $(document).ready(function () {
 	loadBackgroundColour();
 });
@@ -18,11 +22,11 @@ $(document).ready(function () {
 function loadBackgroundColour() {
 	get("forceNightMode", function (a) {
 		if (a.forceNightMode == 'true') {
-			document.body.style.background = darkenColour(121, 204, 249, maxD);
+			document.body.style.background = darkenColour(defR, defG, defB, maxD);
 		} else {
 			get("disableNightMode", function (a) {
 				if (a.disableNightMode != 'true') {
-					document.body.style.background = darkenColour(121, 204, 249, findDarkenP());
+					document.body.style.background = darkenColour(defR, defG, defB, maxD);
 				} else {
 					document.body.style.background = 'rgb(121, 204, 249)';
 				}
