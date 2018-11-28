@@ -101,7 +101,7 @@ $(document).ready(function () {
 							$("#calcRes").css("opacity", 0);
 						}
 					} catch{
-						//pas du problème
+						//pas de problème
 						$("#calcRes").css("opacity", 0);
 					}
 				}
