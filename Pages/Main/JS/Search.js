@@ -124,8 +124,8 @@ function search() {
 				searched = false;
 				if (sV.split("-")[1]) {
 					if (sV.split("-")[1].split(":").length > 1) {
-						lang1 = sV.split("-")[0];
-						lang2 = sV.split("-")[1].split(":")[0];
+						lang1 = sV.split("-")[0].replace(/ /g, '');
+						lang2 = sV.split("-")[1].split(":")[0].replace(/ /g, '');
 						sQ = sV.split("-")[1].split(":");
 						sQ.splice(0, 1);
 
