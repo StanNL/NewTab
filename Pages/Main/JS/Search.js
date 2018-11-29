@@ -69,32 +69,10 @@ $(document).ready(function () {
 				if (!selectedPattern) {
 					try {
 						sV = $("#search").val();
-						x = sV;
 
-						for (let i = 0; i < operations.length; i++) {
-							const o = operations[i];
-							if (sV.split(o.full).length > 1) {
-								x = sV.replace(o.full, o.full.split("").join("////"));
-							}
-						}
-						
-
-						for (let i = 0; i < operations.length; i++) {
-							const o = operations[i];
-							x = x.replace(new RegExp(o.sc, 'g'), o.full);
-						}
-
-						for (let i = 0; i < operations.length; i++) {
-							const o = operations[i];
-							if (sV.split(o.full).length > 1) {
-								x = sV.replace(o.full.split("").join("////"), o.full);
-							}
-						}
-						sV = x;
-
-						var res = eval(sV);
+						var res = calcRes(sV);
 						if (typeof res == 'number') {
-							txt = "=" + (Math.round(res * 1000) / 1000) + "";
+							txt = "=" + formatRes(res);
 							$("#calcRes").html(txt).css("opacity", 1);
 							$("#calcRes").css("left", (14 + getTextWidth($("#search").val()) / 2 + (getTextWidth(res) / 2)) + "px");
 						} else {
@@ -110,7 +88,35 @@ $(document).ready(function () {
 	});
 });
 
+function calcRes(sV){
+	x = sV;
 
+	for (let i = 0; i < operations.length; i++) {
+		const o = operations[i];
+		if (sV.split(o.full).length > 1) {
+			x = sV.replace(o.full, o.full.split("").join("////"));
+		}
+	}
+	
+
+	for (let i = 0; i < operations.length; i++) {
+		const o = operations[i];
+		x = x.replace(new RegExp(o.sc, 'g'), o.full);
+	}
+
+	for (let i = 0; i < operations.length; i++) {
+		const o = operations[i];
+		if (sV.split(o.full).length > 1) {
+			x = sV.replace(o.full.split("").join("////"), o.full);
+		}
+	}
+
+	return eval(x);
+}
+
+function formatRes(val){
+	return Math.round(val*1000)/1000;
+}
 
 function search() {
 	sV = $("#search").val();
