@@ -34,7 +34,7 @@ $(document).ready(function () {
 							const p = patterns[i];
 							for (let j = 0; j < p.shortcuts.length; j++) {
 								const sc = p.shortcuts[j];
-								if ($("#search").val().split(":")[0].toLowerCase() == sc.toLowerCase()) {
+								if ($("#search").val().split(":")[0].replace(/ /g, '').toLowerCase() == sc.toLowerCase()) {
 									selectedPattern = p;
 									break;
 								}

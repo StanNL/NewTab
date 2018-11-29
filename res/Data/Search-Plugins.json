@@ -55,6 +55,20 @@
 			"examp": "tr: nl-en: Goedemiddag"
 		},
 		{
+			"name": "Stack Overflow",
+			"shortcuts": [
+				"so",
+				"stackoverflow",
+				"soverflow",
+				"stack overflow"
+			],
+			"dynamic": false,
+			"bg": "rgba(244, 128, 36, .8)",
+			"color": "white",
+			"url": "https://stackoverflow.com/search?q=",
+			"base_url": "https://stackoverflow.com"
+		},
+		{
 			"name": "Google Maps",
 			"shortcuts": [
 				"maps",
