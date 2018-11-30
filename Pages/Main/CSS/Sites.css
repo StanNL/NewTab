@@ -30,10 +30,11 @@
 
 #topSites {
 	opacity: 0;
-	transition-duration: 600ms;
 	top: 38px;
 	position: relative;
 	column-count: 4;
 	padding: 0 16px;
 }
-
+#topSites.isLoading{
+	transition-duration: 600ms;
+}

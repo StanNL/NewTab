@@ -24,6 +24,10 @@ body {
 	font-family: Roboto, Arial, Helvetica, sans-serif;
 }
 
+*:not(.loaded){
+	transition-duration: 0!important;
+}
+
 *.loaded{
 	opacity: 1;
 }
@@ -33,6 +37,9 @@ body {
 	left: 0;
 	top: 0;
 	width: 100%;
+}
+
+#main.loaded{
 	transition-duration: 400ms;
 }
 
@@ -42,7 +49,10 @@ body {
 	margin-bottom: 46px;
 	font-weight: normal;
 	opacity: 0;
-	transition-duration: 300ms;
+}
+
+#logo.isLoading{
+	transition-duration: 600ms;
 }
 
 #options i{

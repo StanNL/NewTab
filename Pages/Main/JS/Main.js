@@ -6,7 +6,7 @@ var loading = {
 var fullyShown = false;
 
 var st = 0;
-var els = ['#logo', '#searchBox', '#topSites', '#weather'];
+var els = ['#logo', '#searchBoxO, #searchIcon', '#topSites', '#weather'];
 var freq = 125;
 
 

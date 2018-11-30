@@ -3,15 +3,20 @@
 	max-width: 710px;
 }
 
-#searchBox {
+#searchBoxO {
 	opacity: 0;
-	transition-duration: 300ms;
+}
+
+#searchBoxO.isLoading{
+	transition-duration: 600ms;
+}
+
+#searchBox {
 	background: rgba(255, 255, 255, 0.29);
 	cursor: text;
 	height: 48px;
 	border-radius: 28px;
 	text-align: left;
-	transition-duration: 600ms;
 	text-align: center;
 }
 
@@ -28,7 +33,11 @@
 	position: relative;
 }
 
-#searchIcon, #search {
+#searchIcon:not(.loaded) {
+	opacity: 0;
+}
+
+#searchIcon.loaded, #search.loaded, #searchBox.loaded {
 	transition-duration: 600ms;
 }
 
@@ -83,5 +92,4 @@
     color: #585858;
     font-size: 18px;
     opacity: 0;
-    transition-duration: 400ms;
 }

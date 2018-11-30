@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang='nl'>
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Nieuw Tabblad</title>
-	
+
 	<script src='../../res/JS/jQuery.js'></script>
 	<script src='../../res/JS/Common.js'></script>
 	<script src='JS/Main.js'></script>
@@ -13,7 +14,7 @@
 	<script src='JS/Sites.js'></script>
 	<script src='JS/Weather.js'></script>
 	<script src='JS/Search.js'></script>
-	
+
 	<link rel='icon' href='../../res/Icons/Logo.png'>
 	<link rel='stylesheet' href='../../res/Icons/weather-icons.css'>
 	<link rel='stylesheet' href='CSS/Main.css'>
@@ -26,12 +27,14 @@
 	<div id='main'>
 		<h1 id="logo">Stan</h1>
 		<center>
-			<div id="searchBox">
-				<i class='material-icons' id='balance'>search</i>
-				<input type="text" id="search" title="Doorzoek vele websites" autocomplete="off">
-				<i class='material-icons' id='searchIcon' title="Doorzoek vele websites">search</i>
-				<div id='scLogo'><span id='sc'></span></div>
-				<span id='calcRes'></span>
+			<div id="searchBoxO">
+				<div id="searchBox">
+					<i class='material-icons' id='balance'>search</i>
+					<input type="text" id="search" title="Doorzoek vele websites" autocomplete="off">
+					<i class='material-icons' id='searchIcon' title="Doorzoek vele websites">search</i>
+					<div id='scLogo'><span id='sc'></span></div>
+					<span id='calcRes'></span>
+				</div>
 			</div>
 			<div id="topSites"></div>
 		</center>
@@ -45,6 +48,9 @@
 		<i class='material-icons' title="Bekijk alle verschillende plug-in-opties">help</i>
 	</div>
 
+	<div id='wAnim'></div>
+
 	<span id='testTW'></span>
 </body>
+
 </html>
