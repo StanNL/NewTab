@@ -1,8 +1,8 @@
-var defaultSites = [{ title: "Google", url: "https://www.google.com" }, { title: "Facebook", url: "https://www.facebook.com" }, { title: "Gmail", url: "https://mail.google.com" }, { title: "GitHub", url: "https://www.github.com/StanNL" }, { title: "NU.nl", url: "https://www.nu.nl" }, { title: "Bol.com", url: "https://www.bol.com" }, { title: "Reddit", url: "https://www.reddit.com" }, { title: 'Buienradar', url: "https://www.buienradar.nl" }];
+var defaultSites = [];
 var selectedID = -1;
 
 
-$(document).ready(function(){
+$(document).ready(function () {
 	$(".iField *").on("click", function (e) {
 		el = e.target;
 		if (($(el).hasClass("focus") || $(el).parent().hasClass("focus")) && el.tagName != 'input') return;
@@ -24,34 +24,15 @@ $(document).ready(function(){
 
 	get('sites', function (a) {
 		if (!a.sites) {
-			set('sites', defaultSites);
-			sites = defaultSites;
+			$.getJSON("../../res/Data/defaultSites.json", function (d) {
+				set('sites', d.defaultSites);
+				sites = d.defaultSites;
+				showSites();
+			});
 		} else {
 			sites = (typeof a.sites == 'string' ? JSON.parse(a.sites) : a.sites);
 		}
-
-		editIcon = '<i class="editIcon material-icons">edit</i>';
-		for (let i = 0; i < sites.length; i++) {
-			const s = sites[i];
-
-			innerPageHTML = s.title + '&nbsp;&nbsp;(' + s.url + ')';
-			pageHTML = innerPageHTML + '</p>';
-			start = (i + 1) + ".&nbsp;&nbsp;<p class='websiteItem'>";
-			$("<li>")
-				.html(start + pageHTML + editIcon)
-				.appendTo('ul');
-		}
-
-		$(".editIcon").on('click', function () {
-			id = $(this).parent().html()[0] - 1;
-			$("#overlay, #pagePopup").fadeIn();
-			$("#pageTitle").html("Pagina " + (id + 1));
-			focusInput($("#pNI").parent(), true);
-			focusInput($("#pLI").parent(), true);
-			$("#pNI").val(sites[id].title);
-			$("#pLI").val(sites[id].url);
-			selectedID = id;
-		});
+		showSites();
 	});
 
 	$("#pNI, #pLI").on("keyup", function (e) {
@@ -59,7 +40,7 @@ $(document).ready(function(){
 			verifyP();
 		}
 	});
-	
+
 	$("*").on("keyup", function (e) {
 		if (e.keyCode == 27) {
 			$("#overlay, #pagePopup").fadeOut();
@@ -71,9 +52,9 @@ $(document).ready(function(){
 		verifyP();
 	});
 
-	$("#back").on("click", function(){
+	$("#back").on("click", function () {
 		$("#main").css("left", '100%');
-		setTimeout(function(){
+		setTimeout(function () {
 			location = 'Options.html';
 		}, 700);
 	});
@@ -113,4 +94,29 @@ function verifyP() {
 
 		set("sites", sites);
 	}
+}
+
+function showSites() {
+	editIcon = '<i class="editIcon material-icons">edit</i>';
+	for (let i = 0; i < sites.length; i++) {
+		const s = sites[i];
+
+		innerPageHTML = s.title + '&nbsp;&nbsp;(' + s.url + ')';
+		pageHTML = innerPageHTML + '</p>';
+		start = (i + 1) + ".&nbsp;&nbsp;<p class='websiteItem'>";
+		$("<li>")
+			.html(start + pageHTML + editIcon)
+			.appendTo('ul');
+	}
+
+	$(".editIcon").on('click', function () {
+		id = $(this).parent().html()[0] - 1;
+		$("#overlay, #pagePopup").fadeIn();
+		$("#pageTitle").html("Pagina " + (id + 1));
+		focusInput($("#pNI").parent(), true);
+		focusInput($("#pLI").parent(), true);
+		$("#pNI").val(sites[id].title);
+		$("#pLI").val(sites[id].url);
+		selectedID = id;
+	});
 }

@@ -1,0 +1,36 @@
+{
+	"sites": [
+		{
+			"title": "Google",
+			"url": "https://www.google.com"
+		},
+		{
+			"title": "Facebook",
+			"url": "https://www.facebook.com"
+		},
+		{
+			"title": "Gmail",
+			"url": "https://mail.google.com"
+		},
+		{
+			"title": "GitHub",
+			"url": "https://www.github.com/StanNL"
+		},
+		{
+			"title": "NU.nl",
+			"url": "https://www.nu.nl"
+		},
+		{
+			"title": "Bol.com",
+			"url": "https://www.bol.com"
+		},
+		{
+			"title": "Reddit",
+			"url": "https://www.reddit.com"
+		},
+		{
+			"title": "Buienradar",
+			"url": "https://www.buienradar.nl"
+		}
+	]
+}
