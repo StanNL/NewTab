@@ -5,6 +5,8 @@
 	<title>Nieuw Tabblad &mdash; Opties</title>
 
 	<link rel='stylesheet' type='text/css' href='CSS/Options.css'>
+	<link rel='stylesheet' type='text/css' href='CSS/Inputs.css'>
+	<link rel='stylesheet' type='text/css' href='../../res/CSS/Common.css'>
 
 	<script src='../../res/JS/jQuery.js'></script>
 	<script src='../../res/JS/Common.js'></script>
@@ -14,8 +16,8 @@
 <body>
 	<div id='main'>
 		<center>
-			<h1>Instellingen</h1>
-			<h2>Weer</h2>
+			<h1 class='title'>Instellingen</h1>
+			<h2 class='header'>Weer</h2>
 			<div class='iField'>
 				<input type='text' id='wLocI'>
 				<div class='labelContainer'>
@@ -23,7 +25,7 @@
 				</div>
 			</div>
 			<br>
-			<h2>Naam</h2>
+			<h2 class='header'>Naam</h2>
 			<div class='iField'>
 				<input type='text' id='nLocI'>
 				<div class='labelContainer'>
@@ -31,7 +33,7 @@
 				</div>
 			</div>
 
-			<h2>Overig</h2>
+			<h2 class='header'>Overig</h2>
 			<div id='miscellaneousContainer'>
 				<p>Forceer nachtmodus: </p>
 				<div class='checkBox disabled' id='forceN'>
@@ -54,7 +56,7 @@
 			<h3><a style='color: white;' href='https://www.github.com/StanNL/NewTab'>Broncode weergeven</a></h3>
 		</center>
 	</div>
-	<div id='back'>
+	<div id='back' class='fab fab-rb'>
 		<i class='material-icons'>arrow_back</i>
 	</div>
 </body>

@@ -18,7 +18,13 @@ onload = function () {
 
 $(document).ready(function () {
 	$("#weather, #weather > *").on("click", function (e) {
-		window.open('https://www.google.nl/search?q=weather+' + loc);
+		$("#wAnim").addClass("showing");
+		setTimeout(function(){
+			$("#wAnim").css('background', darkenColour(defR, defG, defB, p));
+		}, 500);
+		setTimeout(function(){
+			location = '../Weather/Weather.html'
+		}, 1500);
 		e.preventDefault();
 	});
 
@@ -44,13 +50,6 @@ $(document).ready(function () {
 	});
 
 	displayTopSites();
-
-	document.addEventListener('contextmenu', function (e) {
-		if ((e.target.id || $(e.target).parent()[0].id) == 'weather') {
-			showWLoc();
-			e.preventDefault();
-		}
-	}, false);
 
 	get("hideHelp", function(a){
 		if(a.hideHelp == 'true'){

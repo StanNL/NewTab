@@ -5,7 +5,7 @@ var maxD = -.3; //het maximale percentage waarmee de achtergrond donkerder mag w
 
 var minH = 16.5; //Het minimale tijdstip waarop de achtergrond donkerder mag worden (16.5 = half 5 's middags);
 
-var endTrans1 = 19.5; //hoe laat de kleurovergang moet stoppen: om half 8 is ie net zo donker als om half 12 's nachts
+var endTrans1 = 19.5; //hoe laat de kleurovergang moet stoppen: om half 8 is ie net zo donker als om half 12 's nachts bijv. Dus om half 8 is ie op z'n donkerst.
 
 var maxH = 8; //Hoe laat 's ochtends hij weer normaal moet zijn
 
@@ -15,6 +15,8 @@ var defR = 121;
 var defG = 204;
 var defB = 249;
 
+var p = 0;
+
 $(document).ready(function () {
 	loadBackgroundColour();
 });
@@ -23,13 +25,19 @@ function loadBackgroundColour() {
 	get("forceNightMode", function (a) {
 		if (a.forceNightMode == 'true') {
 			document.body.style.background = darkenColour(defR, defG, defB, maxD);
+			$("#wAnim").css('background', darkenColour(defR, defG, defB, -.4));
+			p = maxD;
 		} else {
 			get("disableNightMode", function (a) {
 				if (a.disableNightMode != 'true') {
-					document.body.style.background = darkenColour(defR, defG, defB, maxD);
+					p = findDarkenP();
+					document.body.style.background = darkenColour(defR, defG, defB, p);
 				} else {
-					document.body.style.background = 'rgb(121, 204, 249)';
+					p = 0;
+					document.body.style.background = 'rgb(' + defR + ',' + defG + "," + defB + ")";
 				}
+
+				$("#wAnim").css('background', darkenColour(defR, defG, defB, - .4));
 			});
 		}
 	});
@@ -38,8 +46,6 @@ function loadBackgroundColour() {
 function darkenColour(r, g, b, p) {
 	return 'rgb(' + Math.round(cap(r * (1 + p), 255)) + ',' + Math.round(cap(g * (1 + p), 255)) + "," + Math.round(cap(b * (1 + p), 255)) + ")";
 }
-
-
 
 function findDarkenP(hm) {
 	hm = hm || new Date().getHours() + new Date().getMinutes() / 60;
@@ -66,9 +72,6 @@ function findDarkenP(hm) {
 function cap(a, b) {
 	return a > b ? b : a;
 }
-
-
-
 
 function set(k, v, f) {
 	if (chrome.storage) {

@@ -1,0 +1,7 @@
+#main{
+	opacity: 0;
+}
+
+#main.loaded{
+	transition-duration: 800ms;
+}

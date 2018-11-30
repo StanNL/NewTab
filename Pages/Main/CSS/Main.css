@@ -1,27 +1,5 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto|Material+Icons);
-
-body, html {
-	margin: 0;
-	padding: 0;
-	color: black;
-	text-align: center;
-}
-
 body {
-	background: #79ccf9;
 	overflow: hidden;
-}
-
-* {
-	color: white;
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	cursor: default;
-	font-family: Roboto, Arial, Helvetica, sans-serif;
 }
 
 *:not(.loaded){

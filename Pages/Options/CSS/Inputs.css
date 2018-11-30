@@ -1,0 +1,137 @@
+#miscellaneousContainer p {
+	margin: 0;
+}
+
+#miscellaneousContainer {
+	width: 70%;
+	max-width: 350px;
+	color: white;
+	text-align: left;
+	display: inline-block;
+	font-size: 18px;
+}
+
+.checkBox {
+	border: 2.5px solid rgba(0, 0, 0, .5);
+	border-radius: 2px;
+	width: 12px;
+	height: 12px;
+	float: right;
+	position: relative;
+	top: -18px;
+	cursor: pointer;
+}
+
+.checkBox.enabled i {
+	opacity: 1;
+}
+
+.checkBox i {
+	transition-duration: 400ms;
+	font-size: 28px;
+	top: -12px;
+	left: -4px;
+	font-weight: bold;
+	position: relative;
+	opacity: 0;
+	color: white;
+}
+
+.checkBox.unSelectable{
+	border-color: #888!important;
+    cursor: default!important;
+}
+
+.checkBox.unSelectable i{
+	color: #888!important
+}
+
+
+.labelContainer.focus, .labelContainer.focus>.label {
+	cursor: default!important;
+}
+
+.label.error {
+	color: #B00020!important;
+}
+
+#saveP {
+	background: rgba(81, 160, 169, .8);
+	color: white!important;
+}
+input {
+	outline: none!important;
+	background: rgba(0, 0, 0, .15);
+	color: white;
+	border: none;
+	width: 280px;
+	color: rgba(255, 255, 255, .83);
+	padding: 8px 12px;
+	transition-duration: 400ms;
+}
+
+input.focus {
+	background: rgba(0, 0, 0, .26);
+}
+
+.label, .iField {
+	display: table-cell;
+}
+
+.labelContainer, .label {
+	cursor: text;
+}
+
+.labelContainer {
+	padding-left: 8px;
+	padding-right: 6px;
+	text-align: left;
+	font-size: 16px;
+	top: -26px;
+	position: relative;
+	transition-duration: 400ms;
+}
+
+.labelContainer.focus {
+	top: -56px;
+}
+
+.label {
+	left: 0px;
+	position: relative;
+	color: rgba(255, 255, 255, .7);
+	transition-duration: 400ms;
+}
+
+.label.focus {
+	color: rgba(255, 255, 255, .95);
+}
+
+
+
+.sendButton {
+	margin: 16px 0 16px 0;
+	display: inline-block;
+	left: 8px;
+	box-shadow: rgba(44, 41, 86, 0.65) 0px 0px 0px;
+	top: 3px;
+	padding: 8px;
+	background: rgba(0, 0, 0, .3);
+	font-size: 18px;
+	width: 210px;
+	position: relative;
+	transition-duration: 350ms;
+	border-radius: 2px;
+	text-transform: uppercase;
+	text-align: center;
+	color: white;
+}
+
+.sendButton:hover {
+	box-shadow: rgba(0, 0, 0, 0.35) 2px 3px 4px;
+}
+
+.sendButton, .sendButton * {
+	cursor: pointer;
+}
+

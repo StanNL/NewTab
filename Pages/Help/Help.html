@@ -5,6 +5,7 @@
 	<title>Nieuw Tabblad Help</title>
 
 	<link rel='stylesheet' type='text/css' href='CSS/Help.css'>
+	<link rel='stylesheet' type='text/css' href='../../res/CSS/Common.css'>
 
 	<script src='../../res/JS/jQuery.js'></script>
 	<script src='../../res/JS/Common.js'></script>
@@ -14,31 +15,28 @@
 <body>
 	<div id='main'>
 		<center>
-			<h1>Uitleg over de Zoekbalk</h1>
-			<p id='mainText'>
+			<div class='title'>Uitleg over de Zoekbalk</div>
+			<div class='mainText'>
 				Het is sinds versie 0.9.0 mogelijk om zoek-plugins te gebruiken. Dit doe je door aan het begin van je zoekopdracht
 				een plug-in-snelkoppeling te typen.
 				<br>
 				Als je geen snelkoppeling invoert, wordt er (nog steeds) standaard via Google gezocht. Het is ook mogelijk om een
 				link in de zoekbalk in te voeren om naar deze website te navigeren.
 				<br>
-			</p>
+			</div>
 			<br>
 			<img src='../../res/Images/Help/after.png' width='400px'></img>
 			<br>
 			<br>
-			<p id='mainText'>
+			<div class='mainText'>
 				Hieronder vind je een lijst met ondersteunde plug-ins, met daarbij de bijbehorende snelkoppelingen.
-			</p>
+			</div>
 		</center>
 		<div id="container">
 		</div>
 
-		<div id='back'>
-			<i class='material-icons'>arrow_back</i>
-		</div>
 		<div id='container2'>
-			<h2>Rekenmachine</h2>
+			<h2 class='header'>Rekenmachine</h2>
 			<p>
 				Sinds versie 0.11.0 is het ook mogelijk om rekenopdrachten uit te voeren vanuit de zoekbalk.
 				<br>
@@ -53,7 +51,12 @@
 			</div>
 		</div>
 		<br>
-		<h1 id='footer'>Bij instellingen kan je de hulp-knop op de nieuw-tabbladpagina uitschakelen.</h1>
+
+		<div id='back' class='fab fab-rb'>
+			<i class='material-icons'>arrow_back</i>
+		</div>
+
+		<h1 class='footer'>Bij instellingen kan je de hulp-knop op de nieuw-tabbladpagina uitschakelen.</h1>
 	</div>
 </body>
 

@@ -1,88 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto|Material+Icons);
-
-body {
-	margin: 0;
-	overflow-x: hidden;
-}
-
-* {
-	font-family: Roboto, Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-	color: white;
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-}
-
-h1, h2, h3, h4, h5, h6 {
-	color: white;
-	font-weight: normal;
-}
-
-h1 {
-	font-size: 46px;
-	margin: 0 0 24px 0;
-	padding-top: 18px;
-	padding-bottom: 18px;
-	background: rgba(0, 0, 0, .2);
-}
-
-#subText{
-	font-size: 16px;
-	margin: 0;
-}
-
-#mainText{
-	font-size: 18px;
-}
-
-h2 {
-	margin-top: 32px;
-	font-size: 32px;
-	margin-bottom: 8px;
-}
-
-li{
-	font-size: 16px;
-}
-
-#main{
-	position: relative;
-	left: 0px;
-	transition-duration: 800ms;
-}
-
 #container{
 	width: calc(100% - 72px);
 	padding: 0px 36px 6px 36px;
-}
-
-#mainText{
-	padding: 0 24px;
-}
-
-#footer{
-	text-align: center;
-	margin-top: 16px;
-	margin-bottom: 0px;
-	font-size: 14px;
-}
-
-#back{
-	position: fixed;
-	right: 18px;
-	bottom: 18px;
-	background: white;
-	border-radius: 50%;
-	padding: 10px 8px 6px 10px;
-	cursor: pointer;
-}
-
-#back i{
-	font-size: 32px;
-	color: #558fae;
 }
 
 #container2{
@@ -94,9 +12,12 @@ li{
 	text-align: center;
 }
 
-
 .examp{
 	font-style: italics;
+	font-size: 16px;
+}
+
+li{
 	font-size: 16px;
 }
 
