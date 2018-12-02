@@ -1,11 +1,10 @@
 var wURL = 'https://api.openweathermap.org/data/2.5/weather?APPID=e98a229cdc17ffdc226168c33aefa0c1&q=';
 
 $(document).ready(function () {
-	focusInput($("#wLocI").parent(), true);
-	focusInput($("#nLocI").parent(), true);
 
 	get("wLOC", function (a) {
 		if (a.wLOC) {
+			focusInput($("#wLocI").parent(), true);
 			$("#wLocI").val(a.wLOC);
 		}
 	});
@@ -13,38 +12,47 @@ $(document).ready(function () {
 	get("name", function (a) {
 		if (a.name) {
 			$("#nLocI").val(a.name);
+			focusInput($("#nLocI").parent(), true);
 		}
 	});
 
-	get('disableNightMode', function(a){
-		if(a.disableNightMode == 'true'){
+	get("tCol", function (a) {
+		if (a.tCol) {
+			$("#cLocI").val(formatC(a.tCol));
+			focusInput($("#cLocI").parent(), true);
+		}
+	})
+
+
+	get('disableNightMode', function (a) {
+		if (a.disableNightMode == 'true') {
 			$("#nightC").removeClass("enabled").addClass("disabled");
-		}else if(a.disableNightMode == 'false'){
+		} else if (a.disableNightMode == 'false') {
 			$("#nightC").removeClass("disabled").addClass("enabled");
-		}else if(!a.disableNightMode){
+		} else if (!a.disableNightMode) {
 			set('disableNightMode', 'false');
 			$("#nightC").removeClass("disabled").addClass("enabled");
 		}
 	});
 
-	get('forceNightMode', function(a){
-		if(a.forceNightMode == 'true'){
+	get('forceNightMode', function (a) {
+		if (a.forceNightMode == 'true') {
 			$("#forceN").removeClass("disabled").addClass("enabled");
 			$("#nightC").addClass("unSelectable");
-		}else if(a.forceNightMode == 'false'){
+		} else if (a.forceNightMode == 'false') {
 			$("#forceN").removeClass("enabled").addClass("disabled");
-		}else if(!a.forceNightMode){
+		} else if (!a.forceNightMode) {
 			set('forceNightMode', 'false');
 			$("#forceN").removeClass("enabled").addClass("disabled");
 		}
 	});
 
-	get('hideHelp', function(a){
-		if(a.hideHelp == 'true'){
+	get('hideHelp', function (a) {
+		if (a.hideHelp == 'true') {
 			$("#helpC").removeClass("enabled").addClass("disabled");
-		}else if(a.hideHelp == 'false'){
+		} else if (a.hideHelp == 'false') {
 			$("#helpC").removeClass("disabled").addClass("enabled");
-		}else if(!a.hideHelp){
+		} else if (!a.hideHelp) {
 			set('hideHelp', 'false');
 			$("#helpC").removeClass("disabled").addClass("enabled");
 		}
@@ -88,39 +96,42 @@ $(document).ready(function () {
 
 	$("#wLocI").on("keyup", checkL);
 	$("#wLocI").on("focusout", checkL);
-	
-	$("#back").on("click", function(){
+
+	$("#cLocI").on("focusout", checkCI);
+	$("#cLocI").on("keyup", checkCI);
+
+	$("#back").on("click", function () {
 		$("#main").css("left", '100%');
-		setTimeout(function(){
+		setTimeout(function () {
 			location = '../Main/Main.html';
 		}, 700);
 	});
 
-	$(".checkBox").on('click', function(){
-		$(this).hasClass("enabled")?$(this).removeClass("enabled").addClass("disabled"):$(this).removeClass('disabled').addClass("enabled");
+	$(".checkBox").on('click', function () {
+		$(this).hasClass("enabled") ? $(this).removeClass("enabled").addClass("disabled") : $(this).removeClass('disabled').addClass("enabled");
 
-		if(this.id == 'helpC'){
-			if($(this).hasClass("enabled")){
+		if (this.id == 'helpC') {
+			if ($(this).hasClass("enabled")) {
 				set("hideHelp", "false");
-			}else{
+			} else {
 				set("hideHelp", 'true');
 			}
 		}
 
-		if(this.id == 'nightC'){
-			if($(this).hasClass("enabled")){
+		if (this.id == 'nightC') {
+			if ($(this).hasClass("enabled")) {
 				set("disableNightMode", "false");
-			}else{
+			} else {
 				set("disableNightMode", 'true');
 			}
 			loadBackgroundColour();
 		}
 
-		if(this.id == 'forceN'){
-			if($(this).hasClass("enabled")){
+		if (this.id == 'forceN') {
+			if ($(this).hasClass("enabled")) {
 				set("forceNightMode", "true");
 				$("#nightC").addClass("unSelectable")
-			}else{
+			} else {
 				set("forceNightMode", 'false');
 				$("#nightC").removeClass("unSelectable")
 			}
@@ -128,6 +139,18 @@ $(document).ready(function () {
 		}
 	});
 });
+
+function checkCI() {
+	v = $("#cLocI").val().replace("/ /g", '');
+	fv = fixCol(v);
+	if (fv) {
+		$("#cLocL").removeClass("error");
+		set('tCol', fv);
+		loadBackgroundColour();
+	} else {
+		$("#cLocL").addClass("error");
+	};
+}
 
 function focusInput(el, preventInputFocus) {
 	if (!preventInputFocus) {
@@ -175,4 +198,71 @@ function checkL() {
 		$("#wLocL").addClass("error");
 		console.log("City not found");
 	});
+}
+
+function formatC(c) {
+	return "rgb(" + c.replace(new RegExp(",", 'g'), ', ') + ")";
+}
+
+function fixCol(c) {
+	if (c.split(",").length > 1) {
+		c = c.replace(/[^\d,]/g, '');
+		noCol = false;
+		for (let qq = 0; qq < c.split(",").length; qq++) {
+			const qqe = c.split(",")[qq];
+			if(+qqe > 255 || +qqe < 0){
+				noCol = true;
+			}
+		}
+		if(!noCol) return c;
+		else return false;
+	}
+
+	let h = ''
+	if (c.startsWith("#")) {
+		if (c.length == 4) { // #333 for example
+			cs1 = c.substr(1);
+			h = cs1 + cs1;
+		}
+		if (c.length == 7) {
+			h = c.substr(1);
+		}
+	} else if (c.length == 6) {
+		h = c;
+	} else if (c.length == 3) {
+		h = c + c;
+	}
+
+	let hc = checkH(h);
+
+	if (hc) {
+		return hc;
+	}
+
+	return false;
+}
+
+function checkH(c) {
+	if (c) {
+		r1 = parseInt(c.substr(0, 1), 16);
+		r2 = parseInt(c.substr(1, 1), 16);
+		g1 = parseInt(c.substr(2, 1), 16);
+		g2 = parseInt(c.substr(3, 1), 16);
+		b1 = parseInt(c.substr(4, 1), 16);
+		b2 = parseInt(c.substr(5, 1), 16);
+
+		if (isNaN(r1) || isNaN(r2) || isNaN(b1) || isNaN(b2) || isNaN(g2) || isNaN(g2)) {
+			return false;
+		}
+
+		r = (16 * r1) + r2;
+		g = (16 * g1) + g2;
+		b = (16 * b1) + b2;
+
+		if(r <= 255 && r >= 0 && g <= 255 && g >= 0 && b <= 255 && b >= 0){
+			return r + ',' + g + ',' + b;
+		}
+	}
+
+	return false;
 }

@@ -22,42 +22,43 @@ var standardB = 249;
 var p = 0;
 
 $(document).ready(function () {
-	get('tCol', function(a){
-		if(!a.tCol){
+	loadBackgroundColour();
+});
+
+function loadBackgroundColour() {
+	get('tCol', function (a) {
+		if (!a.tCol) {
 			set('tCol', standardR + ',' + standardG + "," + standardB);
 			defR = standardR;
 			defG = standardG;
 			defB = standardB;
-		}else{
+		} else {
 			c2 = formatC2(a.tCol)
 			defR = c2.split(",")[0];
 			defG = c2.split(",")[1];
 			defB = c2.split(",")[2];
 		}
-		loadBackgroundColour();
-	});
-});
+		get("forceNightMode", function (a) {
+			if (a.forceNightMode == 'true') {
+				document.body.style.background = darkenColour(defR, defG, defB, maxD);
+				$("#wAnim").css('background', darkenColour(defR, defG, defB, -.4));
+				p = maxD;
+			} else {
+				get("disableNightMode", function (a) {
+					if (a.disableNightMode != 'true') {
+						p = findDarkenP();
+						document.body.style.background = darkenColour(defR, defG, defB, p);
+					} else {
+						p = 0;
+						document.body.style.background = 'rgb(' + defR + ',' + defG + "," + defB + ")";
+					}
 
-function loadBackgroundColour() {
-	get("forceNightMode", function (a) {
-		if (a.forceNightMode == 'true') {
-			document.body.style.background = darkenColour(defR, defG, defB, maxD);
-			$("#wAnim").css('background', darkenColour(defR, defG, defB, -.4));
-			p = maxD;
-		} else {
-			get("disableNightMode", function (a) {
-				if (a.disableNightMode != 'true') {
-					p = findDarkenP();
-					document.body.style.background = darkenColour(defR, defG, defB, p);
-				} else {
-					p = 0;
-					document.body.style.background = 'rgb(' + defR + ',' + defG + "," + defB + ")";
-				}
-
-				$("#wAnim").css('background', darkenColour(defR, defG, defB, - .4));
-			});
-		}
+					$("#wAnim").css('background', darkenColour(defR, defG, defB, - .4));
+				});
+			}
+		});
 	});
+
 }
 
 function darkenColour(r, g, b, p) {
@@ -146,6 +147,6 @@ function isURL(str) {
 	return false;
 }
 
-function formatC2(c){
+function formatC2(c) {
 	return c.replace("/ /g", '');
 }
