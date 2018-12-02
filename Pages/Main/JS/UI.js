@@ -18,15 +18,32 @@ $(document).ready(function () {
 	setTimeout(function () {
 		$("#searchBoxO, #topSites, #logo").addClass('isLoading');
 	}, 80);
+
+	$("#weather, #weather > *").on("click", function (e) {
+		wVal = innerWidth < innerHeight ? innerHeight : innerWidth;
+		$("#wAnim").addClass("showing").css("width", wVal).css("height", wVal);
+		setTimeout(function(){
+			$("#wAnim").css('background', darkenColour(defR, defG, defB, p));
+		}, 500);
+		setTimeout(function(){
+			location = '../Weather/Weather.html'
+		}, 1500);
+		e.preventDefault();
+	});
+
+
+	$("#balance, #searchBox").on("click", function () {
+		$("#search").focus();
+	});
 });
 
-function showWLoc() {
-	$("#options *, #help *").css("right", '100%');
-	$("#main, #weather").css("left", '-100%');
-	setTimeout(function () {
-		location = '../Options/Options.html';
-	}, 500);
-}
+// function showWLoc() {
+// 	$("#options *, #help *").css("right", '100%');
+// 	$("#main, #weather").css("left", '-100%');
+// 	setTimeout(function () {
+// 		location = '../Options/Options.html';
+// 	}, 500);
+// }
 
 function redirectToProjects() {
 	chrome.management.launchApp('ofhbbkphhbklhfoeikjpcbhemlocgigb');
