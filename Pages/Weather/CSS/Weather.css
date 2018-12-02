@@ -5,3 +5,7 @@
 #main.loaded{
 	transition-duration: 800ms;
 }
+
+#weather{
+	font-size: 72px;
+}
