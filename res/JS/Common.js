@@ -11,14 +11,31 @@ var maxH = 8; //Hoe laat 's ochtends hij weer normaal moet zijn
 
 var startTrans2 = 6.5; //Hoe laat 's ochtends hij weer moet beginnen met de overgang
 
-var defR = 121;
-var defG = 204;
-var defB = 249;
+var defR;
+var defG;
+var defB;
+
+var standardR = 121;
+var standardG = 204;
+var standardB = 249;
 
 var p = 0;
 
 $(document).ready(function () {
-	loadBackgroundColour();
+	get('tCol', function(a){
+		if(!a.tCol){
+			set('tCol', standardR + ',' + standardG + "," + standardB);
+			defR = standardR;
+			defG = standardG;
+			defB = standardB;
+		}else{
+			c2 = formatC2(a.tCol)
+			defR = c2.split(",")[0];
+			defG = c2.split(",")[1];
+			defB = c2.split(",")[2];
+		}
+		loadBackgroundColour();
+	});
 });
 
 function loadBackgroundColour() {
@@ -127,4 +144,8 @@ function isURL(str) {
 		}
 	}
 	return false;
+}
+
+function formatC2(c){
+	return c.replace("/ /g", '');
 }
