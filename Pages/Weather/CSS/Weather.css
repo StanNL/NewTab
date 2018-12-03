@@ -7,5 +7,20 @@
 }
 
 #weather{
-	font-size: 72px;
+	font-size: 36px;
+}
+
+#weather div{
+	display: block;
+	margin: 12px;
+}
+
+#weather div *{
+	display: inline-block;
+}
+
+i.material-icons{
+	font-size: 48px!important;
+	top: 8px;
+	position: relative;
 }
