@@ -20,7 +20,7 @@ $(document).ready(function () {
 	}, 80);
 
 	$("#weather, #weather > *").on("click", function (e) {
-		wVal = Math.sqrt(2) * (innerWidth < innerHeight ? innerHeight : innerWidth);
+		wVal = 2 * Math.sqrt(Math.pow(innerHeight, 2) + Math.pow(.25 * innerWidth, 2));
 
 		$("#wAnim").css("width", wVal)
 			.css("height", wVal)
