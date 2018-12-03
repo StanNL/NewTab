@@ -55,7 +55,7 @@
 			"examp": "tr: nl-en: Goedemiddag"
 		},
 		{
-			"name": "Google Scholar",
+			"name": "Stack Overflow",
 			"shortcuts": [
 				"so",
 				"stackoverflow"
@@ -64,7 +64,7 @@
 			"bg": "rgba(244, 128, 36, .8)",
 			"color": "white",
 			"url": "https://scholar.google.nl/scholar?q=",
-			"base_url": "https://www.stackoverflow.com"
+			"base_url": "https://scholar.google.com"
 		},
 		{
 			"name": "Google Scholar",
@@ -78,7 +78,7 @@
 			"bg": "rgba(66, 133, 244, .8)",
 			"color": "white",
 			"url": "https://stackoverflow.com/search?q=",
-			"base_url": "https://scholar.google.com"
+			"base_url": "https://www.stackoverflow.com"
 		},
 		{
 			"name": "Google Maps",
