@@ -20,13 +20,18 @@ $(document).ready(function () {
 	}, 80);
 
 	$("#weather, #weather > *").on("click", function (e) {
-		wVal = innerWidth < innerHeight ? innerHeight : innerWidth;
-		$("#wAnim").addClass("showing").css("width", wVal).css("height", wVal);
-		setTimeout(function(){
+		wVal = Math.sqrt(2) * (innerWidth < innerHeight ? innerHeight : innerWidth);
+
+		$("#wAnim").css("width", wVal)
+			.css("height", wVal)
+			.css("left", innerWidth / 2 - wVal / 2 + "px")
+			.css("top", innerHeight - wVal / 2 + "px");
+
+		setTimeout(function () {
 			$("#wAnim").css('background', darkenColour(defR, defG, defB, p));
 		}, 500);
-		setTimeout(function(){
-			location = '../Weather/Weather.html'
+		setTimeout(function () {
+			// location = '../Weather/Weather.html'
 		}, 1500);
 		e.preventDefault();
 	});

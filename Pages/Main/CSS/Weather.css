@@ -32,12 +32,6 @@
 	left: 50%;
 	top: 100%;
 	background: white;
-	border-radius: 350%;
+	border-radius: 50%;
 	z-index: 10000;
-}
-
-#wAnim.showing{
-	top: 0%;
-	left: 0%;
-	border-radius: 0;
 }
