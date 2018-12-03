@@ -5,11 +5,11 @@
 #main.loaded{
 	transition-duration: 800ms;
 }
-#weather *{
+#mainWEl *{
 	color: black!important;
 }
 
-#weather{
+#mainWEl{
 	font-size: 24px;
 	background: #f9f9f9;
 	padding: 16px;
@@ -17,16 +17,16 @@
 	box-shadow:rgba(0, 0, 0, 0.67) 14px 12px 30px;
 }
 
-#weather div{
+#mainWEl div{
 	display: block;
 	margin: 12px;
 }
 
-#weather div *{
+#mainWEl div *{
 	display: inline-block;
 }
 
-i.material-icons{
+i.material-icons:not(#b_icon){
 	font-size: 32px!important;
 	top: 8px;
 	position: relative;
