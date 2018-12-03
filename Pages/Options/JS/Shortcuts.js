@@ -25,8 +25,8 @@ $(document).ready(function () {
 	get('sites', function (a) {
 		if (!a.sites) {
 			$.getJSON("../../res/Data/defaultSites.json", function (d) {
-				set('sites', d.defaultSites);
-				sites = d.defaultSites;
+				set('sites', d.sites);
+				sites = d.sites;
 				showSites();
 			});
 		} else {

@@ -7,7 +7,7 @@ function displayTopSites() {
 		if (!a.sites) {
 			console.log("!!");
 			$.getJSON("../../res/Data/defaultSites.json", function (d) {
-				sites = d.defaultSites;
+				sites = d.sites;
 				showSites();
 			});
 		} else {

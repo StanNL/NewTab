@@ -29,6 +29,10 @@ $(document).ready(function(){
 function loadWeather(){
 	$.getJSON(wURL + wLOC, function(data){
 		console.log(data);
-		$("#weather").html(Math.round((data.main.temp - 273.15)*10)/10 + "&deg;C<br>Dit is zegmaar nog niet af.");
+		$("#temp").html(Math.round((data.main.temp - 273.15)*10)/10 + "&deg;C");
+		data.wind.deg
+		wdrs = ['N', 'NO', 'O', 'ZO', 'Z', 'ZW', 'W', 'NW'];
+
+		$("#wdesc").html()
 	});
 }
