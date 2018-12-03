@@ -53,7 +53,7 @@ $(document).ready(function () {
 		});
 
 		if (!a.wLOC) {
-			showWLoc();
+			location = '../Options/Options.html';
 		} else {
 			loc = a.wLOC;
 			checkWeatherUpdates();
