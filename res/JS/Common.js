@@ -15,9 +15,9 @@ var defR;
 var defG;
 var defB;
 
-var standardR = 121;
-var standardG = 204;
-var standardB = 249;
+var standardR = 0;
+var standardG = 150;
+var standardB = 99;
 
 var p = 0;
 
