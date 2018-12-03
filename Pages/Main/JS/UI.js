@@ -20,7 +20,7 @@ $(document).ready(function () {
 	}, 80);
 
 	$("#weather, #weather > *").on("click", function (e) {
-		wVal = 2 * Math.sqrt(Math.pow(innerHeight, 2) + Math.pow(.25 * innerWidth, 2));
+		wVal = 2 * Math.sqrt(Math.pow(innerHeight, 2) + Math.pow(innerWidth/2, 2));
 
 		$("#wAnim").css("width", wVal)
 			.css("height", wVal)
@@ -28,10 +28,10 @@ $(document).ready(function () {
 			.css("top", innerHeight - wVal / 2 + "px");
 
 		setTimeout(function () {
-			$("#wAnim").css('background', darkenColour(defR, defG, defB, p));
+			// $("#wAnim").css('background', darkenColour(defR, defG, defB, p));
 		}, 500);
 		setTimeout(function () {
-			location = '../Weather/Weather.html'
+			// location = '../Weather/Weather.html'
 		}, 1500);
 		e.preventDefault();
 	});
