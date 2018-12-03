@@ -28,10 +28,10 @@ $(document).ready(function () {
 			.css("top", innerHeight - wVal / 2 + "px");
 
 		setTimeout(function () {
-			// $("#wAnim").css('background', darkenColour(defR, defG, defB, p));
+			$("#wAnim").css('background', darkenColour(defR, defG, defB, p));
 		}, 500);
 		setTimeout(function () {
-			// location = '../Weather/Weather.html'
+			location = '../Weather/Weather.html'
 		}, 1500);
 		e.preventDefault();
 	});
