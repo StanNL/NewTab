@@ -5,9 +5,16 @@
 #main.loaded{
 	transition-duration: 800ms;
 }
+#weather *{
+	color: black!important;
+}
 
 #weather{
-	font-size: 36px;
+	font-size: 24px;
+	background: #f9f9f9;
+	padding: 16px;
+	width: 60%;
+	box-shadow:rgba(0, 0, 0, 0.67) 14px 12px 30px;
 }
 
 #weather div{
@@ -20,7 +27,7 @@
 }
 
 i.material-icons{
-	font-size: 48px!important;
+	font-size: 32px!important;
 	top: 8px;
 	position: relative;
 }
