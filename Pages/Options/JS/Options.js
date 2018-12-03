@@ -58,6 +58,19 @@ $(document).ready(function () {
 		}
 	});
 
+	$(".iField").on("focus", function (e) {
+		el = e.target;
+		if (($(el).hasClass("focus") || $(el).parent().hasClass("focus")) && el.tagName != 'input') return;
+		while (true) {
+			if ((el.tagName != 'div' && $(el).hasClass("iField")) || el.tagName == 'body') {
+				break;
+			}
+			el = $(el).parent();
+		}
+
+		focusInput(el);
+	});
+	
 	$(".iField *").on("click", function (e) {
 		el = e.target;
 		if (($(el).hasClass("focus") || $(el).parent().hasClass("focus")) && el.tagName != 'input') return;
@@ -210,11 +223,11 @@ function fixCol(c) {
 		noCol = false;
 		for (let qq = 0; qq < c.split(",").length; qq++) {
 			const qqe = c.split(",")[qq];
-			if(+qqe > 255 || +qqe < 0){
+			if (+qqe > 255 || +qqe < 0) {
 				noCol = true;
 			}
 		}
-		if(!noCol) return c;
+		if (!noCol) return c;
 		else return false;
 	}
 
@@ -259,7 +272,7 @@ function checkH(c) {
 		g = (16 * g1) + g2;
 		b = (16 * b1) + b2;
 
-		if(r <= 255 && r >= 0 && g <= 255 && g >= 0 && b <= 255 && b >= 0){
+		if (r <= 255 && r >= 0 && g <= 255 && g >= 0 && b <= 255 && b >= 0) {
 			return r + ',' + g + ',' + b;
 		}
 	}
