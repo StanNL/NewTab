@@ -6,11 +6,10 @@ var operations;
 patterns = [];
 
 $(document).ready(function () {
-	$.getJSON("../../res/Data/Search-Plugins.json", function (data) {
+	$.getJSON("../../res/Data/searchPlugins.json", function (data) {
 		patterns = data.patterns;
-		$.getJSON("../../res/Data/CalcOperations.json", function (data) {
+		$.getJSON("../../res/Data/calcOperations.json", function (data) {
 			operations = data.operations;
-
 			$("#search").on('focus', function () {
 				$("#searchBox").css("background", 'rgba(255, 255, 255, 0.80)');
 				$("#searchIcon, #search").css("color", 'black');
@@ -20,8 +19,8 @@ $(document).ready(function () {
 				$("#searchIcon, #search").css("color", 'white');
 			});
 
-			$("#search").on("keydown", function(e){
-				if(!$("#search").val().length && e.keyCode == 8 && selectedPattern){
+			$("#search").on("keydown", function (e) {
+				if (!$("#search").val().length && e.keyCode == 8 && selectedPattern) {
 					selectedPattern = false;
 					$("#scLogo").css("opacity", 0);
 				};
@@ -46,13 +45,13 @@ $(document).ready(function () {
 							$("#sc").html(selectedPattern.name);
 							$("#sc").css("color", selectedPattern.color);
 							$("#scLogo").css("transition-duration", '0ms');
-							setTimeout(function(){
+							setTimeout(function () {
 								$("#scLogo").css("background", selectedPattern.bg);
 								$("#scLogo").css("transition-duration", "600ms");
 								setTimeout(function () {
 									$("#scLogo").css("opacity", 1);
 								}, 40)
-	
+
 								$("#search").css("opacity", 0);
 								setTimeout(function () {
 									$("#search").val(newV);
@@ -73,14 +72,14 @@ $(document).ready(function () {
 						var res = calcRes(sV);
 						if (typeof res == 'number') {
 							txt = "=" + formatRes(res);
-							$("#calcRes").html(txt).css("opacity", 1);
-							$("#calcRes").css("left", (14 + getTextWidth($("#search").val()) / 2 + (getTextWidth(res) / 2)) + "px");
+							$("#searchHelp").html(txt).css("opacity", 1);
+							$("#searchHelp").css("left", (14 + getTextWidth($("#search").val()) / 2 + (getTextWidth(res) / 2)) + "px");
 						} else {
-							$("#calcRes").css("opacity", 0);
+							$("#searchHelp").css("opacity", 0);
 						}
 					} catch{
 						//pas de problème
-						$("#calcRes").css("opacity", 0);
+						$("#searchHelp").css("opacity", 0);
 					}
 				}
 			});
@@ -88,7 +87,7 @@ $(document).ready(function () {
 	});
 });
 
-function calcRes(sV){
+function calcRes(sV) {
 	x = sV;
 
 	for (let i = 0; i < operations.length; i++) {
@@ -97,7 +96,7 @@ function calcRes(sV){
 			x = sV.replace(o.full, o.full.split("").join("////"));
 		}
 	}
-	
+
 
 	for (let i = 0; i < operations.length; i++) {
 		const o = operations[i];
@@ -114,8 +113,8 @@ function calcRes(sV){
 	return eval(x);
 }
 
-function formatRes(val){
-	return Math.round(val*1000)/1000;
+function formatRes(val) {
+	return Math.round(val * 1000) / 1000;
 }
 
 function search() {

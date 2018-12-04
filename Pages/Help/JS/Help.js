@@ -1,6 +1,6 @@
 
 $(document).ready(function () {
-	$.getJSON("../../res/Data/Search-Plugins.json", function (data) {
+	$.getJSON("../../res/Data/searchPlugins.json", function (data) {
 		patterns = data.patterns;
 
 		for (let i = 0; i < patterns.length; i++) {
@@ -20,7 +20,7 @@ $(document).ready(function () {
 	});
 
 
-	$.getJSON("../../res/Data/CalcOperations.json", function (data) {
+	$.getJSON("../../res/Data/calcOperations.json", function (data) {
 		dp = data.operations;
 		$("<ul>").appendTo("#calcHelp");
 		for (let i = 0; i < dp.length; i++) {

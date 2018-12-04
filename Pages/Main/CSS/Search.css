@@ -82,7 +82,7 @@
 	font-size: 18px;
 }
 
-#calcRes{
+#searchHelp{
     padding-left: 12px;
     position: relative;
     text-align: center;
@@ -92,4 +92,8 @@
     color: #585858;
     font-size: 18px;
     opacity: 0;
+}
+
+#searchHelp.highlight{
+	color: #484899;
 }
