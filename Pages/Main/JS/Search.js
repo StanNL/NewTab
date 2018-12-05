@@ -3,6 +3,12 @@ var selectedPattern;
 var location;
 var operations;
 
+var oxf_base_url = 'https://googledictionaryapi.eu-gb.mybluemix.net/?define='
+var movedSearchBox = false;
+var lastDef;
+var lastReq;
+var defIsShown = false;
+
 patterns = [];
 
 $(document).ready(function () {
@@ -73,19 +79,81 @@ $(document).ready(function () {
 						if (typeof res == 'number') {
 							txt = "=" + formatRes(res);
 							$("#searchHelp").html(txt).css("opacity", 1);
-							$("#searchHelp").css("left", (14 + getTextWidth($("#search").val()) / 2 + (getTextWidth(res) / 2)) + "px");
+							$("#searchHelp").css("left", ((getTextWidth($("#search").val()) / 2) + (getTextWidth(txt) / 2) + 8) + "px");
 						} else {
 							$("#searchHelp").css("opacity", 0);
 						}
-					} catch{
-						//pas de problème
+					} catch (e) {
+						// pas de problème
 						$("#searchHelp").css("opacity", 0);
+					}
+				}
+
+				if (selectedPattern) {
+					if (selectedPattern.name == 'Definitie') {
+						if ($("#search").val().length > 0 && $("#search").val().replace(/[a-zA-Z]/g, '').length == 0) {
+							if ($("#search").val() != lastDef) {
+								if (lastReq) lastReq.abort();
+
+								lastReq = $.ajax({
+									url: oxf_base_url + $("#search").val(),
+									type: "GET",
+									datatype: "json",
+									success: function (d) {
+										if (!defIsShown) {
+											$("#definition").remove();
+											$("#searchBox").css("margin-top", +($("#searchBox").css("margin-top").split("px")[0]) - 20 + "px");
+											$("#logo").css("margin-top", +($("#logo").css("margin-top").split("px")[0]) - 42 + "px");
+											$("#topSites").css("margin-top", +($("#topSites").css("margin-top").split("px")[0]) + 64 + "px");
+											$("<p>")
+											.attr("id", 'definition')
+											.html(d.meaning[Object.keys(d.meaning)[0]][0].definition)
+											.appendTo("center")
+											.fadeIn('slow')
+											.css("margin-top", (+$("#definition").css("margin-top").split("px")[0]) + innerHeight / 2 - ($("#definition")[0].getBoundingClientRect().y + $("#definition")[0].getBoundingClientRect().height / 2) + 12 + 'px')
+											.width($("#searchBox").width());
+											setTimeout(function () {
+												$("#definition").css("margin-top", (+$("#definition").css("margin-top").split("px")[0]) + innerHeight / 2 - ($("#definition")[0].getBoundingClientRect().y + $("#definition")[0].getBoundingClientRect().height / 2) + 12 + 'px');
+											}, 200);
+											defIsShown = true;
+										} else {
+											$("#definition").fadeOut("slow", function () {
+												$(this)
+													.html(d.meaning[Object.keys(d.meaning)[0]][0].definition)
+													.fadeIn('slow');
+												setTimeout(function () {
+													$("#definition").css("margin-top", (+$("#definition").css("margin-top").split("px")[0]) + innerHeight / 2 - ($("#definition")[0].getBoundingClientRect().y + $("#definition")[0].getBoundingClientRect().height / 2) + 12 + 'px');
+												}, 200);
+											});
+										}
+									},
+									beforeSend: setOxfHeader
+								});
+								lastDef = $("#search").val();
+							}
+						} else if (defIsShown) {
+							if(lastReq){
+								lastReq.abort();
+							}
+
+							$("#definition").fadeOut("slow", function () {
+								$("#searchBox").css("margin-top", +($("#searchBox").css("margin-top").split("px")[0]) + 20 + "px");
+								$("#logo").css("margin-top", +($("#logo").css("margin-top").split("px")[0]) + 42 + "px");
+								$("#topSites").css("margin-top", +($("#topSites").css("margin-top").split("px")[0]) - 64 + "px");
+								defIsShown = false;
+							});
+						}
 					}
 				}
 			});
 		});
 	});
 });
+
+function setOxfHeader(xhr) {
+	xhr.setRequestHeader('app_key', '06f2e65eda6a455658ea3298d55b65f4');
+	xhr.setRequestHeader('app_id', '106fb8db');
+}
 
 function calcRes(sV) {
 	x = sV;
@@ -97,7 +165,6 @@ function calcRes(sV) {
 		}
 	}
 
-
 	for (let i = 0; i < operations.length; i++) {
 		const o = operations[i];
 		x = x.replace(new RegExp(o.sc, 'g'), o.full);
@@ -106,7 +173,7 @@ function calcRes(sV) {
 	for (let i = 0; i < operations.length; i++) {
 		const o = operations[i];
 		if (sV.split(o.full).length > 1) {
-			x = sV.replace(o.full.split("").join("////"), o.full);
+			x = x.replace(o.full.split("").join("////"), o.full);
 		}
 	}
 
@@ -154,6 +221,9 @@ function search() {
 					location = 'https://nl.wikipedia.org/w/index.php?search=' + sV;
 				}
 			}
+			if(selectedPattern.name == 'Definitie'){
+				location = 'https://en.oxforddictionaries.com/definition/' + sV;
+			}
 		} else {
 			location = selectedPattern.url + sV;
 		}
@@ -169,14 +239,6 @@ function search() {
 }
 
 
-
-/**
- * Calculate the width of a string of text. It is calculated in Roboto, 18px
- * 
- * @param {String} text The text to be rendered.
- * 
- * @see https://stackoverflow.com/questions/118241/calculate-text-width-with-javascript/21015393#21015393
- */
 function getTextWidth(text) {
 	$("#testTW").html(text)
 	return $("#testTW").width();

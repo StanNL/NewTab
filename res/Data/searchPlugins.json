@@ -41,18 +41,20 @@
 			"examp": "wiki:en:Queen Elisabeth <b>of</b> wiki:Nederlandse Spoorwegen"
 		},
 		{
-			"name": "Translate",
+			"name": "Definitie",
 			"shortcuts": [
-				"tr",
-				"trans",
-				"translate"
+				"dic",
+				"dictionary",
+				"oxford",
+				"define",
+				"def",
+				"d"
 			],
 			"dynamic": true,
-			"bg": "rgba(65, 131, 240, .8)",
+			"bg": "rgba(24, 195, 243, .8)",
 			"color": "white",
-			"base_url": "https://translate.google.com",
-			"note": "Begin je zoekopdracht met twee taalcodes (brontaal-doeltaal) om aan te geven waarvandaan en waarnaartoe je wilt vertalen. Als je enkel een woord of zin intypt, bepaalt Google Translate zelf de geschikte talen.",
-			"examp": "tr: nl-en: Goedemiddag"
+			"base_url": "https://www.oxforddictionaries.com",
+			"note": "Zoek naar definities via Oxford Dictionaries."
 		},
 		{
 			"name": "Stack Overflow",

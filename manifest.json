@@ -1,5 +1,5 @@
 {
-   "version": "1.3.3",
+   "version": "1.4",
    "chrome_url_overrides": {
       "newtab": "Pages/Main/Main.html"
    },
@@ -23,7 +23,8 @@
       "management",
       "*://*.openweathermap.org/*",
       "storage",
-      "unlimitedStorage"
+      "unlimitedStorage",
+      "*://googledictionaryapi.eu-gb.mybluemix.net/*"
    ],
    "content_security_policy": "script-src 'self' 'unsafe-eval' https://www.openweathermap.org; object-src 'self'"
 }

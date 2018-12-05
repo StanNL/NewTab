@@ -56,7 +56,7 @@
 	display: inline-block;
 	background: rgba(0, 0, 0, 0);
 	text-align: center;
-	padding-left: 12px;
+	padding: 0 12px;
 	border: none;
 }
 
@@ -96,4 +96,14 @@
 
 #searchHelp.highlight{
 	color: #484899;
+}
+
+
+#definition{
+	display: none;
+	font-size: 18px;
+	position: relative;
+	font-style: italic;
+	transition: margin-top 400ms;
+	margin-top: 0px;
 }
