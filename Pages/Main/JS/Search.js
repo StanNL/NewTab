@@ -135,7 +135,8 @@ $(document).ready(function () {
 							if(lastReq){
 								lastReq.abort();
 							}
-
+							
+							lastDef = '';
 							$("#definition").fadeOut("slow", function () {
 								$("#searchBox").css("margin-top", +($("#searchBox").css("margin-top").split("px")[0]) + 20 + "px");
 								$("#logo").css("margin-top", +($("#logo").css("margin-top").split("px")[0]) + 42 + "px");
