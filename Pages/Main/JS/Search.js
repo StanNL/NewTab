@@ -95,152 +95,141 @@ $(document).ready(function () {
 							if ($("#search").val() != lastDef) {
 								if (lastReq) lastReq.abort();
 
-								lastReq = $.ajax({
-									url: oxf_base_url + $("#search").val(),
-									type: "GET",
-									datatype: "json",
-									success: function (d) {
-										if (!defIsShown) {
-											$("#definition").remove();
-											$("#searchBox").css("margin-top", +($("#searchBox").css("margin-top").split("px")[0]) - 20 + "px");
-											$("#logo").css("margin-top", +($("#logo").css("margin-top").split("px")[0]) - 42 + "px");
-											$("#topSites").css("margin-top", +($("#topSites").css("margin-top").split("px")[0]) + 64 + "px");
-											$("<p>")
+								lastReq = $.getJSON(oxf_base_url + $("#search").val(), function (d) {
+									if (!defIsShown) {
+										$("#definition").remove();
+										$("#searchBox").css("margin-top", +($("#searchBox").css("margin-top").split("px")[0]) - 20 + "px");
+										$("#logo").css("margin-top", +($("#logo").css("margin-top").split("px")[0]) - 42 + "px");
+										$("#topSites").css("margin-top", +($("#topSites").css("margin-top").split("px")[0]) + 64 + "px");
+										$("<p>")
 											.attr("id", 'definition')
 											.html(d.meaning[Object.keys(d.meaning)[0]][0].definition)
 											.appendTo("center")
 											.fadeIn('slow')
 											.css("margin-top", (+$("#definition").css("margin-top").split("px")[0]) + innerHeight / 2 - ($("#definition")[0].getBoundingClientRect().y + $("#definition")[0].getBoundingClientRect().height / 2) + 12 + 'px')
 											.width($("#searchBox").width());
+										setTimeout(function () {
+											$("#definition").css("margin-top", (+$("#definition").css("margin-top").split("px")[0]) + innerHeight / 2 - ($("#definition")[0].getBoundingClientRect().y + $("#definition")[0].getBoundingClientRect().height / 2) + 12 + 'px');
+										}, 200);
+										defIsShown = true;
+									} else {
+										$("#definition").fadeOut("slow", function () {
+											$(this)
+												.html(d.meaning[Object.keys(d.meaning)[0]][0].definition)
+												.fadeIn('slow');
 											setTimeout(function () {
 												$("#definition").css("margin-top", (+$("#definition").css("margin-top").split("px")[0]) + innerHeight / 2 - ($("#definition")[0].getBoundingClientRect().y + $("#definition")[0].getBoundingClientRect().height / 2) + 12 + 'px');
 											}, 200);
-											defIsShown = true;
-										} else {
-											$("#definition").fadeOut("slow", function () {
-												$(this)
-													.html(d.meaning[Object.keys(d.meaning)[0]][0].definition)
-													.fadeIn('slow');
-												setTimeout(function () {
-													$("#definition").css("margin-top", (+$("#definition").css("margin-top").split("px")[0]) + innerHeight / 2 - ($("#definition")[0].getBoundingClientRect().y + $("#definition")[0].getBoundingClientRect().height / 2) + 12 + 'px');
-												}, 200);
-											});
-										}
-									},
-									beforeSend: setOxfHeader
+										});
+									}
 								});
 								lastDef = $("#search").val();
+							} else if (defIsShown) {
+								if (lastReq) {
+									lastReq.abort();
+								}
+
+								lastDef = '';
+								$("#definition").fadeOut("slow", function () {
+									$("#searchBox").css("margin-top", +($("#searchBox").css("margin-top").split("px")[0]) + 20 + "px");
+									$("#logo").css("margin-top", +($("#logo").css("margin-top").split("px")[0]) + 42 + "px");
+									$("#topSites").css("margin-top", +($("#topSites").css("margin-top").split("px")[0]) - 64 + "px");
+									defIsShown = false;
+								});
 							}
-						} else if (defIsShown) {
-							if(lastReq){
-								lastReq.abort();
-							}
-							
-							lastDef = '';
-							$("#definition").fadeOut("slow", function () {
-								$("#searchBox").css("margin-top", +($("#searchBox").css("margin-top").split("px")[0]) + 20 + "px");
-								$("#logo").css("margin-top", +($("#logo").css("margin-top").split("px")[0]) + 42 + "px");
-								$("#topSites").css("margin-top", +($("#topSites").css("margin-top").split("px")[0]) - 64 + "px");
-								defIsShown = false;
-							});
 						}
 					}
-				}
+				};
 			});
 		});
 	});
 });
 
-function setOxfHeader(xhr) {
-	xhr.setRequestHeader('app_key', '06f2e65eda6a455658ea3298d55b65f4');
-	xhr.setRequestHeader('app_id', '106fb8db');
-}
+	function calcRes(sV) {
+		x = sV;
 
-function calcRes(sV) {
-	x = sV;
-
-	for (let i = 0; i < operations.length; i++) {
-		const o = operations[i];
-		if (sV.split(o.full).length > 1) {
-			x = sV.replace(o.full, o.full.split("").join("////"));
+		for (let i = 0; i < operations.length; i++) {
+			const o = operations[i];
+			if (sV.split(o.full).length > 1) {
+				x = sV.replace(o.full, o.full.split("").join("////"));
+			}
 		}
-	}
 
-	for (let i = 0; i < operations.length; i++) {
-		const o = operations[i];
-		x = x.replace(new RegExp(o.sc, 'g'), o.full);
-	}
-
-	for (let i = 0; i < operations.length; i++) {
-		const o = operations[i];
-		if (sV.split(o.full).length > 1) {
-			x = x.replace(o.full.split("").join("////"), o.full);
+		for (let i = 0; i < operations.length; i++) {
+			const o = operations[i];
+			x = x.replace(new RegExp(o.sc, 'g'), o.full);
 		}
+
+		for (let i = 0; i < operations.length; i++) {
+			const o = operations[i];
+			if (sV.split(o.full).length > 1) {
+				x = x.replace(o.full.split("").join("////"), o.full);
+			}
+		}
+
+		return eval(x);
 	}
 
-	return eval(x);
-}
+	function formatRes(val) {
+		return Math.round(val * 1000) / 1000;
+	}
 
-function formatRes(val) {
-	return Math.round(val * 1000) / 1000;
-}
+	function search() {
+		sV = $("#search").val();
 
-function search() {
-	sV = $("#search").val();
+		if (selectedPattern) {
+			if (!sV.replace(/ /g, '').length) {
+				location = selectedPattern.base_url;
+			};
+			if (selectedPattern.dynamic) {
+				if (selectedPattern.name == 'Translate') {
+					searched = false;
+					if (sV.split("-")[1]) {
+						if (sV.split("-")[1].split(":").length > 1) {
+							lang1 = sV.split("-")[0].replace(/ /g, '');
+							lang2 = sV.split("-")[1].split(":")[0].replace(/ /g, '');
+							sQ = sV.split("-")[1].split(":");
+							sQ.splice(0, 1);
 
-	if (selectedPattern) {
-		if (!sV.replace(/ /g, '').length) {
-			location = selectedPattern.base_url;
-		};
-		if (selectedPattern.dynamic) {
-			if (selectedPattern.name == 'Translate') {
-				searched = false;
-				if (sV.split("-")[1]) {
-					if (sV.split("-")[1].split(":").length > 1) {
-						lang1 = sV.split("-")[0].replace(/ /g, '');
-						lang2 = sV.split("-")[1].split(":")[0].replace(/ /g, '');
-						sQ = sV.split("-")[1].split(":");
-						sQ.splice(0, 1);
-
-						location = 'https://translate.google.com/#' + lang1 + '/' + lang2 + "/" + sQ;
-						searched = true;
+							location = 'https://translate.google.com/#' + lang1 + '/' + lang2 + "/" + sQ;
+							searched = true;
+						}
+					}
+					if (!searched) {
+						location = 'https://translate.google.com/#auto/auto/' + sV;
 					}
 				}
-				if (!searched) {
-					location = 'https://translate.google.com/#auto/auto/' + sV;
+				if (selectedPattern.name == 'Wikipedia') {
+					if (sV.split(" ")[0].split(":").length > 1) {
+						rest = sV.split(" ")[0].split(":");
+						rest2 = sV.split(" ");
+						rest.splice(0, 1);
+						rest2.splice(0, 1)
+						sQ = rest + rest2;
+						location = 'https://' + sV.split(" ")[0].split(":")[0] + '.wikipedia.org/w/index.php?search=' + sQ;
+					} else {
+						location = 'https://nl.wikipedia.org/w/index.php?search=' + sV;
+					}
 				}
-			}
-			if (selectedPattern.name == 'Wikipedia') {
-				if (sV.split(" ")[0].split(":").length > 1) {
-					rest = sV.split(" ")[0].split(":");
-					rest2 = sV.split(" ");
-					rest.splice(0, 1);
-					rest2.splice(0, 1)
-					sQ = rest + rest2;
-					location = 'https://' + sV.split(" ")[0].split(":")[0] + '.wikipedia.org/w/index.php?search=' + sQ;
-				} else {
-					location = 'https://nl.wikipedia.org/w/index.php?search=' + sV;
+				if (selectedPattern.name == 'Definitie') {
+					location = 'https://en.oxforddictionaries.com/definition/' + sV;
 				}
+			} else {
+				location = selectedPattern.url + sV;
 			}
-			if(selectedPattern.name == 'Definitie'){
-				location = 'https://en.oxforddictionaries.com/definition/' + sV;
+		} else if (isURL(sV)) {
+			if (sV.startsWith("http")) {
+				location = sV.replace("http://", "https://");
+			} else {
+				location = 'https://' + sV;
 			}
 		} else {
-			location = selectedPattern.url + sV;
+			location = 'https://www.google.com/search?q=' + sV;
 		}
-	} else if (isURL(sV)) {
-		if (sV.startsWith("http")) {
-			location = sV.replace("http://", "https://");
-		} else {
-			location = 'https://' + sV;
-		}
-	} else {
-		location = 'https://www.google.com/search?q=' + sV;
 	}
-}
 
 
-function getTextWidth(text) {
-	$("#testTW").html(text)
-	return $("#testTW").width();
-}
+	function getTextWidth(text) {
+		$("#testTW").html(text)
+		return $("#testTW").width();
+	}
