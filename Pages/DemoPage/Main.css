@@ -1,0 +1,55 @@
+body {
+	color: white;
+	padding: 12px;
+	margin: 0;
+	background: #009685;
+}
+
+#main::placeholder{
+	color: #333;
+}
+
+#main {
+	outline: none;
+	border: none;
+	height: 36px;
+	padding: 0 12px;
+	border-radius: 24px;
+	color: #333;
+	background: rgb(255, 255, 255, .5);
+}
+
+#send{
+	text-align: left;
+	background: rgba(0,0,0,.3);
+	width: 58px;
+	cursor: pointer;
+	padding: 6px;
+	position: relative;
+	top: 3px;
+	left: 16px;
+	padding-left: 28px;
+	border-radius: 8px;
+	display: inline-block;
+	font-size: 16px;
+}
+
+#result {
+	font-size: 20px;
+}
+
+.indent {
+	position: relative;
+	left: 24px;
+	width: calc(100% - 28px);
+}
+
+.error {
+	color: red;
+	font-weight: bold;
+}
+
+h3 {
+	font-size: 32px;
+	font-weight: normal;
+}
