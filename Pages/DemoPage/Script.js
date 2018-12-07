@@ -23,6 +23,6 @@ function search(){
 	});
 }
 
-function processJSON(json){
+function processJSON(json){ //make the JSON look prettier
 	return JSON.stringify(json).replace(/,/g, ',<br>').replace(/:/g, ': ').replace(/{/g, '{<br><div class="indent">').replace(/}/g, '<br></div>}').replace(/\[/g, '[<br><div class="indent">').replace(/\]/g, '<br></div>]');
 }
