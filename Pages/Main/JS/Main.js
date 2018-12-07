@@ -52,7 +52,7 @@ $(document).ready(function () {
 			checkFinished();
 		});
 
-		if (!a.wLOC) {
+		if (!a.wLOC && !loc) {
 			location = '../Options/Options.html';
 		} else {
 			loc = a.wLOC;
