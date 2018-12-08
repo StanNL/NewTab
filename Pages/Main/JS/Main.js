@@ -52,8 +52,12 @@ $(document).ready(function () {
 			checkFinished();
 		});
 
-		if (!a.wLOC && !loc) {
-			location = '../Options/Options.html';
+		if (!a.wLOC) {
+			if(loc){
+				checkWeatherUpdates();
+			}else{
+				location = '../Options/Options.html';
+			}
 		} else {
 			loc = a.wLOC;
 			checkWeatherUpdates();
