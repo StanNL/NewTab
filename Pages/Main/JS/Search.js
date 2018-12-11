@@ -26,6 +26,7 @@ $(document).ready(function () {
 			});
 
 			$("#search").on("keydown", function (e) {
+				if(e.key == ';' && selectedPattern) return false;
 				if (!$("#search").val().length && e.keyCode == 8 && selectedPattern) {
 					selectedPattern = false;
 					$("#scLogo").css("opacity", 0);
