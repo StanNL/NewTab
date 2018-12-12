@@ -10,8 +10,7 @@
 			"dynamic": false,
 			"url": "https://www.youtube.com/results?search_query=",
 			"base_url": "https://www.youtube.com",
-			"bg": "rgba(255, 0, 0, .8)",
-			"color": "white"
+			"bg": "rgba(255, 0, 0, .8)"
 		},
 		{
 			"name": "Reddit",
@@ -20,10 +19,9 @@
 				"reddit"
 			],
 			"dynamic": false,
-			"url": "https://www.reddit.com/search?q=",
-			"base_url": "https://www.reddit.com",
 			"bg": "rgba(255, 69, 0, .8)",
-			"color": "white"
+			"url": "https://www.reddit.com/search?q=",
+			"base_url": "https://www.reddit.com"
 		},
 		{
 			"name": "Wikipedia",
@@ -35,7 +33,7 @@
 			],
 			"dynamic": true,
 			"base_url": "https://www.wikipedia.org",
-			"bg": "#f8f8f8",
+			"bg": "rgba(242, 242, 242, .8)",
 			"color": "#222",
 			"note": "Begin je zoekopdracht met een taalcode om een Wikipediapagina in een bepaalde taal te bekijken. Als je geen taal opgeeft, zoek je in het Nederlands.",
 			"examp": "wiki:en:Queen Elisabeth <b>of</b> wiki:Nederlandse Spoorwegen"
@@ -67,6 +65,17 @@
 			"color": "white",
 			"url": "https://stackoverflow.com/search?q=",
 			"base_url": "https://www.stackoverflow.com"
+		},
+		{
+			"name": "Tweakers",
+			"shortcuts": [
+				"tw",
+				"tweakers"
+			],
+			"bg": "rgba(255, 69, 39, .8)",
+			"color": "white",
+			"url": "https://www.tweakers.net/pricewatch/zoeken/?keyword=",
+			"base_url": "https://www.tweakers.net"
 		},
 		{
 			"name": "Google Scholar",
@@ -102,11 +111,10 @@
 				"tw",
 				"twitter"
 			],
+			"bg": "rgba(29, 161, 242, .8)",
 			"dynamic": false,
 			"url": "https://www.twitter.com/search?q=",
-			"base_url": "https://www.twitter.com",
-			"bg": "rgba(29, 161, 242, .8)",
-			"color": "white"
+			"base_url": "https://www.twitter.com"
 		},
 		{
 			"name": "Wolfram Alpha",
@@ -118,10 +126,9 @@
 				"wolfram alpha"
 			],
 			"dynamic": false,
-			"url": "https://www.wolframalpha.com/input/?i=",
-			"base_url": "https://www.wolframalpha.com",
 			"bg": "rgba(255, 69, 39, .8)",
-			"color": "white"
+			"url": "https://www.wolframalpha.com/input/?i=",
+			"base_url": "https://www.wolframalpha.com"
 		},
 		{
 			"name": "DuckDuckGo",
@@ -130,10 +137,9 @@
 				"duckduckgo"
 			],
 			"dynamic": false,
-			"url": "https://duckduckgo.com/?q=",
-			"base_url": "https://www.duckduckgo.com",
 			"bg": "rgba(222, 88, 51, .8)",
-			"color": "white"
+			"url": "https://duckduckgo.com/?q=",
+			"base_url": "https://www.duckduckgo.com"
 		},
 		{
 			"name": "Bing",
@@ -141,10 +147,9 @@
 				"bing"
 			],
 			"dynamic": false,
-			"url": "https://www.bing.com/search?q=",
-			"base_url": "https://www.bing.com",
 			"bg": "rgba(222, 55, 0, .8)",
-			"color": "white"
+			"url": "https://www.bing.com/search?q=",
+			"base_url": "https://www.bing.com"
 		}
 	]
 }

@@ -50,7 +50,7 @@ $(document).ready(function () {
 						if (selectedPattern) {
 							newV = $("#search").val().split(":")[1];
 							$("#sc").html(selectedPattern.name);
-							$("#sc").css("color", selectedPattern.color);
+							$("#sc").css("color", (selectedPattern.color||"white"));
 							$("#scLogo").css("transition-duration", '0ms');
 							setTimeout(function () {
 								$("#scLogo").css("background", selectedPattern.bg);
