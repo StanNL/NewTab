@@ -39,7 +39,7 @@
 			"examp": "wiki:en:Queen Elisabeth <b>of</b> wiki:Nederlandse Spoorwegen"
 		},
 		{
-			"name": "Definitie",
+			"name": "Definities",
 			"shortcuts": [
 				"dic",
 				"dictionary",
@@ -55,6 +55,17 @@
 			"note": "Zoek naar definities via Oxford Dictionaries."
 		},
 		{
+			"name": "Tweakers",
+			"shortcuts": [
+				"tw",
+				"tweakers"
+			],
+			"bg": "rgba(255, 69, 39, .8)",
+			"color": "white",
+			"url": "https://www.tweakers.net/pricewatch/zoeken/?keyword=",
+			"base_url": "https://www.tweakers.net"
+		},
+		{
 			"name": "Stack Overflow",
 			"shortcuts": [
 				"so",
@@ -65,17 +76,6 @@
 			"color": "white",
 			"url": "https://stackoverflow.com/search?q=",
 			"base_url": "https://www.stackoverflow.com"
-		},
-		{
-			"name": "Tweakers",
-			"shortcuts": [
-				"tw",
-				"tweakers"
-			],
-			"bg": "rgba(255, 69, 39, .8)",
-			"color": "white",
-			"url": "https://www.tweakers.net/pricewatch/zoeken/?keyword=",
-			"base_url": "https://www.tweakers.net"
 		},
 		{
 			"name": "Google Scholar",
