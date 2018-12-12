@@ -108,8 +108,11 @@
 		{
 			"name": "Twitter",
 			"shortcuts": [
-				"tw",
-				"twitter"
+				"twitter",
+				"twittersearch",
+				"twt",
+				"tws",
+				"twts"
 			],
 			"bg": "rgba(29, 161, 242, .8)",
 			"dynamic": false,
