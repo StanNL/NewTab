@@ -26,6 +26,7 @@
 		{
 			"name": "Wikipedia",
 			"shortcuts": [
+				"w",
 				"wp",
 				"wiki",
 				"wikip",
@@ -33,7 +34,7 @@
 			],
 			"dynamic": true,
 			"base_url": "https://www.wikipedia.org",
-			"bg": "rgba(242, 242, 242, .8)",
+			"bg": "#f8f8f8",
 			"color": "#222",
 			"note": "Begin je zoekopdracht met een taalcode om een Wikipediapagina in een bepaalde taal te bekijken. Als je geen taal opgeeft, zoek je in het Nederlands.",
 			"examp": "wiki:en:Queen Elisabeth <b>of</b> wiki:Nederlandse Spoorwegen"
@@ -49,8 +50,8 @@
 				"d"
 			],
 			"dynamic": true,
-			"bg": "rgba(24, 195, 243, .8)",
-			"color": "white",
+			"bg": "#f8f8f8",
+			"color": "#222",
 			"base_url": "https://www.oxforddictionaries.com",
 			"note": "Zoek naar definities via Oxford Dictionaries."
 		},
