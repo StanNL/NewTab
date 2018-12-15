@@ -1,10 +1,10 @@
 {
-   "version": "1.4.6",
+   "version": "1.5.0",
    "chrome_url_overrides": {
       "newtab": "Pages/Main/Main.html"
    },
    "options_page": "Pages/Options/Options.html",
-   "description": "Stans poging tot een nieuw-tabblad pagina.",
+   "description": "Een zelf samen te stellen nieuw-tabblad-pagina met erg veel opties.",
    "icons": {
       "128": "res/Icons/logo.png",
       "64": "res/Icons/logo.png",
@@ -17,7 +17,7 @@
       "default_popup": "Pages/Popup/Popup.html"
    },
    "manifest_version": 2,
-   "name": "Stans Nieuw Tabblad",
+   "name": "Stan's Nieuw Tabblad",
    "offline_enabled": true,
    "permissions": [
       "management",
