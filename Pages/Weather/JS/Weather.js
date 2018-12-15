@@ -16,21 +16,23 @@ $(document).ready(function () {
 		$("#main").css("opacity", 1);
 	}, 100);
 
-
-	get("wLOC", function (a) {
-		wLOC = a.wLOC;
-		$(".title").html($(".title").attr("data-def") + wLOC);
-
+	if(location.href.split("demo=true").length > 1){
+		wLOC = 'Madrid';
 		loadWeather();
-	});
+	}else{
+		get("wLOC", function (a) {
+			wLOC = a.wLOC;	
+			loadWeather();
+		});
+	}
 });
 
 
 function loadWeather() {
+	$(".title").html($(".title").attr("data-def") + wLOC);
 	$.getJSON(wURL + wLOC, function (data) {
 		$("#temp").html(Math.round((data.main.temp - 273.15) * 10) / 10 + "&deg;C");
 		wd = data.wind.deg;
-		wdrs = ['Z', 'ZW', 'W', 'NW', 'N', 'NO', 'O', 'ZO', 'Z'];
 		var wdn;
 		if (wd < 22.5 || wd >= 360 - 22.5) {
 			wdn = 'N'

@@ -31,7 +31,7 @@ $(document).ready(function () {
 			$("#wAnim").css('background', darkenColour(defR, defG, defB, p));
 		}, 500);
 		setTimeout(function () {
-			location = '../Weather/Weather.html'
+			location = $("#weather").attr("page");
 		}, 1500);
 		e.preventDefault();
 	});
