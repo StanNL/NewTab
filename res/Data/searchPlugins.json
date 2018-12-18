@@ -67,6 +67,20 @@
 			"base_url": "https://www.tweakers.net"
 		},
 		{
+			"name": "Translate",
+			"shortcuts": [
+				"tr",
+				"trans",
+				"translate"
+			],
+			"dynamic": true,
+			"bg": "rgba(65, 131, 240, .8)",
+			"color": "white",
+			"base_url": "https://translate.google.com",
+			"note": "Begin je zoekopdracht met twee taalcodes (brontaal-doeltaal) om aan te geven waarvandaan en waarnaartoe je wilt vertalen. Als je enkel een woord of zin intypt, bepaalt Google Translate zelf de geschikte talen.",
+			"examp": "tr: nl-en: Goedemiddag"
+		},
+		{
 			"name": "Stack Overflow",
 			"shortcuts": [
 				"so",
