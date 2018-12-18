@@ -91,7 +91,7 @@ $(document).ready(function () {
 				}
 
 				if (selectedPattern) {
-					if (selectedPattern.name == 'Definitie') {
+					if (selectedPattern.name == 'Definities') {
 						if ($("#search").val().length > 0 && $("#search").val().replace(/[a-zA-Z]/g, '').length == 0) {
 							if ($("#search").val() != lastDef) {
 								if (lastReq) lastReq.abort();
