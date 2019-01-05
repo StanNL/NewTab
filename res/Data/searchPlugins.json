@@ -67,6 +67,20 @@
 			"base_url": "https://www.tweakers.net"
 		},
 		{
+			"name": "Google Photos",
+			"shortcuts": [
+				"photos",
+				"gp",
+				"google photos",
+				"gallery",
+				"googlephotos"
+			],
+			"bg": "rgba(255, 187, 27, .8)",
+			"color": "white",
+			"url": "https://photos.google.com/search/",
+			"base_url": "https://photos.google.com"
+		},
+		{
 			"name": "Translate",
 			"shortcuts": [
 				"tr",
@@ -97,7 +111,7 @@
 			"shortcuts": [
 				"gs",
 				"scholar",
-				"googlescholar", 
+				"googlescholar",
 				"google scholar"
 			],
 			"dynamic": false,
