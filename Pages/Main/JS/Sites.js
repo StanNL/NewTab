@@ -27,12 +27,14 @@ function showSites() {
 
 	$("#topSites").css("column-count", Math.ceil(sites.length / 2));
 
-	$("div.site").on("click", function (e) {
-
+	$("div.site").on("click auxclick", function (e) {
+		e.preventDefault();
+		if(e.which == 3) return false;
+		var nt = e.which == 2 || e.ctrlKey;
 		if ($(this).attr('href').split("127.0.0.1").length > 1) {
-			redirectToProjects(e.ctrlKey);
+			redirectToProjects(nt);
 		} else {
-			if (e.ctrlKey) {
+			if (nt) {
 				window.open($(this).attr('href'));
 			}else{
 				location = $(this).attr('href');
