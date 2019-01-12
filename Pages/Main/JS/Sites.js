@@ -27,11 +27,16 @@ function showSites() {
 
 	$("#topSites").css("column-count", Math.ceil(sites.length / 2));
 
-	$("div.site").on("click", function () {
+	$("div.site").on("click", function (e) {
+
 		if ($(this).attr('href').split("127.0.0.1").length > 1) {
-			redirectToProjects();
+			redirectToProjects(e.ctrlKey);
 		} else {
-			location = $(this).attr('href');
+			if (e.ctrlKey) {
+				window.open($(this).attr('href'));
+			}else{
+				location = $(this).attr('href');
+			}
 		}
 	});
 	loading.sites = true;

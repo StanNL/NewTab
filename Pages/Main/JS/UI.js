@@ -50,9 +50,13 @@ $(document).ready(function () {
 // 	}, 500);
 // }
 
-function redirectToProjects() {
+function redirectToProjects(newTab) {
 	chrome.management.launchApp('ofhbbkphhbklhfoeikjpcbhemlocgigb');
-	location = 'http://127.0.0.1:1234';
+	if(newTab){
+		window.open('http://127.0.0.1:1234');
+	}else{
+		location = 'http://127.0.0.1:1234';
+	}
 }
 
 
