@@ -103,9 +103,10 @@ $(document).ready(function () {
 										$("#searchBox").css("margin-top", +($("#searchBox").css("margin-top").split("px")[0]) - 20 + "px");
 										$("#logo").css("margin-top", +($("#logo").css("margin-top").split("px")[0]) - 42 + "px");
 										$("#topSites").css("margin-top", +($("#topSites").css("margin-top").split("px")[0]) + 64 + "px");
+										def = d[0].meaning[Object.keys(d[0].meaning)[0]][0].definition;
 										$("<p>")
 											.attr("id", 'definition')
-											.html(d.meaning[Object.keys(d.meaning)[0]][0].definition)
+											.html(def)
 											.appendTo("center")
 											.fadeIn('slow')
 											.css("margin-top", (+$("#definition").css("margin-top").split("px")[0]) + innerHeight / 2 - ($("#definition")[0].getBoundingClientRect().y + $("#definition")[0].getBoundingClientRect().height / 2) + 12 + 'px')
@@ -117,7 +118,7 @@ $(document).ready(function () {
 									} else {
 										$("#definition").fadeOut("slow", function () {
 											$(this)
-												.html(d.meaning[Object.keys(d.meaning)[0]][0].definition)
+												.html(def)
 												.fadeIn('slow');
 											setTimeout(function () {
 												$("#definition").css("margin-top", (+$("#definition").css("margin-top").split("px")[0]) + innerHeight / 2 - ($("#definition")[0].getBoundingClientRect().y + $("#definition")[0].getBoundingClientRect().height / 2) + 12 + 'px');
