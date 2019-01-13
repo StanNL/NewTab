@@ -8,6 +8,8 @@ var movedSearchBox = false;
 var lastDef;
 var lastReq;
 var defIsShown = false;
+var pi = Math.PI;
+var PI = pi;
 
 patterns = [];
 
