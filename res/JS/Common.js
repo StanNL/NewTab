@@ -34,9 +34,7 @@ $(document).ready(function(){
 });
 
 function loadBackgroundColour() {
-	console.log("kak");
 	get('tCol', function (a) {
-		console.log("kak");
 		if (!a.tCol) {
 			set('tCol', standardR + ',' + standardG + "," + standardB);
 			defR = standardR;
@@ -51,7 +49,6 @@ function loadBackgroundColour() {
 
 		get("forceNightMode", function (a) {
 			if (a.forceNightMode == 'true') {
-				console.log("kak");
 				document.body.style.background = darkenColour(defR, defG, defB, maxD);
 				$("#wAnim").css('background', darkenColour(defR, defG, defB, -.4));
 				p = maxD;
