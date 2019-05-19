@@ -7,6 +7,8 @@ $(document).ready(function () {
 		}, 700);
 	});
 
+	set('lastChecked', "" +new Date());
+
 	initFirebase();
 	db.collection("NewTab").doc("Messages").get().then(function (data) {
 		if (data.exists) {
