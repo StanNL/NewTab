@@ -11,6 +11,9 @@ var maxH = 8; //Hoe laat 's ochtends hij weer normaal moet zijn
 
 var startTrans2 = 6.5; //Hoe laat 's ochtends hij weer moet beginnen met de overgang
 
+var db;
+var firebaseConfig;
+
 var defR;
 var defG;
 var defB;
@@ -21,9 +24,12 @@ var standardB = 99;
 
 var p = 0;
 
-$(document).ready(function () {
+window.onload = function(){
 	loadBackgroundColour();
-});
+	setTimeout(function () {
+		$("#back i").css("color", $("body").css("background-color"));
+	}, 150);
+};
 
 function loadBackgroundColour() {
 	get('tCol', function (a) {
@@ -149,4 +155,18 @@ function isURL(str) {
 
 function formatC2(c) {
 	return c.replace("/ /g", '');
+}
+
+function initFirebase() {
+	firebaseConfig = {
+		apiKey: "AIzaSyCoH1ofyauZ79rZYcgxs0QjtBIX4D4-TJE",
+		authDomain: "newtab-d3a87.firebaseapp.com",
+		databaseURL: "https://newtab-d3a87.firebaseio.com",
+		projectId: "newtab-d3a87",
+		storageBucket: "newtab-d3a87.appspot.com",
+		messagingSenderId: "608707830466",
+		appId: "1:608707830466:web:174f04a12314025f"
+	};
+	firebase.initializeApp(firebaseConfig);
+	db = firebase.firestore();
 }
