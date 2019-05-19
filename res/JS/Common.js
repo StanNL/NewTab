@@ -11,6 +11,8 @@ var maxH = 8; //Hoe laat 's ochtends hij weer normaal moet zijn
 
 var startTrans2 = 6.5; //Hoe laat 's ochtends hij weer moet beginnen met de overgang
 
+var months = ["januari", "februari", 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'];
+
 var db;
 var firebaseConfig;
 
@@ -24,15 +26,17 @@ var standardB = 99;
 
 var p = 0;
 
-window.onload = function(){
+$(document).ready(function(){
 	loadBackgroundColour();
 	setTimeout(function () {
 		$("#back i").css("color", $("body").css("background-color"));
 	}, 150);
-};
+});
 
 function loadBackgroundColour() {
+	console.log("kak");
 	get('tCol', function (a) {
+		console.log("kak");
 		if (!a.tCol) {
 			set('tCol', standardR + ',' + standardG + "," + standardB);
 			defR = standardR;
@@ -44,8 +48,10 @@ function loadBackgroundColour() {
 			defG = c2.split(",")[1];
 			defB = c2.split(",")[2];
 		}
+
 		get("forceNightMode", function (a) {
 			if (a.forceNightMode == 'true') {
+				console.log("kak");
 				document.body.style.background = darkenColour(defR, defG, defB, maxD);
 				$("#wAnim").css('background', darkenColour(defR, defG, defB, -.4));
 				p = maxD;
