@@ -7,7 +7,7 @@ $(document).ready(function () {
 		}, 700);
 	});
 
-	set('lastChecked', "" +new Date());
+	set('lastChecked', "" + +new Date());
 
 	initFirebase();
 	db.collection("NewTab").doc("Messages").get().then(function (data) {
@@ -25,10 +25,14 @@ $(document).ready(function () {
 
 				d = new Date(msgs[i].date);
 				$("<div>").addClass("d")
-					.html("<b>Datum:&nbsp;</b>" + d.getDate() + " " + months[d.getMonth()] + " " + d.getFullYear() + " om " + d.getHours() + ":" + d.getMinutes())
+					.html("<b>Datum:&nbsp;</b>" + d.getDate() + " " + months[d.getMonth()] + " " + d.getFullYear() + " om " + prependZero(d.getHours()) + ":" + prependZero(d.getMinutes()))
 					.appendTo(item);
 
 			}
 		}
 	});
 });
+
+function prependZero(n) {
+	return (n < 10 ? "0" + n : "" + n);
+}

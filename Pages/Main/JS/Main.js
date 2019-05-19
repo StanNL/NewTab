@@ -32,21 +32,24 @@ $(document).ready(function () {
 	db.collection("NewTab").doc("Messages").get().then(function (data) {
 		if (data.exists) {
 			get("lastChecked", function (l) {
-				var d = data.data();
+				var dat = data.data();
+				console.log(dat);
 				var unseen = false;
 				if (l.lastChecked) {
-					if (l.lastChecked < d.msgs[d.msgs.length - 1].date) {
+					console.log(dat.msgs[dat.msgs.length - 1].date);
+					if (l.lastChecked < dat.msgs[dat.msgs.length - 1].date) {
 						unseen = true;
 					} else {
 						unseen = false;
 					}
-				} else if (d.msgs.length > 0) {
+				} else if (dat.msgs.length > 0) {
 					unseen = true;
 				}
-				if(unseen){
+				console.log(unseen, l, dat.msgs.length > 0);
+				if (unseen) {
 					$("#msgs .p").css("display", "block");
 					$("#msgs i").attr("title", "Je hebt ongelezen berichten!");
-				}else{
+				} else {
 					$("#msgs i").attr("title", "Geen ongelezen berichten.");
 				}
 			});
