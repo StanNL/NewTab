@@ -3,6 +3,12 @@ var selectedID = -1;
 
 
 $(document).ready(function () {
+	setTimeout(function(){
+		var bg_c = $("body").css("background-color");
+		var tc = darkenColour(bg_c.split(",")[0].split("(")[1], bg_c.split(",")[1], bg_c.split(",")[2].split(")")[0], 0);
+		$("#pagePopup").css("background-color", tc)	
+	}, 150);
+
 	$(".iField *").on("click", function (e) {
 		el = e.target;
 		if (($(el).hasClass("focus") || $(el).parent().hasClass("focus")) && el.tagName != 'input') return;
@@ -112,7 +118,6 @@ function showSites() {
 	$(".editIcon").on('click', function () {
 		id = $(this).parent().html()[0] - 1;
 		$("#overlay, #pagePopup").fadeIn();
-		$("#pageTitle").html("Pagina " + (id + 1));
 		focusInput($("#pNI").parent(), true);
 		focusInput($("#pLI").parent(), true);
 		$("#pNI").val(sites[id].title);

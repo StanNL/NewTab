@@ -10,7 +10,7 @@
 }
 
 #pagePopup * {
-	color: black;
+	color: white;
 }
 
 #pagePopup {
@@ -23,6 +23,11 @@
 	left: auto;
 	z-index: 10;
 	left: calc(50% - 200px);
+}
+
+#pageTitle{
+	font-size: 32px;
+	margin-bottom: 40px;
 }
 
 #pagePopup, #overlay {
