@@ -2,11 +2,11 @@ body {
 	overflow: hidden;
 }
 
-*:not(.loaded){
+*:not(.loaded) {
 	transition-duration: 0!important;
 }
 
-*.loaded{
+*.loaded {
 	opacity: 1;
 }
 
@@ -17,7 +17,7 @@ body {
 	width: 100%;
 }
 
-#main.loaded{
+#main.loaded {
 	transition-duration: 400ms;
 }
 
@@ -29,35 +29,55 @@ body {
 	opacity: 0;
 }
 
-#logo.isLoading{
+#logo.isLoading {
 	transition-duration: 600ms;
 }
 
-#options i{
+.stan-icon i, .stan-icon p {
 	position: fixed;
+	font-size: 32px;
+	cursor: pointer;
+	transition-duration: 600ms;
+}
+
+#options i {
+	top: 16px;
+	right: 16px;
+}
+
+#help i {
+	bottom: 16px;
+	right: 16px;
+}
+
+#msgs .p {
+	display: none;
+	background: red;
+	width: 12px;
+	height: 12px;
+	left: 38px;
     top: 16px;
-	right: 16px;
-	font-size: 32px;
-	cursor: pointer;
-	transition-duration: 400ms;
+    position: absolute;
+	border-radius: 50%;
+	font-size: 5px;
 }
 
-#help i{
-	position: fixed;
-    bottom: 16px;
-	right: 16px;
-	font-size: 32px;
-	cursor: pointer;
-	transition-duration: 400ms;
+#msgs .m {
+	top: 16px;
+	left: 16px;
 }
 
-#help.hidden{
+#social i {
+	bottom: 16px;
+	left: 16px;
+}
+
+.stan-icon.hidden {
 	opacity: 0!important;
 }
 
-
-#testTW{
+#testTW {
 	opacity: 0;
-	color: rgba(0,0,0,0);
+	color: rgba(0, 0, 0, 0);
 	font-size: 18px;
 }

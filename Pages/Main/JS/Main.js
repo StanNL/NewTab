@@ -16,6 +16,7 @@ onload = function () {
 	}
 }
 
+
 $(document).ready(function () {
 	$("#search").on("keyup", function (e) {
 		if (e.keyCode == 13) {
@@ -23,16 +24,33 @@ $(document).ready(function () {
 		}
 	});
 
-	$("#options, #options *").on("click", function () {
-		$("#help *").css("right", '100%');
-		$("#main, #weather").css("left", '-100%');
-		setTimeout(function () {
-			location = '../Options/Options.html';
-		}, 600);
-	});
-
 	$("#searchIcon").on("click", function () {
 		search();
+	});
+
+	initFirebase();
+	db.collection("NewTab").doc("Messages").get().then(function (data) {
+		if (data.exists) {
+			get("lastChecked", function (l) {
+				var d = data.data();
+				var unseen = false;
+				if (l.lastChecked) {
+					if (l.lastChecked < d.msgs[d.msgs.length - 1].date) {
+						unseen = true;
+					} else {
+						unseen = false;
+					}
+				} else if (d.msgs.length > 0) {
+					unseen = true;
+				}
+				if(unseen){
+					$("#msgs .p").css("display", "block");
+					$("#msgs i").attr("title", "Je hebt ongelezen berichten!");
+				}else{
+					$("#msgs i").attr("title", "Geen ongelezen berichten.");
+				}
+			});
+		}
 	});
 
 	displayTopSites();
@@ -53,9 +71,9 @@ $(document).ready(function () {
 		});
 
 		if (!a.wLOC) {
-			if(loc){
+			if (loc) {
 				checkWeatherUpdates();
-			}else{
+			} else {
 				location = '../Options/Options.html';
 			}
 		} else {

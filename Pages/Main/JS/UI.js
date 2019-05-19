@@ -7,17 +7,42 @@ $(document).ready(function () {
 		}, 500);
 	}, 1500);
 
+
+
 	$("#help").on("click", function () {
-		$("#options *").css("right", '100%');
-		$("#main, #weather").css("left", '-100%');
+		$(".stan-icon.r *").css("right", '100%');
+		$(".stan-icon.l *").css("left", '-100%');
+		$("#main, #weather, .stan-icon.l *").css("left", '-100%');
 		setTimeout(function () {
-			location = '../Help/Help.html'
-		}, 500);
+			location = '../Help/Help.html';
+		}, 600);
 	});
+
+
+	$("#options").on("click", function () {
+		$(".stan-icon.r *").css("right", '100%');
+		$("#main, #weather, .stan-icon.l *").css("left", '-100%');
+		setTimeout(function () {
+			location = '../Options/Options.html';
+		}, 600);
+	});
+
+	$("#msgs").on("click", function () {
+		$(".stan-icon.r *").css("right", '-100%');
+		$("#main, #weather, .stan-icon.l *").css("left", '100%');
+		setTimeout(function () {
+			location = '../Messages/Messages.html';
+		}, 600);
+	});
+
 
 	setTimeout(function () {
 		$("#searchBoxO, #topSites, #logo").addClass('isLoading');
 	}, 80);
+
+	$("#social > *").on("click", function (e) {
+		alert("Nee, dat is niet af :(");
+	});
 
 	$("#weather, #weather > *").on("click", function (e) {
 		wVal = 2 * Math.sqrt(Math.pow(innerHeight, 2) + Math.pow(innerWidth/2, 2));
@@ -42,13 +67,6 @@ $(document).ready(function () {
 	});
 });
 
-// function showWLoc() {
-// 	$("#options *, #help *").css("right", '100%');
-// 	$("#main, #weather").css("left", '-100%');
-// 	setTimeout(function () {
-// 		location = '../Options/Options.html';
-// 	}, 500);
-// }
 
 function redirectToProjects(newTab) {
 	chrome.management.launchApp('ofhbbkphhbklhfoeikjpcbhemlocgigb');
