@@ -29,7 +29,7 @@ var p = 0;
 $(document).ready(function(){
 	loadBackgroundColour();
 	setTimeout(function () {
-		$("#back i").css("color", $("body").css("background-color"));
+		$(".fab i").css("color", $("body").css("background-color"));
 	}, 150);
 });
 
