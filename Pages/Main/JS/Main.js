@@ -33,10 +33,8 @@ $(document).ready(function () {
 		if (data.exists) {
 			get("lastChecked", function (l) {
 				var dat = data.data();
-				console.log(dat);
 				var unseen = false;
 				if (l.lastChecked) {
-					console.log(dat.msgs[dat.msgs.length - 1].date);
 					if (l.lastChecked < dat.msgs[dat.msgs.length - 1].date) {
 						unseen = true;
 					} else {
@@ -45,7 +43,6 @@ $(document).ready(function () {
 				} else if (dat.msgs.length > 0) {
 					unseen = true;
 				}
-				console.log(unseen, l, dat.msgs.length > 0);
 				if (unseen) {
 					$("#msgs .p").css("display", "block");
 					$("#msgs i").attr("title", "Je hebt ongelezen berichten!");
