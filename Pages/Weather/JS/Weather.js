@@ -1,13 +1,18 @@
 var wURL = 'https://api.openweathermap.org/data/2.5/weather?APPID=e98a229cdc17ffdc226168c33aefa0c1&q=';
 
 var wLOC;
+var demo;
 
 $(document).ready(function () {
 	$("#back").on("click", function () {
 		$("#main").css("left", '100%');
 		setTimeout(function () {
-			location = '../Main/Main.html';
-		}, 700);
+			if(demo){
+				location = '../DemoPage/Main.html';
+			}else{
+				location = '../Main/Main.html';
+			}
+		}, 600);
 	});
 
 	$("#main").addClass("loaded");
@@ -17,6 +22,7 @@ $(document).ready(function () {
 	}, 100);
 
 	if(location.href.split("demo=true").length > 1){
+		demo = true;
 		wLOC = 'Madrid';
 		loadWeather();
 	}else{
