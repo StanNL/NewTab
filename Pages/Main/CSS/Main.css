@@ -52,18 +52,18 @@ body {
 
 #msgs .p {
 	display: none;
-	background: red;
+	background: #F44336;
 	width: 12px;
 	height: 12px;
 	left: 38px;
-    top: 16px;
+    bottom: 38px;
     position: absolute;
 	border-radius: 50%;
 	font-size: 5px;
 }
 
 #msgs .m {
-	top: 16px;
+	bottom: 16px;
 	left: 16px;
 }
 
