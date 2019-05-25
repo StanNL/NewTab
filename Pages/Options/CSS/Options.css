@@ -55,7 +55,7 @@ h3 {
 	margin-top: 24px;
 	margin-bottom: 30px;
 	background: rgba(0, 0, 0, .2);
-	padding: 10px 42px;
+	padding: 10px 36px;
 	text-align: left;
 	width: fit-content;
 }
@@ -77,4 +77,8 @@ h3 {
 
 #back{
 	bottom: 7px!important;
+}
+
+#links h3{
+	font-size: 20px;
 }
