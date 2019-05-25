@@ -17,60 +17,69 @@
 	<div id='main'>
 		<center>
 			<h1 class='title'>Instellingen</h1>
-			<h2 class='header'>Weer</h2>
-			<div class='iField'>
-				<input type='text' id='wLocI'>
-				<div class='labelContainer'>
-					<span class='label' id='wLocL'>Locatie voor weer-updates</span>
+			<div id='optionsColumns'>
+				<div id="column_1">
+					<h2 class='header'>Weer</h2>
+					<div class='iField'>
+						<input type='text' id='wLocI'>
+						<div class='labelContainer'>
+							<span class='label' id='wLocL'>Locatie voor weer-updates</span>
+						</div>
+					</div>
+					<br>
+					<h2 class='header'>Naam</h2>
+					<div class='iField'>
+						<input type='text' id='nLocI'>
+						<div class='labelContainer'>
+							<span class='label' id='nLocL'>Je naam/titel</span>
+						</div>
+					</div>
+					<br>
+					<h2 class='header'>Thema-kleur</h2>
+					<div class='iField'>
+						<input type='text' id='cLocI'>
+						<div class='labelContainer'>
+							<span class='label' id='cLocL'>Je basis achtergrondkleur</span>
+						</div>
+					</div>
 				</div>
-			</div>
-			<br>
-			<h2 class='header'>Naam</h2>
-			<div class='iField'>
-				<input type='text' id='nLocI'>
-				<div class='labelContainer'>
-					<span class='label' id='nLocL'>Je naam/titel</span>
+				<div id="column_2">
+					<h2 class='header'>Overig</h2>
+					<div id='miscellaneousContainer'>
+						<p>Forceer nachtmodus: </p>
+						<div class='checkBox disabled' id='forceN'>
+							<i class='material-icons'>check</i>
+						</div>
+						<br>
+						<p>Automatische nachtmodus: </p>
+						<div class='checkBox enabled' id='nightC'>
+							<i class='material-icons'>check</i>
+						</div>
+						<br>
+						<p>Help-knop weergeven: </p>
+						<div class='checkBox enabled' id='helpC'>
+							<i class='material-icons'>check</i>
+						</div>
+						<br>
+						<p>Zoekbalk automatisch "aanklikken": </p>
+						<div class='checkBox disabled' id='searchFocusC'>
+							<i class='material-icons'>check</i>
+						</div>
+					</div>
+					<div id='links'>
+							<h3><a style='color: white;' href='Shortcuts.html'>Pas website-snelkoppelingen aan</a></h3>
+							<h3><a style='color: white;' href='../Help/Help.html'>Toon hulppagina</a></h3>
+							<h3><a style='color: white;' href='https://www.github.com/StanNL/NewTab'>Broncode weergeven</a></h3>
+					</div>
 				</div>
-			</div>
-			<br>
-			<h2 class='header'>Thema-kleur</h2>
-			<div class='iField'>
-				<input type='text' id='cLocI'>
-				<div class='labelContainer'>
-					<span class='label' id='cLocL'>Je basis achtergrondkleur</span>
-				</div>
-			</div>
 
-			<h2 class='header'>Overig</h2>
-			<div id='miscellaneousContainer'>
-				<p>Forceer nachtmodus: </p>
-				<div class='checkBox disabled' id='forceN'>
-					<i class='material-icons'>check</i>
-				</div>
-				<br>
-				<p>Automatische nachtmodus: </p>
-				<div class='checkBox enabled' id='nightC'>
-					<i class='material-icons'>check</i>
-				</div>
-				<br>
-				<p>Help-knop weergeven: </p>
-				<div class='checkBox enabled' id='helpC'>
-					<i class='material-icons'>check</i>
-				</div>
-				<br>
-				<p>Zoekbalk automatisch "aanklikken": </p>
-				<div class='checkBox disabled' id='searchFocusC'>
-					<i class='material-icons'>check</i>
-				</div>
 			</div>
-
-			<h3><a style='color: white;' href='Shortcuts.html'>Pas website-snelkoppelingen aan</a></h3>
-			<h3><a style='color: white;' href='../Help/Help.html'>Toon hulppagina</a></h3>
-			<h3><a style='color: white;' href='https://www.github.com/StanNL/NewTab'>Broncode weergeven</a></h3>
+			<h1 class='footer'>&copy; Stan van Baarsen, 2019. Versie: <span id='versionN'>x.x.x</span></h1>
 		</center>
 	</div>
 	<div id='back' class='fab fab-rb'>
 		<i class='material-icons'>arrow_back</i>
 	</div>
 </body>
+
 </html>

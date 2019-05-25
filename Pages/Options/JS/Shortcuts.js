@@ -48,9 +48,7 @@ $(document).ready(function () {
 	});
 
 	$("*").on("keyup", function (e) {
-		if (e.keyCode == 27) {
-			$("#overlay, #pagePopup").fadeOut();
-		}
+		if (e.keyCode == 27) closePopup();
 	});
 
 
@@ -64,7 +62,15 @@ $(document).ready(function () {
 			location = 'Options.html';
 		}, 700);
 	});
+
+	$("*").on('click', function(a){
+		if(a.target.id == 'overlay') closePopup();
+	})
 });
+
+function closePopup(){
+	$("#overlay, #pagePopup").fadeOut();
+}
 
 
 function verifyP() {

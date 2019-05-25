@@ -108,7 +108,7 @@ input.focus {
 
 
 
-.sendButton {
+.button {
 	margin: 16px 0 16px 0;
 	display: inline-block;
 	left: 8px;
@@ -126,11 +126,11 @@ input.focus {
 	color: white;
 }
 
-.sendButton:hover {
+.button:hover {
 	box-shadow: rgba(0, 0, 0, 0.35) 2px 3px 4px;
 }
 
-.sendButton, .sendButton * {
+.button, .button * {
 	cursor: pointer;
 }
 

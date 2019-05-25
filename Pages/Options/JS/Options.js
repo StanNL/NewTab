@@ -171,6 +171,8 @@ $(document).ready(function () {
 			}
 		}
 	});
+
+	$("#versionN").html(chrome.runtime.getManifest().version);
 });
 
 function checkCI() {

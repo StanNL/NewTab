@@ -1,6 +1,4 @@
-body {
-	padding-bottom: 84px;
-}
+
 
 ul {
 	text-align: left;
@@ -42,4 +40,28 @@ p.websiteItem {
 
 h3 {
 	font-size: 22px;
+}
+
+@media only screen and (min-width: 900px) {
+	#optionsColumns{
+		column-count: 2;
+	}
+}
+
+#column_1 h2:first-child {
+    margin-top: 0;
+}
+
+
+#links{
+	margin-top: 24px;
+    margin-bottom: 30px;
+    background: rgba(0,0,0,.2);
+    padding: 10px 42px;
+    text-align: left;
+    width: fit-content;
+}
+
+#optionsColumns{
+	max-width: 950px;
 }
