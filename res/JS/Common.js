@@ -173,3 +173,17 @@ function initFirebase() {
 	firebase.initializeApp(firebaseConfig);
 	db = firebase.firestore();
 }
+
+function focusInput(el, preventInputFocus) {
+	if (!preventInputFocus) {
+		$(el).find("*").addClass("focus");
+		$(el).find("input").focus();
+	} else {
+		$(el).find("*:not(input)").addClass("focus");
+	}
+
+	setTimeout(function () {
+		l = ($(el).find(".labelContainer").width() - $(el).find(".label").width()) / 2;
+		$(el).find(".label").css("left", l + 'px');
+	}, 300);
+};
