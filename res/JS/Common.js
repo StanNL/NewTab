@@ -118,7 +118,7 @@ function get(k, f) {
 		cVal = readCookie(k);
 		res = {};
 		res[k] = cVal;
-		if (f) f(res);
+		if (f) f(res, k);
 	}
 }
 
