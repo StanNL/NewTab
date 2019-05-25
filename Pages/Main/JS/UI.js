@@ -1,11 +1,14 @@
-
 $(document).ready(function () {
 	setTimeout(function () {
-		setInterval(function () {
 			$("*:not(.loaded)").addClass('loaded');
 			if (!fullyShown) checkFinished();
-		}, 500);
-	}, 1500);
+	}, 2000);
+
+	setTimeout(function(){
+		get("searchFocus", function(a){
+			if(a.searchFocus == 'true') $("#search").focus();
+		});
+	}, 250);
 
 
 
@@ -39,10 +42,6 @@ $(document).ready(function () {
 	setTimeout(function () {
 		$("#searchBoxO, #topSites, #logo").addClass('isLoading');
 	}, 80);
-
-	$("#social > *").on("click", function (e) {
-		alert("Nee, dat is niet af :(");
-	});
 
 	$("#weather, #weather > *").on("click", function (e) {
 		wVal = 2 * Math.sqrt(Math.pow(innerHeight, 2) + Math.pow(innerWidth/2, 2));

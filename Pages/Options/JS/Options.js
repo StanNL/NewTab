@@ -58,6 +58,17 @@ $(document).ready(function () {
 		}
 	});
 
+	get('searchFocus', function (a) {
+		if (a.searchFocus == 'true') {
+			$("#searchFocusC").removeClass("disabled").addClass("enabled");
+		} else if (a.searchFocus == 'false') {
+			$("#searchFocusC").removeClass("enabled").addClass("disabled");
+		} else if (!a.searchFocus) {
+			set('searchFocus', 'false');
+			$("#searchFocusC").removeClass("enabled").addClass("disabled");
+		}
+	});
+
 	$(".iField").on("focus", function (e) {
 		el = e.target;
 		if (($(el).hasClass("focus") || $(el).parent().hasClass("focus")) && el.tagName != 'input') return;
@@ -149,6 +160,15 @@ $(document).ready(function () {
 				$("#nightC").removeClass("unSelectable")
 			}
 			loadBackgroundColour();
+		}
+
+		
+		if (this.id == 'searchFocusC') {
+			if ($(this).hasClass("enabled")) {
+				set('searchFocus', 'true');
+			}else{
+				set("searchFocus", 'false');
+			}
 		}
 	});
 });
