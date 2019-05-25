@@ -2,6 +2,13 @@ var wURL = 'https://api.openweathermap.org/data/2.5/weather?APPID=e98a229cdc17ff
 
 $(document).ready(function () {
 
+	if(location.href.split("#empty").length > 1){
+		var h2s = $(".header");
+		for (let i = 0; i < h2s.length - 2; i++) {
+			const h2 = h2s[i];
+			h2.innerHTML = h2.innerHTML + "*";
+		}
+	}
 	get("wLOC", function (a) {
 		if (a.wLOC) {
 			focusInput($("#wLocI").parent(), true);
@@ -81,7 +88,7 @@ $(document).ready(function () {
 
 		focusInput(el);
 	});
-	
+
 	$(".iField *").on("click", function (e) {
 		el = e.target;
 		if (($(el).hasClass("focus") || $(el).parent().hasClass("focus")) && el.tagName != 'input') return;
@@ -101,20 +108,27 @@ $(document).ready(function () {
 	});
 
 	$("#nLocI").on("input", function () {
-		if ($("#nLocI").val().length < 9) {
-			$("#nLocL").removeClass("error");
+		if ($("#nLocI").val().length >= 10) {
+			$("#nLocE").addClass("shown");
 		} else {
-			$("#nLocL").addClass("error");
+			$("#nLocE").removeClass("shown");
 		}
 	});
 
+	if (location.href.split("#name").length > 1) {
+		setTimeout(function () {
+			$("#nLocI").focus();
+			$("#nLocI").click();
+		}, 400);
+	};
+
 	$("#nLocI").on("focusout", function () {
 		if (!$("#nLocI").val().length) return;
-		if ($("#nLocI").val().length && $("#nLocI").val().length < 9) {
-			$("#nLocL").removeClass("error");
+		if ($("#nLocI").val().length && $("#nLocI").val().length < 20) {
 			set('name', $("#nLocI").val());
+			$("#nLocE").removeClass("shown");
 		} else {
-			$("#nLocL").addClass("error");
+			$("#nLocE").addClass("shown");
 		}
 	});
 
@@ -125,7 +139,7 @@ $(document).ready(function () {
 	$("#cLocI").on("keyup", checkCI);
 
 	$("#back").on("click", function () {
-		$("#main").css("left", '100%');
+		$("#main, .footer").css("left", '100%');
 		setTimeout(function () {
 			location = '../Main/Main.html';
 		}, 700);
@@ -162,11 +176,11 @@ $(document).ready(function () {
 			loadBackgroundColour();
 		}
 
-		
+
 		if (this.id == 'searchFocusC') {
 			if ($(this).hasClass("enabled")) {
 				set('searchFocus', 'true');
-			}else{
+			} else {
 				set("searchFocus", 'false');
 			}
 		}

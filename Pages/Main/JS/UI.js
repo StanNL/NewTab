@@ -1,3 +1,5 @@
+var nameEditO = false;
+
 $(document).ready(function () {
 	setTimeout(function () {
 			$("*:not(.loaded)").addClass('loaded');
@@ -10,7 +12,7 @@ $(document).ready(function () {
 		});
 	}, 250);
 
-
+	$("#logo").on("dblclick", function(){nameEditO=true;$(options).click();});
 
 	$("#help").on("click", function () {
 		$(".stan-icon.r *").css("right", '100%');
@@ -26,7 +28,11 @@ $(document).ready(function () {
 		$(".stan-icon.r *").css("right", '100%');
 		$("#main, #weather, .stan-icon.l *").css("left", '-100%');
 		setTimeout(function () {
-			location = '../Options/Options.html';
+			if(nameEditO){
+				location = '../Options/Options.html#name';
+			}else{
+				location = '../Options/Options.html';
+			}
 		}, 600);
 	});
 

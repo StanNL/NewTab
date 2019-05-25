@@ -64,6 +64,9 @@ $(document).ready(function () {
 	get('wLOC', function (a) {
 		get("name", function (b) {
 			if (b.name) {
+				perfectDimensions = 0.146;
+				var tw = (getTextWidth(b.name) / $("#searchBox").width());
+				if(tw > perfectDimensions) $('#logo').css('font-size', (Math.floor((0.146 / tw)* $("#logo").css("font-size").split('px')[0]) + "px"));
 				$("#logo").html(b.name);
 			}
 			loading.wLOC = true;
@@ -74,7 +77,7 @@ $(document).ready(function () {
 			if (loc) {
 				checkWeatherUpdates();
 			} else {
-				location = '../Options/Options.html';
+				location = '../Options/Options.html#empty';
 			}
 		} else {
 			loc = a.wLOC;
