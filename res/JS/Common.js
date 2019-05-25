@@ -26,7 +26,25 @@ var standardB = 99;
 
 var p = 0;
 
-$(document).ready(function(){
+$(document).ready(function () {
+
+	$(".iField *").on("click", function (e) {
+		el = e.target;
+		if (($(el).hasClass("focus") || $(el).parent().hasClass("focus")) && el.tagName != 'input') return;
+		while (true) {
+			if ((el.tagName != 'div' && $(el).hasClass("iField")) || el.tagName == 'body') {
+				break;
+			}
+			el = $(el).parent();
+		}
+
+		focusInput(el);
+	});
+	setTimeout(function () {
+		var bg_c = $("body").css("background-color");
+		var tc = darkenColour(bg_c.split(",")[0].split("(")[1], bg_c.split(",")[1], bg_c.split(",")[2].split(")")[0], 0);
+		$("#pagePopup").css("background-color", tc)
+	}, 150);
 	loadBackgroundColour();
 	setTimeout(function () {
 		$(".fab i").css("color", $("body").css("background-color"));
@@ -62,7 +80,7 @@ function loadBackgroundColour() {
 						document.body.style.background = 'rgb(' + defR + ',' + defG + "," + defB + ")";
 					}
 
-					$("#wAnim").css('background', darkenColour(defR, defG, defB, - .4));
+					$("#wAnim").css('background', darkenColour(defR, defG, defB, -.4));
 				});
 			}
 		});

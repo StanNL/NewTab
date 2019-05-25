@@ -9,18 +9,6 @@ $(document).ready(function () {
 		$("#pagePopup").css("background-color", tc)	
 	}, 150);
 
-	$(".iField *").on("click", function (e) {
-		el = e.target;
-		if (($(el).hasClass("focus") || $(el).parent().hasClass("focus")) && el.tagName != 'input') return;
-		while (true) {
-			if ((el.tagName != 'div' && $(el).hasClass("iField")) || el.tagName == 'body') {
-				break;
-			}
-			el = $(el).parent();
-		}
-
-		focusInput(el);
-	});
 
 	$("input").on("focusout", function () {
 		$(this).removeClass("focus");

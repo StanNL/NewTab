@@ -16,14 +16,41 @@
 <body>
 	<div id='main'>
 		<center>
-			<div class='title'>Nieuwe berichten</div>
+			<div class='title'>
+				Nieuwe berichten
+			</div>
 			<div class='mainText'>
 			</div>
+			<div id='pagePopup'>
+				<h2 id='pageTitle'>
+					Nieuw bericht verzenden
+				</h2>
+				<div class='iField'>
+					<input type='text' id='titleI'>
+					<div class='labelContainer'>
+						<span class='label' id='title'>Titel</span>
+					</div>
+				</div>
+				<br>
+				<br>
+				<div class='iField'>
+					<input type='text' id='contentI'></textarea>
+					<div class='labelContainer'>
+						<span class='label' id='content'>Bericht content</span>
+					</div>
+				</div>
+				<div class='button' id='saveP'>Opslaan</div>
+			</div>
 		</center>
+	</div>
+	<div id='new' class='fab fab-tl'>
+		<i class="material-icons">add</i>
 	</div>
 	<div id='back' class='fab fab-rb'>
 		<i class='material-icons'>arrow_back</i>
 	</div>
+
+	<div id='overlay'></div>
 </body>
 
 
