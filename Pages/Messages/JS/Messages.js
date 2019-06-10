@@ -59,15 +59,16 @@ function sendMsg() {
 					if (m.id > maxID) maxID = m.id;
 				});
 				newID = maxID + 1;
+				senderN = a.msgName == "Mark Rutte"?"Aaron":a.msgName;
 				newMSG = {
 					title: $("#titleI").val(),
 					msg: $("#contentI").val(),
-					sender: a.msgName,
+					sender: senderN,
 					id: newID,
 					date: +new Date()
 				}
 				msgs.push(newMSG);
-				console.log(msgs);
+				// console.log(msgs);
 				db.collection("NewTab").doc("Messages").set({
 					msgs: msgs
 				});
@@ -102,7 +103,7 @@ function refreshMessages() {
 
 				if (msgs[i].sender) {
 					$("<div>").addClass("d")
-						.html("<b>Verzonden door:&nbsp;</b>" + msgs[i].sender)
+						.html("<b>Verzonden door:&nbsp;</b>" + (msgs[i].sender=="Mark Rutte"?"Aaron":msgs[i].sender));
 						.appendTo(item);
 				}
 			}
