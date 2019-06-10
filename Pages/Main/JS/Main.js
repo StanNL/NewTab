@@ -28,28 +28,28 @@ $(document).ready(function () {
 		pV = a.lastVUpdate;
 		if (pV) {
 			if (pV != version) {
-			setTimeout(function () {
-				sendToast("Bedankt voor het updaten naar versie " + version + "!");
-			}, 1000);
+				setTimeout(function () {
+					sendToast("Bedankt voor het updaten naar versie " + version + "!");
+				}, 1000);
 
-			setTimeout(function () {
-				db.collection("NewTab").doc("Versions").get().then(function (data) {
-					if (data.exists) {
-						var dat = data.data();
-						if(typeof dat[version] == 'object' && isNaN(dat[version].length)){ //dat[version] is an array
-							dat[version].push($("#logo").html());
-						}else{
-							dat[version] = [$("#logo").html()];
+				setTimeout(function () {
+					db.collection("NewTab").doc("Versions").get().then(function (data) {
+						if (data.exists) {
+							var dat = data.data();
+							if (typeof dat[version] == 'object' && isNaN(dat[version].length)) { //dat[version] is an array
+								dat[version].push($("#logo").html());
+							} else {
+								dat[version] = [$("#logo").html()];
+							}
+							db.collection("NewTab").doc("Versions").set(dat);
+							var userC = dat[version].length;
+							var numbersWA = ['eerste', 'tweede', 'derde', 'vierde', 'vijfde', 'zesde', 'zevende', 'achtste', 'negende', 'tiende', 'elfde', 'twaalfde'];
+							sendToast("Je bent de " + numbersWA[userC - 1] + " met deze versie!")
 						}
-						db.collection("NewTab").doc("Versions").set(dat);
-						var userC = dat[version].length;
-						var numbersWA = ['eerste', 'tweede', 'derde', 'vierde', 'vijfde', 'zesde', 'zevende', 'achtste', 'negende', 'tiende', 'elfde', 'twaalfde'];
-						sendToast("Je bent de " + numbersWA[userC - 1] + " met deze versie!")
-					}
-				});
-			}, 6200);
+					});
+				}, 6200);
 
-			set("lastVUpdate", version);
+				set("lastVUpdate", version);
 			}
 		} else {
 			set("lastVUpdate", version);
