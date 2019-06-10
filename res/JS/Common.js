@@ -3,6 +3,8 @@
 
 var maxD = -.3; //het maximale percentage waarmee de achtergrond donkerder mag worden t.o.v. de originele kleur
 
+var version = chrome.runtime.getManifest().version;
+
 var minH = 16.5; //Het minimale tijdstip waarop de achtergrond donkerder mag worden (16.5 = half 5 's middags);
 
 var endTrans1 = 19.5; //hoe laat de kleurovergang moet stoppen: om half 8 is ie net zo donker als om half 12 's nachts bijv. Dus om half 8 is ie op z'n donkerst.
@@ -25,6 +27,14 @@ var standardG = 150;
 var standardB = 99;
 
 var p = 0;
+
+
+var anim1speed = 400;
+var anim2speed = 280;
+var defShownTime = 3250;
+var margin = 1.1;
+var thisToastShownTime;
+var lastClick;
 
 $(document).ready(function () {
 	$("body").on('DOMSubtreeModified', checkLinks);
@@ -208,17 +218,80 @@ function focusInput(el, preventInputFocus) {
 	}, 300);
 };
 
-function checkLinks(){
+function checkLinks() {
 	var aEls = $("a").not(".checked");
 
-	for(let i = 0; i < aEls.length;i++){
+	for (let i = 0; i < aEls.length; i++) {
 		aEls[i].href = changeLinks(aEls[i].href);
 	}
 }
 
-function changeLinks(url){
-	if(url.split("StansLinks").length == 1){
+function changeLinks(url) {
+	if (url.split("StansLinks").length == 1) {
 		return "https://stannl.github.io/StansLinks/index.html?url=" + url;
 	}
 	return url;
+}
+
+
+function sendToast(txt, shownLength) {
+	if (!$("#toast").length) {
+		$("<div>").attr('id', 'toast').appendTo("body");
+		$("<div>").attr('id', 'toastText').appendTo("body");
+		setTimeout(function(){
+			sendToastP2(txt,shownLength);
+		}, 400);
+	}else{
+		sendToastP2(txt, shownLength);
+	}
+}
+
+function sendToastP2(txt, shownLength){
+	$("#toastText").html(txt);
+	let tW = getTextWidth(txt);
+	if(tW > 210){
+		changeToastWidth = true;
+		if(innerWidth < 550){
+			$("#toastText, #toast").addClass("eighty").removeClass("XL");
+		}else{
+			$("#toastText, #toast").addClass("XL").removeClass("eighty");
+		}
+	}else{
+		$("#toastText, #toast").removeClass("XL").removeClass("eighty")
+	}
+
+	thisToastShownTime = shownLength ? shownLength : defShownTime;
+	lastClick = +new Date();
+	$("#toast").addClass("showing");
+	setTimeout(function () {
+		$("#toast").addClass("shown");
+		setTimeout(function () {
+			$("#toastText").addClass("shown");
+		}, anim2speed);
+	}, anim1speed);
+
+	setTimeout(function () {
+		if (checkTime(thisToastShownTime)) {
+			$("#toastText").removeClass("shown");
+			setTimeout(function () {
+				if (checkTime(thisToastShownTime + anim2speed)) {
+					$("#toast").removeClass("shown");
+					setTimeout(function () {
+						if (checkTime(thisToastShownTime + anim2speed + anim1speed)) {
+							$("#toast").removeClass("showing");
+						}
+					}, anim1speed);
+				}
+			}, anim2speed);
+		}
+	}, thisToastShownTime);
+}
+
+
+function tDiff() {
+	return Math.abs(+new Date() - lastClick);
+}
+
+function checkTime(t) {
+	return (tDiff() < (t * margin)) && (tDiff() > (thisToastShownTime / margin));
 }

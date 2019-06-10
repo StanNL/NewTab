@@ -24,6 +24,38 @@ $(document).ready(function () {
 		}
 	});
 
+	get("lastVUpdate", function (a) {
+		pV = a.lastVUpdate;
+		if (pV) {
+			if (pV != version) {
+			setTimeout(function () {
+				sendToast("Bedankt voor het updaten naar versie " + version + "!");
+			}, 1000);
+
+			setTimeout(function () {
+				db.collection("NewTab").doc("Versions").get().then(function (data) {
+					if (data.exists) {
+						var dat = data.data();
+						if(typeof dat[version] == 'object' && isNaN(dat[version].length)){ //dat[version] is an array
+							dat[version].push($("#logo").html());
+						}else{
+							dat[version] = [$("#logo").html()];
+						}
+						db.collection("NewTab").doc("Versions").set(dat);
+						var userC = dat[version].length;
+						var numbersWA = ['eerste', 'tweede', 'derde', 'vierde', 'vijfde', 'zesde', 'zevende', 'achtste', 'negende', 'tiende', 'elfde', 'twaalfde'];
+						sendToast("Je bent de " + numbersWA[userC - 1] + " met deze versie!")
+					}
+				});
+			}, 6200);
+
+			set("lastVUpdate", version);
+			}
+		} else {
+			set("lastVUpdate", version);
+		}
+	});
+
 	$("#searchIcon").on("click", function () {
 		search();
 	});
@@ -66,7 +98,7 @@ $(document).ready(function () {
 			if (b.name) {
 				perfectDimensions = 0.146;
 				var tw = (getTextWidth(b.name) / $("#searchBox").width());
-				if(tw > perfectDimensions) $('#logo').css('font-size', (Math.floor((0.146 / tw)* $("#logo").css("font-size").split('px')[0]) + "px"));
+				if (tw > perfectDimensions) $('#logo').css('font-size', (Math.floor((0.146 / tw) * $("#logo").css("font-size").split('px')[0]) + "px"));
 				$("#logo").html(b.name);
 			}
 			loading.wLOC = true;

@@ -160,7 +160,7 @@ $(document).ready(function () {
 		}
 	});
 
-	$("#versionN").html(chrome.runtime.getManifest().version);
+	$("#versionN").html(version);
 });
 
 function checkCI() {

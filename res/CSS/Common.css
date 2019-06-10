@@ -278,3 +278,58 @@ input.focus, textarea.focus {
 	font-size: 32px;
 	margin-bottom: 40px;
 }
+
+#toastText {
+	font-size: 18px;
+	bottom: 16px;
+	width: 250px;
+	left: calc(50% - 125px);
+	position: fixed;
+	text-align: center;
+	line-height: 60px;
+	height: 60px;
+	opacity: 0;
+	transition-duration: 400ms;
+	color: white;
+	font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+
+#toastText.eighty, #toast.eighty.shown{
+	width: 80%!important;
+	left: 10%!important;
+}
+
+#toastText.XL, #toast.XL.shown {
+	width: 400px!important;
+	left: calc(50% - 205px)!important;
+}
+
+#toastText.shown {
+	opacity: 1;
+}
+
+#toast {
+	opacity: 0;
+	position: fixed;
+	background: #333;
+	left: 50%;
+	bottom: -40px;
+	transition-duration: 400ms;
+	width: 0px;
+	height: 0px;
+	border-radius: 500px;
+}
+
+#toast.shown {
+	width: 250px!important;
+	border-radius: 4px;
+	left: calc(50% - 125px)!important;
+}
+
+#toast.showing {
+	left: calc(50% - 30px);
+	bottom: 16px;
+	opacity: 1;
+	height: 60px;
+	width: 60px;
+}

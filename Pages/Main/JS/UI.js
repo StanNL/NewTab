@@ -26,7 +26,7 @@ $(document).ready(function () {
 
 	$("#options").on("click", function () {
 		$(".stan-icon.r *").css("right", '100%');
-		$("#main, #weather, .stan-icon.l *").css("left", '-100%');
+		$("#main, #weather, .stan-icon.l *, #toast, #toastText").css("left", '-100%');
 		setTimeout(function () {
 			if(nameEditO){
 				location = '../Options/Options.html#name';
