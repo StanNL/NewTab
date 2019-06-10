@@ -7,7 +7,7 @@ var minH = 16.5; //Het minimale tijdstip waarop de achtergrond donkerder mag wor
 
 var endTrans1 = 19.5; //hoe laat de kleurovergang moet stoppen: om half 8 is ie net zo donker als om half 12 's nachts bijv. Dus om half 8 is ie op z'n donkerst.
 
-var maxH = 8; //Hoe laat 's ochtends hij weer normaal moet zijn
+var maxH = 8.5; //Hoe laat 's ochtends hij weer normaal moet zijn
 
 var startTrans2 = 6.5; //Hoe laat 's ochtends hij weer moet beginnen met de overgang
 
@@ -28,7 +28,7 @@ var p = 0;
 
 $(document).ready(function () {
 
-	$(".iField *").on("click", function (e) {
+	var handleInputF = function (e) {
 		el = e.target;
 		if (($(el).hasClass("focus") || $(el).parent().hasClass("focus")) && el.tagName != 'input') return;
 		while (true) {
@@ -39,7 +39,11 @@ $(document).ready(function () {
 		}
 
 		focusInput(el);
-	});
+	};
+
+	$(".iField *").on("click", handleInputF);
+	$(".iField *").on("focus", handleInputF);
+
 	setTimeout(function () {
 		var bg_c = $("body").css("background-color");
 		var tc = darkenColour(bg_c.split(",")[0].split("(")[1], bg_c.split(",")[1], bg_c.split(",")[2].split(")")[0], 0);
