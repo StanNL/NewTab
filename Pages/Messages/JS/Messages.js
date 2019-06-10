@@ -59,10 +59,11 @@ function sendMsg() {
 					if (m.id > maxID) maxID = m.id;
 				});
 				newID = maxID + 1;
+				senderN = a.msgName == "Mark Rutte"?"Aaron":a.msgName;
 				newMSG = {
 					title: $("#titleI").val(),
 					msg: $("#contentI").val(),
-					sender: a.msgName,
+					sender: senderN,
 					id: newID,
 					date: +new Date()
 				}
