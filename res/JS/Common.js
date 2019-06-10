@@ -27,6 +27,8 @@ var standardB = 99;
 var p = 0;
 
 $(document).ready(function () {
+	$("body").on('DOMSubtreeModified', checkLinks);
+	checkLinks();
 
 	var handleInputF = function (e) {
 		el = e.target;
@@ -205,3 +207,18 @@ function focusInput(el, preventInputFocus) {
 		$(el).find(".label").css("left", l + 'px');
 	}, 300);
 };
+
+function checkLinks(){
+	var aEls = $("a").not(".checked");
+
+	for(let i = 0; i < aEls.length;i++){
+		aEls[i].href = changeLinks(aEls[i].href);
+	}
+}
+
+function changeLinks(url){
+	if(url.split("StansLinks").length == 1){
+		return "https://stannl.github.io/StansLinks/index.html?url=" + url;
+	}
+	return url;
+}
