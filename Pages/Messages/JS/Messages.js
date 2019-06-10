@@ -75,7 +75,7 @@ function sendMsg() {
 				closePopup();
 				refreshMessages();
 			} else {
-				alert("Huh?");
+				// alert("Huh?");
 			}
 		});
 	});
@@ -103,7 +103,7 @@ function refreshMessages() {
 
 				if (msgs[i].sender) {
 					$("<div>").addClass("d")
-						.html("<b>Verzonden door:&nbsp;</b>" + (msgs[i].sender=="Mark Rutte"?"Aaron":msgs[i].sender));
+						.html("<b>Verzonden door:&nbsp;</b>" + (msgs[i].sender=="Mark Rutte"?"Aaron":msgs[i].sender))
 						.appendTo(item);
 				}
 			}
