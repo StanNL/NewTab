@@ -295,3 +295,15 @@ function tDiff() {
 function checkTime(t) {
 	return (tDiff() < (t * margin)) && (tDiff() > (thisToastShownTime / margin));
 }
+
+
+function removeDuplicates(array) {
+	let result = [];
+
+	for (let i = 0; i < array.length; i++) {
+		if (result.indexOf(array[i]) == -1) {
+			result.push(array[i]);
+		}
+	}
+	return result;
+}

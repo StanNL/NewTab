@@ -25,6 +25,7 @@ $(document).ready(function () {
 	});
 
 	get("lastVUpdate", function (a) {
+		if(!version) return;
 		pV = a.lastVUpdate;
 		if (pV) {
 			if (pV != version) {
