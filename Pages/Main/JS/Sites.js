@@ -5,7 +5,7 @@ var sites = [];
 function displayTopSites() {
 	get('sites', function (a) {
 		if (!a.sites) {
-			console.log("!!");
+			// console.log("!!");
 			$.getJSON("../../res/Data/defaultSites.json", function (d) {
 				sites = d.sites;
 				showSites();
