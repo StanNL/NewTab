@@ -25,7 +25,7 @@ $(document).ready(function () {
 	});
 
 	get("lastVUpdate", function (a) {
-		if(!version) return;
+		if (!version) return;
 		pV = a.lastVUpdate;
 		if (pV) {
 			if (pV != version) {
@@ -42,6 +42,7 @@ $(document).ready(function () {
 							} else {
 								dat[version] = [$("#logo").html()];
 							}
+							dat[version] = removeDuplicates(dat[version]);
 							db.collection("NewTab").doc("Versions").set(dat);
 							var userC = dat[version].length;
 							var numbersWA = ['eerste', 'tweede', 'derde', 'vierde', 'vijfde', 'zesde', 'zevende', 'achtste', 'negende', 'tiende', 'elfde', 'twaalfde'];
@@ -96,12 +97,14 @@ $(document).ready(function () {
 
 	get('wLOC', function (a) {
 		get("name", function (b) {
-			if (b.name) {
-				perfectDimensions = 0.146;
-				var tw = (getTextWidth(b.name) / $("#searchBox").width());
-				if (tw > perfectDimensions) $('#logo').css('font-size', (Math.floor((0.146 / tw) * $("#logo").css("font-size").split('px')[0]) + "px"));
-				$("#logo").html(b.name);
-			}
+			var n = b.name;
+			if (!n) n = 'NewTab';//fallback, mostly for demo pages
+
+			perfectDimensions = 0.146;
+			var tw = (getTextWidth(n) / $("#searchBox").width());
+			if (tw > perfectDimensions) $('#logo').css('font-size', (Math.floor((0.146 / tw) * $("#logo").css("font-size").split('px')[0]) + "px"));
+			$("#logo").html(n);
+			
 			loading.wLOC = true;
 			checkFinished();
 		});

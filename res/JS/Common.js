@@ -3,7 +3,7 @@
 
 var maxD = -.3; //het maximale percentage waarmee de achtergrond donkerder mag worden t.o.v. de originele kleur
 
-var version = chrome.runtime.getManifest().version;
+var version = chrome.runtime?chrome.runtime.getManifest().version:undefined;
 
 var minH = 16.5; //Het minimale tijdstip waarop de achtergrond donkerder mag worden (16.5 = half 5 's middags);
 
@@ -39,6 +39,12 @@ var lastClick;
 $(document).ready(function () {
 	$("body").on('DOMSubtreeModified', checkLinks);
 	checkLinks();
+
+	if(version == undefined){ //only demo pages
+		$.getJSON("https://api.github.com/repos/StanNL/NewTab/readme", function(data){
+			version = atob(data.content).split("**Latest version:** ")[1].split("\n")[0] + "d";
+		});
+	}
 
 	var handleInputF = function (e) {
 		el = e.target;

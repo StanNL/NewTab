@@ -24,7 +24,8 @@
       "*://*.openweathermap.org/*",
       "storage",
       "unlimitedStorage",
-      "*://mydictionaryapi.appspot.com/*"
+	  "*://mydictionaryapi.appspot.com/*",
+	  "https://api.github.com/*"
    ],
    "content_security_policy": "script-src 'self' 'unsafe-eval' https://www.openweathermap.org; object-src 'self'"
 }
