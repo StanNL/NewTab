@@ -67,6 +67,11 @@ body {
 	left: 16px;
 }
 
+#version i {
+	top: 16px;
+	left: 16px;
+}
+
 #social i {
 	bottom: 16px;
 	left: 16px;

@@ -1,5 +1,6 @@
 
 $(document).ready(function () {
+	setupLinkReplace();
 	$.getJSON("../../res/Data/searchPlugins.json", function (data) {
 		patterns = data.patterns;
 

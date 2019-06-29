@@ -1,4 +1,5 @@
 $(document).ready(function () {
+	setupLinkReplace();
 
 	$("#back").on("click", function () {
 		$("#main").css("left", '-100%');

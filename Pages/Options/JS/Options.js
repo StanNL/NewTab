@@ -1,6 +1,7 @@
 var wURL = 'https://api.openweathermap.org/data/2.5/weather?APPID=e98a229cdc17ffdc226168c33aefa0c1&q=';
 
 $(document).ready(function () {
+	setupLinkReplace();
 
 	if(location.href.split("#empty").length > 1){
 		var h2s = $(".header");
@@ -65,6 +66,17 @@ $(document).ready(function () {
 		}
 	});
 
+	get('hideVersion', function (a) {
+		if (a.hideVersion == 'true') {
+			$("#versionC").removeClass("enabled").addClass("disabled");
+		} else if (a.hideVersion == 'false') {
+			$("#versionC").removeClass("disabled").addClass("enabled");
+		} else if (!a.hideVersion) {
+			set('hideVersion', 'false');
+			$("#versionC").removeClass("disabled").addClass("enabled");
+		}
+	});
+
 	get('searchFocus', function (a) {
 		if (a.searchFocus == 'true') {
 			$("#searchFocusC").removeClass("disabled").addClass("enabled");
@@ -119,6 +131,7 @@ $(document).ready(function () {
 		}, 700);
 	});
 
+
 	$(".checkBox").on('click', function () {
 		$(this).hasClass("enabled") ? $(this).removeClass("enabled").addClass("disabled") : $(this).removeClass('disabled').addClass("enabled");
 
@@ -127,6 +140,14 @@ $(document).ready(function () {
 				set("hideHelp", "false");
 			} else {
 				set("hideHelp", 'true');
+			}
+		}
+		
+		if (this.id == 'versionC') {
+			if ($(this).hasClass("enabled")) {
+				set("hideVersion", "false");
+			} else {
+				set("hideVersion", 'true');
 			}
 		}
 

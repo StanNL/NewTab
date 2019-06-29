@@ -3,7 +3,8 @@
 
 var maxD = -.3; //het maximale percentage waarmee de achtergrond donkerder mag worden t.o.v. de originele kleur
 
-var version = chrome.runtime?chrome.runtime.getManifest().version:undefined;
+var isInExtension = !chrome.runtime.getManifest;
+var version = !isInExtension?chrome.runtime.getManifest().version:undefined;
 
 var minH = 16.5; //Het minimale tijdstip waarop de achtergrond donkerder mag worden (16.5 = half 5 's middags);
 
@@ -37,13 +38,12 @@ var thisToastShownTime;
 var lastClick;
 
 $(document).ready(function () {
-	$("body").on('DOMSubtreeModified', checkLinks);
-	checkLinks();
-
-	if(version == undefined){ //only demo pages
+	if(isInExtension){ //only demo pages
 		$.getJSON("https://api.github.com/repos/StanNL/NewTab/readme", function(data){
 			version = atob(data.content).split("**Latest version:** ")[1].split("\n")[0] + "d";
 		});
+
+		$("<link>").attr("rel", 'icon').attr("href", "")
 	}
 
 	var handleInputF = function (e) {
@@ -72,6 +72,11 @@ $(document).ready(function () {
 		$(".fab i").css("color", $("body").css("background-color"));
 	}, 150);
 });
+
+function setupLinkReplace(){
+	$("body").on('DOMSubtreeModified', checkLinks);
+	checkLinks();
+}
 
 function loadBackgroundColour() {
 	get('tCol', function (a) {
@@ -234,7 +239,9 @@ function checkLinks() {
 
 function changeLinks(url) {
 	if (url.split("StansLinks").length == 1) {
-		return "https://stannl.github.io/StansLinks/index.html?url=" + url;
+		get("name",function(a){
+			return "https://stannl.github.io/StansLinks/index.html?url=" + url + "&name=" + a.name + "&version=" + version;
+		})
 	}
 	return url;
 }
@@ -299,6 +306,7 @@ function tDiff() {
 }
 
 function checkTime(t) {
+	return true;
 	return (tDiff() < (t * margin)) && (tDiff() > (thisToastShownTime / margin));
 }
 

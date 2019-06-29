@@ -44,6 +44,14 @@ $(document).ready(function () {
 		}, 600);
 	});
 
+	$("#version").on("click", function () {
+		$(".stan-icon.r *").css("right", '-100%');
+		$("#main, #weather, .stan-icon.l *").css("left", '100%');
+		setTimeout(function () {
+			location = '../VersionInfo/Version.html';
+		}, 600);
+	});
+
 
 	setTimeout(function () {
 		$("#searchBoxO, #topSites, #logo").addClass('isLoading');

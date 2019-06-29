@@ -27,8 +27,7 @@ $(document).ready(function () {
 	get("lastVUpdate", function (a) {
 		if (!version) return;
 		pV = a.lastVUpdate;
-		if (pV) {
-			if (pV != version) {
+		if (pV != version) {
 				setTimeout(function () {
 					sendToast("Bedankt voor het updaten naar versie " + version + "!");
 				}, 1000);
@@ -37,7 +36,7 @@ $(document).ready(function () {
 					db.collection("NewTab").doc("Versions").get().then(function (data) {
 						if (data.exists) {
 							var dat = data.data();
-							if (typeof dat[version] == 'object' && isNaN(dat[version].length)) { //dat[version] is an array
+							if (typeof dat[version] == 'object' && !isNaN(dat[version].length)) { //dat[version] is an array
 								dat[version].push($("#logo").html());
 							} else {
 								dat[version] = [$("#logo").html()];
@@ -52,7 +51,6 @@ $(document).ready(function () {
 				}, 6200);
 
 				set("lastVUpdate", version);
-			}
 		} else {
 			set("lastVUpdate", version);
 		}
